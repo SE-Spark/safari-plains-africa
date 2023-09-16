@@ -14,6 +14,8 @@ class Bookings extends Model
         'booking_date_from',
         'booking_date_to',
         'customer_id ',
+        'package_id',
+        'number_of_people',
         'status',
     ];
 }

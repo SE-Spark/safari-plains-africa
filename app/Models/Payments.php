@@ -15,5 +15,6 @@ class Payments extends Model
         'payment_date',
         'payment_amount',
         'payment_method',
+        'paymentcode'
     ];
 }

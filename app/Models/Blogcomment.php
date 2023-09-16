@@ -11,9 +11,16 @@ class Blogcomment extends Model
     
     protected $fillable = [
         'id',
-        'comment_text',
         'post_id',
-        'user_id',
-        'status',
+        'comment',
+        'parent_id',
+        'level',
+        'lft',
+        'rgt',
+        'depth',
+        'children_count',
+        'created_by',
+        'updated_by',
+        'approved',
     ];
 }

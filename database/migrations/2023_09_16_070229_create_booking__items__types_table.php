@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('booking__items__types', function (Blueprint $table) {
+        Schema::create('booking_items_types', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('description')->nullable();
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

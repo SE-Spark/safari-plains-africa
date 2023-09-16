@@ -12,8 +12,11 @@ class Blogpost extends Model
     protected $fillable = [
         'id',
         'title',
+        'image_url',
         'content',
         'is_published',
-        'author_id',
+        'created_by',
+        'updated_by',
+        'blogcategory_id',
     ];
 }

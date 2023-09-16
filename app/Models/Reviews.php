@@ -15,6 +15,7 @@ class Reviews extends Model
         'destination_id',
         'rating',
         'comment',
-        'status',
+        'approved',
+        'approved_by'
     ];
 }

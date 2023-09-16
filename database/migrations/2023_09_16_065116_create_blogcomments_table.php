@@ -13,6 +13,17 @@ return new class extends Migration
     {
         Schema::create('blogcomments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('post_id')->constrained();
+            $table->string('comment');
+            $table->boolean('approved')->default(false);
+            $table->integer('parent_id')->nullable();
+            $table->integer('level')->nullable();
+            $table->integer('lft')->nullable();
+            $table->integer('rgt')->nullable();
+            $table->integer('depth')->nullable();
+            $table->integer('children_count')->nullable();
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
             $table->timestamps();
         });
     }

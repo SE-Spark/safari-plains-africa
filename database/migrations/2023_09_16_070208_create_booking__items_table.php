@@ -11,8 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('booking__items', function (Blueprint $table) {
+        Schema::create('booking_items', function (Blueprint $table) {
             $table->id();
+            $table->string('booking_item_type_id');
+            $table->string('title');
+            $table->string('description'); 
+            $table->string('img_url');
+            $table->date('booking_date_from');
+            $table->date('booking_date_to');
+            $table->integer('number_of_people');
+            $table->integer('status')->default(0);
             $table->timestamps();
         });
     }

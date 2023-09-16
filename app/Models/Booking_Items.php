@@ -10,8 +10,13 @@ class Booking_Items extends Model
     use HasFactory;
     protected $fillable = [
         'id',
-        'booking_id',
-        'item_type',
-        'quantity',
+        'booking_item_type_id',
+        'title',
+        'description',
+        'img_url',
+        'booking_date_from',
+        'booking_date_to',
+        'number_of_people',
+        'status',
     ];
 }
