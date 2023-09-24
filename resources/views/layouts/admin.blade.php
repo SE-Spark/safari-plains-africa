@@ -19,25 +19,18 @@
     <link href="{{asset('assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
     <link href="{{asset('assets/vendor/simple-datatables/style.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+    @livewireStyles
     @yield('styles')
 </head>
 
 <body>
-    <noscript>
-        This page needs JavaScript activated to work.
-        <style>
-            div {
-                display: none;
-            }
-        </style>
-    </noscript>
     @include('layouts.includes.topbar')
     @include('layouts.includes.sidebar')
     <main id="main" class="main">
-        @yield('content')
+        {{$slot}}
     </main>
     @include('layouts.includes.footer')
-
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script> -->
     <script src="{{asset('assets/vendor/apexcharts/apexcharts.min.js')}}"></script>
     <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('assets/vendor/chart.js/chart.umd.js')}}"></script>
@@ -46,7 +39,8 @@
     <script src="{{asset('assets/vendor/simple-datatables/simple-datatables.js')}}"></script>
     <script src="{{asset('assets/vendor/tinymce/tinymce.min.js')}}"></script>
     <script src="{{asset('assets/vendor/php-email-form/validate.js')}}"></script>
-    <script src="{{asset('assets/js/main.js')}}"></script>
+    <script src="{{asset('assets/js/main.js')}}"></script>    
+    @livewireScripts
     @yield('scripts')
 </body>
 

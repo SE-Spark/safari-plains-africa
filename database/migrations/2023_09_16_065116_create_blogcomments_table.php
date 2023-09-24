@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('blogcomments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('post_id')->constrained();
+            $table->string('post_id');
             $table->string('comment');
             $table->boolean('approved')->default(false);
             $table->integer('parent_id')->nullable();

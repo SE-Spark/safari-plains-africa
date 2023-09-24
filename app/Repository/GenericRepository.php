@@ -13,6 +13,11 @@ class GenericRepository
     {
         $this->model = $model;
     }
+    
+    public function getAll()
+    {
+        return $this->model->all();
+    }
 
     public function getById($id)
     {

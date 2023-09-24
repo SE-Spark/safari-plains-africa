@@ -19,7 +19,7 @@ return new class extends Migration
             $table->boolean('is_published')->default(false);            
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();  
-            $table->foreignId('blogcategory_id')->constrained();          
+            $table->string('blogcategory_id');          
             $table->timestamps();
         });
     }

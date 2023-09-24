@@ -12,8 +12,9 @@ class Destinations extends Model
     protected $fillable = [
         'id',
         'name',
+        'address',
         'description',
-        'image_url ',
+        'image_url',
         'status',
     ];
 }
