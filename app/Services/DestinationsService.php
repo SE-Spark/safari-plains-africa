@@ -18,6 +18,11 @@ class DestinationsService
     {
         return $this->destinationsRepository->getAll();
     }
+    
+    public function findById($destinationId)
+    {
+        return $this->destinationsRepository->getById($destinationId);
+    }
 
     public function createDestination($newdestination)
     {

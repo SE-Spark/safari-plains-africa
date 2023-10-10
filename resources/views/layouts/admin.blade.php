@@ -30,6 +30,7 @@
         {{$slot}}
     </main>
     @include('layouts.includes.footer')
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script> -->
     <script src="{{asset('assets/vendor/apexcharts/apexcharts.min.js')}}"></script>
     <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>

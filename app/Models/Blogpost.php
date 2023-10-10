@@ -19,4 +19,9 @@ class Blogpost extends Model
         'updated_by',
         'blogcategory_id',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Blogcategory::class, 'blogcategory_id');
+    }
 }

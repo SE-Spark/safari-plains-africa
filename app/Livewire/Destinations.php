@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Helpers\HP;
 use App\Repository\DestinationsRepository;
 use Livewire\Component;
 use App\Services\DestinationsService;
@@ -9,40 +10,46 @@ use Illuminate\Support\Facades\Log;
 
 class Destinations extends Component
 {
-    public $name,$address,$description,$image_url,$status;
-    public $destinations, $selectedDestination;
+    public $name, $address, $description, $image_url, $status;
+    public $destinations;
     public $selectedDestination_id;
-    public $newDestination = [];
-    public $updateDestination = false;
+
     protected $rules = [
-        'name'=>'required',
-        'address'=>'required',
-        'description'=>'required',
-        'image_url'=>'required',
-        'status'=>'required',
+        'name' => 'required',
+        'address' => 'required',
+        'description' => 'required',
+        'image_url' => 'required',
+        'status' => 'required',
     ];
+
 
     public function mount(DestinationsRepository $destinationService)
     {
         $this->destinations = $destinationService->getAll();
     }
-
-    public function edit($destinationId)
+    public function editDestination($destinationId)
     {
         $this->selectedDestination_id = $destinationId;
-        $this->selectedDestination = $this->destinations->where('id', $destinationId)->first();
+        $selectedDestination = $this->destinations->where('id', $destinationId)->first();
+        $this->name = $selectedDestination->name;
+        $this->address = $selectedDestination->address;
+        $this->description = $selectedDestination->description;
+        $this->image_url = $selectedDestination->image_url;
+        $this->status = $selectedDestination->status;
+        $this->dispatch('editDestinations');
     }
 
     public function update(DestinationsRepository $destinationService)
     {
         $updatedData = $this->validate();
-        // Validate and update the selected destination using the service
-        $destinationService->update($this->selectedDestination, $updatedData);
-        $this->selectedDestination = null; // Clear the selected destination
-        $this->destinations = $destinationService->getAll(); 
-        session()->flash('success', 'Category Created Successfully!!');
+        $destinationService->update($this->selectedDestination_id, $updatedData);
+        $this->selectedDestination_id = null;
+        $this->cancel();
+        $this->destinations = $destinationService->getAll();
+        session()->flash('success', 'Category edited Successfully!!');
+        $this->dispatch('destinationStored');
     }
-    
+
     public function create(DestinationsRepository $destinationService)
     {
         $this->validate();
@@ -54,31 +61,43 @@ class Destinations extends Component
             'status' => $this->status,
 
         ];
-        $destinationService->create($newDestination);
-        $this->destinations = $destinationService->getAll(); 
-        $this->cancel();
-        session()->flash('success', 'Category Created Successfully!!');
-        $this->dispatch('destinationStored');
+        try {
+            $destinationService->create($newDestination);
+            $this->destinations = $destinationService->getAll();
+            $this->cancel();
+            HP::setUnitAddedSuccessFlash();
+            $this->dispatch('destinationStored')->to(Destinations::class);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            HP::setUnitAddedErrorFlash();
+        }
     }
 
     public function delete(DestinationsRepository $destinationService, $destinationId)
     {
         $destinationService->delete($destinationId);
-        $this->destinations = $destinationService->getAll(); 
+        $this->destinations = $destinationService->getAll();
     }
     public function cancel()
     {
-        $this->updateDestination = false;
         $this->resetInputFields();
     }
-    private function resetInputFields(){
+    private function resetInputFields()
+    {
         $this->name = '';
+        $this->address = '';
         $this->description = '';
         $this->image_url = '';
-        $this->status = '';        
+        $this->status = '';
+    }
+    public function placeholder()
+    {
+        return <<<HTML
+        <div>loading ....</div>
+        HTML;
     }
     public function render()
     {
-        return view('admin.destinations.index')->layout('layouts.admin');
+        return view('admin.destinations.index');
     }
 }

@@ -14,6 +14,11 @@
       </a>
     </li>
     <li class="nav-item">
+      <a class="nav-link @if(request()->route()->getName() == 'admin.category') active @else collapsed @endif"  href="/category" wire:navigate>
+        <i class="bi bi-menu-button-wide"></i><span>Category</span>
+      </a>
+    </li>
+    <li class="nav-item">
       <a class="nav-link @if(request()->route()->getName() == 'admin.posts') active @else collapsed @endif"  href="/posts" wire:navigate>
         <i class="bi bi-menu-button-wide"></i><span>Posts</span>
       </a>
