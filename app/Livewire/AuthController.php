@@ -1,0 +1,71 @@
+<?php
+
+namespace App\Livewire;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\Rules\Password;
+use Livewire\Component;
+
+class AuthController extends Component
+{
+    public $first_name, $last_name, $phone, $email, $password, $password_confirmation;
+    public $loginMode = true;
+    public $rules = [
+        'email' => 'required|email',
+        'password' => 'required',
+    ];
+
+    public function render()
+    {
+        return view('livewire.home-controller')->layout('layouts.app');
+    }
+
+    public function login()
+    {
+        // $this->password = Hash::make($this->password); 
+
+        // \App\Models\User::create(['first_name' => 'SE', 'last_name' => 'Admin', 'email' => $this->email,'password' => $this->password]);
+
+        $this->validate();
+
+        if (Auth::attempt(array('email' => $this->email, 'password' => $this->password))) {
+            session()->flash('message', "You are Login successful.");
+            $this->redirect(route('admin.dashboard'), navigate: true);
+        } else {
+            session()->flash('error', 'email and password are wrong.');
+        }
+    }
+
+    public function register()
+    {
+        $this->password = Hash::make($this->password);
+
+
+        $data = $this->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'phone' => 'required',
+            'email' => 'required|email',
+            'password' => ['required', Password::min(6)->letters()->mixedCase()->symbols()],
+            'password_confirmation' => 'required|same:password',
+        ]);
+        try {
+            \App\Models\User::create($data);
+            if (Auth::attempt(array('email' => $this->email, 'password' => $this->password))) {
+                session()->flash('message', "You are Login successful.");
+                $this->redirect(route('admin.dashboard'), navigate: true);
+            } else {
+                session()->flash('error', 'email and password are wrong.');
+            }
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            session()->flash('error', 'An error occured why processing your request. Kindly try again later.');
+        }
+    }
+    public function toggleMode(){
+        $this->resetValidation();
+        $this->loginMode = !$this->loginMode;
+    }
+}

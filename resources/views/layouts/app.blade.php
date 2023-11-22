@@ -38,10 +38,11 @@
             </div>
         </div>
         <main class="d-none">
-            @yield('content')
+            {{$slot}}
         </main>
     </div>
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" data-navigate-once></script>
     <script src="{{asset('assets/vendor/apexcharts/apexcharts.min.js')}}"></script>
     <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('assets/vendor/chart.js/chart.umd.js')}}"></script>

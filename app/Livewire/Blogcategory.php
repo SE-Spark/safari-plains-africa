@@ -5,32 +5,70 @@ namespace App\Livewire;
 use App\Helpers\HP;
 use App\Repository\BlogcategoryRepository;
 use Illuminate\Support\Facades\Log;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Blogcategory extends Component
 {
+    public $moduleTitle = 'Categories';
     public $name, $description, $status;
-    public $category;
+    public $deleteId;
     public $selected_id;
+    public $createUpdateMode = false; 
 
     protected $rules = [
         'name' => 'required',
         'description' => 'required',
         'status' => 'required',
     ];
-
-    public function mount(BlogcategoryRepository $categoryService)
+    // listen on input 
+    protected $listeners = [
+        'refresh-category' => '$refresh',
+    ];
+    // listen on form inputs and validate
+    protected $validationAttributes = [
+        'name' => 'name',
+        'description' => 'description',
+        'status' => 'status',
+    ];
+    // listen on form inputs on keyup to validate
+    public function validating()
     {
-        $this->category = $categoryService->getAll();
+        $this->validate();
     }
-    public function editDestination($destinationId)
+
+    public function back(){       
+        $this->cancel(); 
+        $this->moduleTitle = 'Categories';
+        $this->createUpdateMode = false;
+    }
+    public function backAndRefresh(){       
+        $this->dispatch('pg:eventRefresh-default');
+        $this->cancel(); 
+        $this->moduleTitle = 'Categories';
+        $this->createUpdateMode = false;
+    }
+    public function backWithNew(){    
+           
+        $this->dispatch('pg:eventRefresh-default');
+        $this->cancel(); 
+        $this->moduleTitle = 'Categories';
+        $this->createUpdateMode = false;
+    }
+    public function createForm(){
+        $this->moduleTitle = 'Create Category';
+        $this->createUpdateMode = true;
+    }
+    #[On('editCategory')]
+    public function edit(BlogcategoryRepository $categoryService,$rowId)
     {
-        $this->selected_id = $destinationId;
-        $selectedDestination = $this->category->where('id', $destinationId)->first();
-        $this->name = $selectedDestination->name;
-        $this->description = $selectedDestination->description;
-        $this->status = $selectedDestination->status;
-        $this->dispatch('editCategory');
+        $this->moduleTitle = 'Edit Category';
+        $this->selected_id = $rowId;
+        $category = $categoryService->getAll()->where('id', $rowId)->first();
+        $this->name = $category->name;
+        $this->description = $category->description;
+        $this->status = $category->status;
+        $this->createUpdateMode = true;
     }
 
     public function update(BlogcategoryRepository $categoryService)
@@ -39,42 +77,56 @@ class Blogcategory extends Component
         try {
             $categoryService->update($this->selected_id, $updatedData);
             $this->selected_id = null;
-            $this->cancel();
-            $this->category = $categoryService->getAll();
+            $this->backAndRefresh();
             HP::setUnitUpdatedSuccessFlash();
-            $this->dispatch('categoryStored');
         } catch (\Exception $e) {
             Log::error($e->getMessage());
             HP::setUnitUpdatedErrorFlash();
         }
     }
 
-    public function create(BlogcategoryRepository $categoryService)
+    public function save(BlogcategoryRepository $categoryService)
     {
-        $this->validate();
-        $newDestination = [
-            'name' => $this->name,
-            'description' => $this->description,
-            'status' => $this->status,
-        ];
+        $validatedData = $this->validate();
         try {
-            $categoryService->create($newDestination);
-            $this->category = $categoryService->getAll();
-            $this->cancel();
+            $this->create($categoryService,$validatedData);
+            $this->backWithNew();            
             HP::setUnitAddedSuccessFlash();
-            $this->dispatch('categoryStored');
+            $this->createUpdateMode = false;
         } catch (\Exception $e) {
             Log::error($e->getMessage());
             HP::setUnitAddedErrorFlash();
         }
     }
-
-    public function delete(BlogcategoryRepository $categoryService, $destinationId)
+    public function savecreate(BlogcategoryRepository $categoryService)
+    {
+        $validatedData = $this->validate();
+        try {
+            $this->create($categoryService,$validatedData);
+            $this->cancel();
+            HP::setUnitAddedSuccessFlash();
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            HP::setUnitAddedErrorFlash();
+        }
+    }
+    protected function create($service,$data){
+        $service->create($data);
+    }
+    #[On('deleteCategory')]
+    public function deleteDestination(BlogcategoryRepository $categoryService, $rowId)
+    {
+        if ($categoryService->get()->where('id', $rowId)->first()) {
+            $this->deleteId = $rowId;
+            $this->js("$('#deleteModal').modal('show');");
+        }
+    }
+    public function delete(BlogcategoryRepository $categoryService)
     {
         try {
-            $categoryService->delete($destinationId);
-            $this->category = $categoryService->getAll();
+            $categoryService->delete($this->deleteId);
             HP::setUnitDeletedSuccessFlash();
+            $this->dispatch('pg:eventRefresh-default');
         } catch (\Exception $e) {
             Log::error($e->getMessage());
             HP::setUnitDeletedErrorFlash();
@@ -82,16 +134,10 @@ class Blogcategory extends Component
     }
     public function cancel()
     {
-        $this->resetInputFields();
-    }
-    private function resetInputFields()
-    {
-        $this->name = '';
-        $this->description = '';
-        $this->status = '';
+        $this->resetExcept(['createUpdateMode','moduleTitle','category']);
     }
     public function render()
     {
-        return view('admin.category.index')->layout('layouts.admin');
+        return view('admin.category.index');
     }
 }

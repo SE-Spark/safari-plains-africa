@@ -18,4 +18,10 @@ class Reviews extends Model
         'approved',
         'approved_by'
     ];
+    public function user(){
+        return $this->belongsTo(User::class,'id','customer_id');
+    }
+    public function destination(){
+        return $this->hasOne(Destinations::class,'id','destination_id');
+    }
 }

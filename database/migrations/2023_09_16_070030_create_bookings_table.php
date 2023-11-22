@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('customer_id');
             $table->string('package_id');
+            $table->string('booking_item_id');
             $table->date('booking_date_from');
             $table->date('booking_date_to');
             $table->integer('number_of_people');

@@ -8,6 +8,6 @@ class Blogcomments extends Component
 {
     public function render()
     {
-        return view('livewire.blogcomments')->layout('layouts.admin');
+        return view('admin.comments.index');
     }
 }

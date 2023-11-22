@@ -39,8 +39,12 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>{{__("Image")}}</label>
-                                <input type="text" class="form-control @error('image_url') is-invalid @enderror" wire:model="image_url">
-                                @error('image_url') <span class="text-danger error">{{ $message }}</span>@enderror
+                                <input type="file" class="form-control @error('image_photo') is-invalid @enderror" wire:model="image_photo">
+                                @error('image_photo') <span class="text-danger error">{{ $message }}</span>@enderror
+                                @if ($image_photo || $image_url)
+                                Photo Preview:
+                                <img src="{{ !empty($image_photo)?$image_photo->temporaryUrl():'assets/images/'.$image_url }}" width="220">
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -49,6 +53,7 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">{{__(" Status")}}</label>
                                 <select class="form-control" wire:model="status" id="status">
+                                    <<option value="" class="muted">{{__("Select Status")}}</option>
                                     <option value="1">Active</option>
                                     <option value="0">InActive</option>
                                 </select>
@@ -57,7 +62,7 @@
                     </div>
                     <div class="card-footer ">
                         <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary btn-round" data-bs-dismiss="modal">Close</button>
-                        <button type="button" wire:click.prevent="update()" class="btn btn-primary btn-round" data-bs-dismiss="modal">Save changes</button>
+                        <button type="button" wire:click.prevent="update()" class="btn btn-primary btn-round">Save changes</button>
                     </div>
                     <hr class="half-rule" />
             </div>

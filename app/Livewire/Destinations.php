@@ -5,32 +5,37 @@ namespace App\Livewire;
 use App\Helpers\HP;
 use App\Repository\DestinationsRepository;
 use Livewire\Component;
-use App\Services\DestinationsService;
+use Livewire\Attributes\On;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\File;
+use Livewire\WithFileUploads;
 
 class Destinations extends Component
 {
-    public $name, $address, $description, $image_url, $status;
-    public $destinations;
+    use WithFileUploads;
+    public $name, $address, $description, $image_url, $image_photo, $status;
+    public $deleteId;
     public $selectedDestination_id;
 
     protected $rules = [
         'name' => 'required',
         'address' => 'required',
         'description' => 'required',
-        'image_url' => 'required',
+        'image_photo' => 'required_without:selectedDestination_id',
         'status' => 'required',
     ];
+    protected $messages = [
+        'image_photo.required_without' => 'The image field is required.',
+    ];
 
-
-    public function mount(DestinationsRepository $destinationService)
+    public function mount()
     {
-        $this->destinations = $destinationService->getAll();
     }
-    public function editDestination($destinationId)
+    #[On('editDestination')]
+    public function editDestination(DestinationsRepository $destinationService, $destinationId)
     {
         $this->selectedDestination_id = $destinationId;
-        $selectedDestination = $this->destinations->where('id', $destinationId)->first();
+        $selectedDestination = $destinationService->get()->where('id', $destinationId)->first();
         $this->name = $selectedDestination->name;
         $this->address = $selectedDestination->address;
         $this->description = $selectedDestination->description;
@@ -41,60 +46,67 @@ class Destinations extends Component
 
     public function update(DestinationsRepository $destinationService)
     {
+        // $this->resetValidation('image_photo');
         $updatedData = $this->validate();
+        if (!empty($this->image_photo)) {
+            $filename = uniqid() . '' . time() . '.' . $this->image_photo->extension();
+            $filePath = public_path('assets/images');
+            $fullPath = $filePath . '/' . $filename;
+            if (!File::exists($filePath)) {
+                File::makeDirectory($filePath, 0755, true); // Recursive directory creation
+            }
+            File::put($fullPath, file_get_contents($this->image_photo->getRealPath()));
+            $updatedData['image_url'] = $filename;
+        }
         $destinationService->update($this->selectedDestination_id, $updatedData);
-        $this->selectedDestination_id = null;
         $this->cancel();
-        $this->destinations = $destinationService->getAll();
-        session()->flash('success', 'Category edited Successfully!!');
-        $this->dispatch('destinationStored');
+        HP::setUnitUpdatedSuccessFlash();
+        $this->js("$('#destUpdateModal').modal('hide');");
+        $this->dispatch('pg:eventRefresh-default');
     }
 
     public function create(DestinationsRepository $destinationService)
     {
-        $this->validate();
-        $newDestination = [
-            'name' => $this->name,
-            'address' => $this->address,
-            'description' => $this->description,
-            'image_url' => $this->image_url,
-            'status' => $this->status,
-
-        ];
+        $newDestination = $this->validate();
+        $filename = uniqid() . '' . time() . '.' . $this->image_photo->extension();
+        $filePath = public_path('assets/images');
+        $fullPath = $filePath . '/' . $filename;
+        if (!File::exists($filePath)) {
+            File::makeDirectory($filePath, 0755, true); // Recursive directory creation
+        }
+        File::put($fullPath, file_get_contents($this->image_photo->getRealPath()));
+        $newDestination['image_url'] = $filename;
         try {
             $destinationService->create($newDestination);
-            $this->destinations = $destinationService->getAll();
             $this->cancel();
             HP::setUnitAddedSuccessFlash();
-            $this->dispatch('destinationStored')->to(Destinations::class);
+            $this->js("$('#destinationModal').modal('hide');");
+            $this->dispatch('pg:eventRefresh-default');
+            // $this->dispatch('destinationStored')->to(Destinations::class);
         } catch (\Exception $e) {
             Log::error($e->getMessage());
             HP::setUnitAddedErrorFlash();
         }
     }
 
-    public function delete(DestinationsRepository $destinationService, $destinationId)
+    public function delete(DestinationsRepository $destinationService)
     {
-        $destinationService->delete($destinationId);
-        $this->destinations = $destinationService->getAll();
+        $destinationService->delete($this->deleteId);
+        HP::setUnitDeletedSuccessFlash();
+        $this->dispatch('pg:eventRefresh-default');
+    }
+    #[On('deleteDestination')]
+    public function deleteDestination(DestinationsRepository $destinationService, $destinationId)
+    {
+        if ($destinationService->get()->where('id', $destinationId)->first()) {
+            $this->deleteId = $destinationId;
+            $this->js("$('#deleteModal').modal('show');");
+        }
     }
     public function cancel()
     {
-        $this->resetInputFields();
-    }
-    private function resetInputFields()
-    {
-        $this->name = '';
-        $this->address = '';
-        $this->description = '';
-        $this->image_url = '';
-        $this->status = '';
-    }
-    public function placeholder()
-    {
-        return <<<HTML
-        <div>loading ....</div>
-        HTML;
+        $this->reset();
+        $this->resetValidation();
     }
     public function render()
     {

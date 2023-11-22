@@ -8,6 +8,6 @@ class Reviews extends Component
 {
     public function render()
     {
-        return view('livewire.reviews')->layout('layouts.admin');
+        return view('admin.reviews.index')->layout('layouts.admin');
     }
 }

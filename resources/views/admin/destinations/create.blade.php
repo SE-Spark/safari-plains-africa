@@ -37,8 +37,12 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>{{__("Image")}}</label>
-                                <input type="text" class="form-control @error('image_url') is-invalid @enderror" wire:model="image_url">
-                                @error('image_url') <span class="text-danger error">{{ $message }}</span>@enderror
+                                <input type="file" class="form-control @error('image_photo') is-invalid @enderror" wire:model="image_photo">
+                                @error('image_photo') <span class="text-danger error">{{ $message }}</span>@enderror
+                                @if ($image_photo)
+                                Photo Preview:
+                                <img src="{{ $image_photo->temporaryUrl() }}" width="220">
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -47,6 +51,7 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">{{__(" Status")}}</label>
                                 <select class="form-control @error('status') is-invalid @enderror" name="status" id="status" wire:model="status">
+                                    <option value="" class="muted">{{__("Select Status")}}</option>
                                     <option value="1" selected>Active</option>
                                     <option value="0">InActive</option>
                                 </select>
@@ -55,7 +60,7 @@
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-between">
-                        <button type="button" class="btn btn-secondary btn-round" data-bs-dismiss="modal">Close</button>
+                        <button type="button" wire:click.prevent="cancel()"class="btn btn-secondary btn-round" data-bs-dismiss="modal">Close</button>
                         <button type="button" wire:click.prevent="create()" class="btn btn-primary btn-round">{{__('Save')}}</button>
                     </div>
                     <hr class="half-rule" />

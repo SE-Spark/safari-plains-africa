@@ -17,32 +17,54 @@
     <link href="{{asset('assets/vendor/quill/quill.snow.css')}}" rel="stylesheet">
     <link href="{{asset('assets/vendor/quill/quill.bubble.css')}}" rel="stylesheet">
     <link href="{{asset('assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/vendor/simple-datatables/style.css')}}" rel="stylesheet">
-    <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('assets/vendor/simple-datatables/style.css')}}" rel="stylesheet">  
+    <link href="{{asset('assets/css/style.css')}}" rel="stylesheet" data-navigate-track>
     @livewireStyles
     @yield('styles')
+    <style>
+        table tr:first-child td input,
+        table tr:first-child td select{
+            font-size: 10px;
+            min-width: 100px;
+        }
+        tr td{            
+            font-size: 12px;
+        }
+        tr td:last-child {
+            min-width: 150px;
+        }
+        tr td:last-child .flex div{
+            width:60px;
+            float:left;
+        }
+    </style>
 </head>
 
 <body>
+    
     @include('layouts.includes.topbar')
     @include('layouts.includes.sidebar')
     <main id="main" class="main">
         {{$slot}}
     </main>
     @include('layouts.includes.footer')
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script> -->
-    <script src="{{asset('assets/vendor/apexcharts/apexcharts.min.js')}}"></script>
-    <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-    <script src="{{asset('assets/vendor/chart.js/chart.umd.js')}}"></script>
-    <script src="{{asset('assets/vendor/echarts/echarts.min.js')}}"></script>
-    <script src="{{asset('assets/vendor/quill/quill.min.js')}}"></script>
-    <script src="{{asset('assets/vendor/simple-datatables/simple-datatables.js')}}"></script>
-    <script src="{{asset('assets/vendor/tinymce/tinymce.min.js')}}"></script>
-    <script src="{{asset('assets/vendor/php-email-form/validate.js')}}"></script>
-    <script src="{{asset('assets/js/main.js')}}"></script>    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" data-navigate-once></script>                     
+    <script src="{{asset('assets/vendor/apexcharts/apexcharts.min.js')}}" data-navigate-once></script>
+    <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}" data-navigate-once></script>
+    <script src="{{asset('assets/vendor/chart.js/chart.umd.js')}}" data-navigate-once></script>
+    <script src="{{asset('assets/vendor/echarts/echarts.min.js')}}" data-navigate-once></script>
+    <script src="{{asset('assets/vendor/quill/quill.min.js')}}" data-navigate-once></script>
+    <script src="{{asset('assets/vendor/simple-datatables/simple-datatables.js')}}" data-navigate-once></script>    
+    <script src="{{asset('assets/vendor/tinymce/tinymce.min.js')}}"data-navigate-track></script>
+    <script src="{{asset('assets/vendor/php-email-form/validate.js')}}" data-navigate-once></script>
+    <script src="{{asset('assets/js/main.js')}}" ></script>
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js" data-navigate-once></script> -->
+    
     @livewireScripts
     @yield('scripts')
+    {{--  @livewire('wire-elements-modal')
+    @livewire('livewire-ui-modal')  --}}
+    @stack('scripts')
 </body>
 
 </html>

@@ -13,9 +13,14 @@ class Packages extends Model
         'id',
         'name',
         'description',
-        'price ',
+        'price',
         'start_date',
         'end_date',
         'status',
     ];
+    
+    public function bookingItems()
+    {
+        return $this->belongsToMany(Booking_Items::class, 'package_booking_item', 'package_id', 'booking_item_id');
+    }
 }
