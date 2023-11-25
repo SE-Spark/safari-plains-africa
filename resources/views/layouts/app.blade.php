@@ -19,6 +19,7 @@
     <link href="{{asset('assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
     <link href="{{asset('assets/vendor/simple-datatables/style.css')}}" rel="stylesheet">
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
+    @livewireStyles
     @yield('styles')
 </head>
 
@@ -52,7 +53,9 @@
     <script src="{{asset('assets/vendor/tinymce/tinymce.min.js')}}"></script>
     <script src="{{asset('assets/vendor/php-email-form/validate.js')}}"></script>
     <script src="{{asset('assets/js/main.js')}}"></script>
+    @livewireScripts
     @yield('scripts')
+    @stack('scripts')
     <script>
         $(document).ready(function() {
             $('.loader').fadeOut(1000, function() {

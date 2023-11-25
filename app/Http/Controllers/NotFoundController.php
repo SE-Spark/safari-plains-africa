@@ -9,6 +9,6 @@ class NotFoundController extends Component
 
     public function render()
     {
-        return view('front.404')->layout('front.layouts.app');
+        return view('errors.404')->layout('front.layouts.app');
     }
 }

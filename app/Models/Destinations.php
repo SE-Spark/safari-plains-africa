@@ -17,4 +17,9 @@ class Destinations extends Model
         'image_url',
         'status',
     ];
+    
+    public function packages()
+    {
+        return $this->belongsToMany(Packages::class, 'package_destination', 'destination_id', 'package_id');
+    }
 }

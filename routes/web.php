@@ -34,10 +34,10 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('/users', \App\Livewire\Users::class)->name('admin.users');
     Route::get('/logout', function () {
         Auth::logout();
-        return redirect(route('dashboard'));
+        return redirect(route('home'));
     })->name('user.logout');
 });
-Route::get('/account/user/auth', \App\Livewire\AuthController::class)->name('login');
+Route::get('/account/user/auth/{account?}', \App\Livewire\AuthController::class)->name('login');
 Route::get('/', \App\Livewire\HomeController::class)->name('home');
 Route::get('/about', \App\Http\Controllers\AboutController::class)->name('about');
 Route::get('/contact', \App\Http\Controllers\ContactController::class)->name('contact');

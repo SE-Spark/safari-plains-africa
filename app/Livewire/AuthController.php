@@ -16,6 +16,13 @@ class AuthController extends Component
         'email' => 'required|email',
         'password' => 'required',
     ];
+    
+    public function mount($account)
+    {
+        if($account !== null && $account === 'signup'){
+            $this->loginMode = false;
+        }
+    }
 
     public function render()
     {
@@ -40,7 +47,6 @@ class AuthController extends Component
 
     public function register()
     {
-        $this->password = Hash::make($this->password);
 
 
         $data = $this->validate([
@@ -50,9 +56,17 @@ class AuthController extends Component
             'email' => 'required|email',
             'password' => ['required', Password::min(6)->letters()->mixedCase()->symbols()],
             'password_confirmation' => 'required|same:password',
+        ]);        
+        $data['password'] = Hash::make($this->password);
+        \App\Models\User::create([
+            'first_name' => 'SE', 
+            'last_name' => 'Admin', 
+            'email' => $this->email,
+            'password' => $this->password
         ]);
+        
         try {
-            \App\Models\User::create($data);
+            // \App\Models\User::create($data);
             if (Auth::attempt(array('email' => $this->email, 'password' => $this->password))) {
                 session()->flash('message', "You are Login successful.");
                 $this->redirect(route('admin.dashboard'), navigate: true);
@@ -66,6 +80,8 @@ class AuthController extends Component
     }
     public function toggleMode(){
         $this->resetValidation();
-        $this->loginMode = !$this->loginMode;
+        $this->loginMode = !$this->loginMode;        
+        $this->dispatch('updateUrl', ['account' => $this->loginMode ? 'signin' : 'signup']);
+
     }
 }

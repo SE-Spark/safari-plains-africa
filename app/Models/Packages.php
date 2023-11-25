@@ -14,6 +14,7 @@ class Packages extends Model
         'name',
         'description',
         'price',
+        'number_of_people',
         'start_date',
         'end_date',
         'status',
@@ -22,5 +23,10 @@ class Packages extends Model
     public function bookingItems()
     {
         return $this->belongsToMany(Booking_Items::class, 'package_booking_item', 'package_id', 'booking_item_id');
+    }
+    
+    public function destinations()
+    {
+        return $this->belongsToMany(Destinations::class, 'package_destination', 'package_id', 'destination_id');
     }
 }

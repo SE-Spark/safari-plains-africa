@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Helpers\HP;
+use App\Repository\DestinationsRepository;
 use App\Repository\PackagesRepository;
 use Livewire\Component;
 use Livewire\Attributes\On;
@@ -12,16 +13,21 @@ class Packages extends Component
 {
 
     public $modalTitle = 'Create Package';
-    public $name, $description, $price, $start_date, $end_date, $status;
+    public $name, $description, $price, $number_of_people, $start_date, $end_date, $status, $destinationId, $destinations;
     public $deleteId, $selectedId;
     protected $rules = [
         'name' => 'required',
         'description' => 'required',
         'price' => 'required',
+        'destinationId' => 'required',
+        'number_of_people' => 'required',
         'start_date' => 'required',
         'end_date' => 'required',
         'status' => 'required',
     ];
+    public function mount(DestinationsRepository $destinationService){
+        $this->destinations = $destinationService->getAll();
+    }
     public function render()
     {
         return view('admin.packages.index');
@@ -48,14 +54,14 @@ class Packages extends Component
 
         try {
             if (!empty($this->selectedId)) {
-                $packageService->update($this->selectedId, $data);
+                $packageService->updateWithDestinations($this->selectedId, $data,(array) [$this->destinationId]);
                 HP::setUnitUpdatedSuccessFlash();
             } else {
-                $packageService->create($data);
+                $packageService->createWithDestinations($data,(array) [$this->destinationId]);
                 HP::setUnitAddedSuccessFlash();
             }
             $this->cancel();
-            $this->js("$('#createUpdateModal').modal('hide');");
+            $this->js("$('#createUpdateModal').modal('toggle');");
             $this->dispatch('pg:eventRefresh-default');
         } catch (\Exception $e) {
             Log::error($e->getMessage());
@@ -78,7 +84,7 @@ class Packages extends Component
     }
     public function cancel()
     {
-        $this->reset();
+        $this->resetExcept('destinations');
         $this->resetValidation();
     }
 }

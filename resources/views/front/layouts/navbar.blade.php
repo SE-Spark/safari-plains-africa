@@ -27,11 +27,10 @@
                     </div>
                 </div>
                 --}}
-                <a href="{{route('404')}}" wire:navigate class="nav-item nav-link @if(request()->route()->getName() == '404') active @endif">404 Page</a>
                 <a href="{{route('contact')}}" wire:navigate class="nav-item nav-link @if(request()->route()->getName() == 'contact') active @endif">Contact</a>
             </div>
-            <a href="{{route('login')}}" class="btn btn-primary rounded-pill py-2 px-4" style="margin-right:20px !important;">Login</a>
-            <a href="" class="btn btn-primary rounded-pill py-2 px-4">Register</a>
+            <a href="{{route('login',['account'=>'signin'])}}" class="btn btn-primary rounded-pill py-2 px-4" style="margin-right:20px !important;">Login</a>
+            <a href="{{route('login',['account'=>'signup'])}}" class="btn btn-primary rounded-pill py-2 px-4">Register</a>
         </div>
     </nav>
     <div class="container-fluid bg-primary py-5 mb-5 hero-header">

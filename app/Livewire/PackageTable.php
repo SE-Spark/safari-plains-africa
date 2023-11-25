@@ -50,10 +50,13 @@ final class PackageTable extends PowerGridComponent
         return PowerGrid::columns()
             ->addColumn('name')
 
-           /** Example of custom column using a closure **/
+            /** Example of custom column using a closure **/
             ->addColumn('name_lower', fn (Packages $model) => strtolower(e($model->name)))
 
             ->addColumn('description')
+            ->addColumn('destination', fn (Packages $model) => $model->destinations()->first()->name ?? '')
+            ->addColumn('number_of_people')
+            ->addColumn('price', fn (Packages $model) => number_format($model->price).' KES')
             ->addColumn('start_date_formatted', fn (Packages $model) => Carbon::parse($model->start_date)->format('d/m/Y'))
             ->addColumn('end_date_formatted', fn (Packages $model) => Carbon::parse($model->end_date)->format('d/m/Y'))
             ->addColumn('status', fn (Packages $model) => $model->status == 1 ? 'Active' : 'Inactive')
@@ -70,6 +73,12 @@ final class PackageTable extends PowerGridComponent
             Column::make('Description', 'description')
                 ->sortable()
                 ->searchable(),
+            Column::make('Destination', 'destination')
+                ->sortable(),
+            Column::make('Person', 'number_of_people')
+                ->sortable(),
+                Column::make('Prize', 'price')
+                    ->sortable(),
 
             Column::make('Start date', 'start_date_formatted', 'start_date')
                 ->sortable(),
@@ -99,7 +108,7 @@ final class PackageTable extends PowerGridComponent
     #[\Livewire\Attributes\On('edit')]
     public function edit($rowId): void
     {
-        $this->js('alert('.$rowId.')');
+        $this->js('alert(' . $rowId . ')');
     }
 
     public function actions(\App\Models\Packages $row): array

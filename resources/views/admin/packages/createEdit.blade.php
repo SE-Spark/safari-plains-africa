@@ -24,6 +24,30 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">{{__(" Destination")}}</label>
+                                <select class="form-control @error('destinationId') is-invalid @enderror" id="destinationId" wire:model="destinationId">
+                                    <option value="">{{__("Select Destination")}}</option>
+                                    @foreach($destinations as $cat)
+                                    <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                    @endforeach
+                                </select>
+                                @error('destinationId') <span class="text-danger error">{{ $message }}</span>@enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>{{__(" Number Of People")}}</label>
+                                <input type="number" class="form-control @error('number_of_people') is-invalid @enderror" wire:model="number_of_people">
+                                @error('number_of_people') <span class="text-danger error">{{ $message }}</span>@enderror
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
@@ -65,7 +89,7 @@
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-between">
-                        <button type="button" wire:click.prevent="cancel()"class="btn btn-secondary btn-round" data-bs-dismiss="modal">Close</button>
+                        <button type="button" wire:click.prevent="cancel()" class="btn btn-secondary btn-round" data-bs-dismiss="modal">Close</button>
                         <button type="button" wire:click.prevent="createUpdate()" class="btn btn-primary btn-round">{{__('Save')}}</button>
                     </div>
                     <hr class="half-rule" />
