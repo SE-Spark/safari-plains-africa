@@ -30,6 +30,7 @@
 
     <!-- Template Stylesheet -->
     <link href="{{asset('front/css/style.css')}}" rel="stylesheet">
+    @livewireStyles
 </head>
 
 <body>

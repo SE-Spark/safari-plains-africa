@@ -3,7 +3,7 @@
         <div class="container">
             @include('partials.sectionSuccessError')
             <div class="row justify-content-center">
-                <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
+                <div class="@if($loginMode) col-md-4 @else col-md-6 @endif d-flex flex-column align-items-center justify-content-center">
 
                     <div class="d-flex justify-content-center py-4">
                         <a href="/" class="logo d-flex align-items-center w-auto">

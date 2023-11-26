@@ -41,7 +41,7 @@
     
     @include('front.components.services')
     
-    @include('front.components.destinations')
+    {{--@include('front.components.destinations')--}}
     
     @include('front.components.packages')    
     

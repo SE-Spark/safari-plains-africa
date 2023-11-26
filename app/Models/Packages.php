@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Packages extends Model
 {
@@ -19,6 +20,10 @@ class Packages extends Model
         'end_date',
         'status',
     ];
+    protected $casts = [
+        'start_date' => 'date',
+        'end_date' => 'date',
+    ];
     
     public function bookingItems()
     {
@@ -28,5 +33,9 @@ class Packages extends Model
     public function destinations()
     {
         return $this->belongsToMany(Destinations::class, 'package_destination', 'package_id', 'destination_id');
+    }
+    public function getNumberOfDaysAttribute()
+    {
+        return $this->start_date->diffInDays($this->end_date);
     }
 }

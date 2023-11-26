@@ -60,4 +60,7 @@ class HP
     public static function renderImg($image){
         return '<img src="assets/images/'.$image.'" width="100">';
     }
+    public static function getImgUrl($image){
+        return asset('assets/images/'.$image);
+    }
 }
