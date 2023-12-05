@@ -13,7 +13,7 @@
                     <div class="card-body">
                         <h5 class="card-title d-flex justify-content-between">
                         Booking
-                            <span class="text-end"><a href="javascript:;" class="btn btn-success mr-4" data-bs-toggle="modal" data-bs-target="#createUpdateModal">Add New</a></span>
+                            <span class="text-end"><a href="javascript:;" class="btn btn-primary  mr-4" data-bs-toggle="modal" data-bs-target="#createUpdateModal">Add New</a></span>
                         </h5>
                         
                         <livewire:booking-table />

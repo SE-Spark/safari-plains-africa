@@ -21,6 +21,10 @@ class Bookings extends Model
         'number_of_people',
         'status',
     ];
+    
+    public function user(){
+        return $this->belongsTo(User::class,'customer_id','id');
+    }
     public function package(){
         return $this->hasOne(Packages::class,'id','package_id');
     }

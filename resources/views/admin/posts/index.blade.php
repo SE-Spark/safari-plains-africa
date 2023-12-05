@@ -14,7 +14,7 @@
                     <div class="card-body">
                         <h5 class="card-title d-flex justify-content-between">
                             Posts
-                            <span class="text-end"><a href="{{route('admin.post.create')}}" class="btn btn-success mr-4">Add New</a></span>
+                            <span class="text-end"><a href="{{route('admin.post.create')}}" class="btn btn-primary  mr-4">Add New</a></span>
                         </h5>                             
                         <div>
                             <livewire:post-table />

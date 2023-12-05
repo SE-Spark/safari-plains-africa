@@ -18,7 +18,7 @@
                         </h5>
                         <div class="row d-flex justify-content-end">
                             <div class="col-md-3 col-6">
-                                <a href="javascript:;" class="btn btn-success w-75 mr-4" data-bs-toggle="modal" data-bs-target="#postCreateModal">Add New</a>
+                                <a href="javascript:;" class="btn btn-primary  w-75 mr-4" data-bs-toggle="modal" data-bs-target="#postCreateModal">Add New</a>
                             </div>
                         </div>
                         <livewire:payment-table />

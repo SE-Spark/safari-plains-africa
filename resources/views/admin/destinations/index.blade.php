@@ -21,7 +21,7 @@
                     <div class="card-body">
                         <h5 class="card-title d-flex justify-content-between">
                             Destinations
-                            <span class="text-end"><a href="javascript:;" class="btn btn-success mr-4" data-bs-toggle="modal" data-bs-target="#destinationModal">Add New</a></span>
+                            <span class="text-end"><a href="javascript:;" class="btn btn-primary  mr-4" data-bs-toggle="modal" data-bs-target="#destinationModal">Add New</a></span>
                         </h5>
                         <livewire:destination-table/>
                         <div class="modal fade" id="deleteModal">

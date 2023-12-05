@@ -58,7 +58,7 @@ final class PostTable extends PowerGridComponent
             ->addColumn('image_url', function (Blogpost $model) {
                 return HP::renderImg($model->image_url);
             })
-            ->addColumn('content', fn (Blogpost $model) => $model->content)
+            ->addColumn('content', fn (Blogpost $model) => implode(' ', array_slice(explode(' ',$model->content), 0, 10)))
             // ->addColumn('is_published')
             ->addColumn('is_published', fn (Blogpost $model) => (int) $model->is_published == 1 ? 'Published' : 'Not Published')
             // ->addColumn('category_name', fn (Blogpost $model) => e($model->category->name));

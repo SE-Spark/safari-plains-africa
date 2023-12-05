@@ -27,10 +27,18 @@
                     </div>
                 </div>
                 --}}
+                <a href="{{route('blog')}}" wire:navigate class="nav-item nav-link @if(request()->route()->getName() == 'blog') active @endif">Blog</a>
                 <a href="{{route('contact')}}" wire:navigate class="nav-item nav-link @if(request()->route()->getName() == 'contact') active @endif">Contact</a>
+                @auth
+                <a href="{{route('booking')}}" wire:navigate class="nav-item nav-link @if(request()->route()->getName() == 'booking') active @endif">Booking</a>
+                @endauth
             </div>
+            @guest
             <a href="{{route('login',['account'=>'signin'])}}" class="btn btn-primary rounded-pill py-2 px-4" style="margin-right:20px !important;">Login</a>
             <a href="{{route('login',['account'=>'signup'])}}" class="btn btn-primary rounded-pill py-2 px-4">Register</a>
+            @else            
+            <a href="{{route('admin.dashboard')}}" class="btn btn-primary rounded-pill py-2 px-4">Dashboard</a>
+            @endguest
         </div>
     </nav>
     <div class="container-fluid bg-primary py-5 mb-5 hero-header">
