@@ -10,7 +10,7 @@
     </li>
     <li class="nav-item">
       <a class="nav-link @if(request()->route()->getName() == 'admin.destinations') active @else collapsed @endif" href="{{route('admin.destinations')}}" wire:navigate>
-        <i class="bi bi-menu-button-wide"></i><span>Destinations</span>
+        <i class="bi bi-airplane"></i><span>Destinations</span>
       </a>
     </li>{{--
     <li class="nav-item">
@@ -20,17 +20,17 @@
     </li>--}}
     <li class="nav-item">
       <a class="nav-link @if(request()->route()->getName() == 'admin.packages') active @else collapsed @endif" href="{{route('admin.packages')}}" wire:navigate>
-        <i class="bi bi-menu-button-wide"></i><span>Packages</span>
+        <i class="bi bi-box"></i><span>Packages</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link @if(request()->route()->getName() == 'admin.reviews') active @else collapsed @endif" href="{{route('admin.reviews')}}" wire:navigate>
-        <i class="bi bi-menu-button-wide"></i><span>Reviews</span>
+        <i class="bi bi-yelp"></i><span>Reviews</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link @if(!in_array(request()->route()->getName(),['admin.item-types','admin.booking-items','admin.booking'])) collapsed @endif " data-bs-target="#booking-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-menu-button-wide"></i><span>Booking</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="bi bi-book"></i><span>Booking</span><i class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="booking-nav" class="nav-content @if(in_array(request()->route()->getName(),['admin.item-types','admin.booking-items','admin.booking'])) show @else collapse @endif  " data-bs-parent="#sidebar-nav">
         <li>
@@ -52,7 +52,7 @@
     </li>
     <li class="nav-item">
       <a class="nav-link @if(!in_array(request()->route()->getName(),['admin.category','admin.posts'])) collapsed @endif" data-bs-target="#blog-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-menu-button-wide"></i><span>Blog</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="bi bi-file-post"></i><span>Blog</span><i class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="blog-nav" class="nav-content @if(in_array(request()->route()->getName(),['admin.category','admin.posts'])) show @else collapse @endif " data-bs-parent="#sidebar-nav">        
         <li>
@@ -86,7 +86,7 @@
     </li>
     <li class="nav-item">
       <a class="nav-link  @if(!in_array(request()->route()->getName(),['admin.users'])) collapsed @endif" data-bs-target="#admin-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-menu-button-wide"></i><span>Administration</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="bi bi-5-circle"></i><span>Administration</span><i class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="admin-nav" class="nav-content  @if(in_array(request()->route()->getName(),['admin.users'])) show @else collapse @endif " data-bs-parent="#sidebar-nav">
 

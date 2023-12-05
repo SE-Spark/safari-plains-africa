@@ -11,7 +11,7 @@
                         <h5 class="card-title  d-flex justify-content-between">
                             {{$moduleTitle}}
                             @if(!$createUpdateMode)
-                            <span class="text-end"><a href="javascript:;" class="btn btn-success mr-4" wire:click="createForm">Add New</a></span>
+                            <span class="text-end"><a href="javascript:;" class="btn btn-primary  mr-4" wire:click="createForm">Add New</a></span>
                             @endif
                         </h5>
                         @if($createUpdateMode)
