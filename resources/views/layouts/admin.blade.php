@@ -38,6 +38,7 @@
             float:left;
         }
     </style>
+    @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 
 <body>
@@ -58,8 +59,9 @@
     <script src="{{asset('assets/vendor/tinymce/tinymce.min.js')}}"data-navigate-track></script>
     <script src="{{asset('assets/vendor/php-email-form/validate.js')}}" data-navigate-once></script>
     <script src="{{asset('assets/js/main.js')}}" ></script>
-    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js" data-navigate-once></script> -->
     
+    <!-- <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js" data-navigate-once></script> -->
+  
     @livewireScripts
     @yield('scripts')
     {{--  @livewire('wire-elements-modal')

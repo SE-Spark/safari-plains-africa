@@ -15,7 +15,7 @@
                         </div>
                         <div class="ms-3">
                             <h5 class="text-primary">Office</h5>
-                            <p class="mb-0">FOURWAYS JUNCTION, NAIROBI, KENYA</p>
+                            <p class="mb-0">RIDGEWAYS MALL, KIAMBU RD</p>
                         </div>
                     </div>
                     <div class="d-flex align-items-center mb-4">
@@ -24,7 +24,7 @@
                         </div>
                         <div class="ms-3">
                             <h5 class="text-primary">Mobile</h5>
-                            <p class="mb-0">+254 794475947</p>
+                            <p class="mb-0">+254 794475947 / +254105048266</p>
                         </div>
                     </div>
                     <div class="d-flex align-items-center">
@@ -33,7 +33,7 @@
                         </div>
                         <div class="ms-3">
                             <h5 class="text-primary">Email</h5>
-                            <p class="mb-0"> bonanzaadventures@outlook.com</p>
+                            <p class="mb-0"> info@bonanzaadventuretours.com</p>
                         </div>
                     </div>
                 </div>

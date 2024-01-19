@@ -22,6 +22,21 @@ class GenericRepository
     {
         return $this->model;
     }
+    
+    public function getItems(array $select = [],array $where = [])
+    {
+        $query = $this->model;
+        
+        if (!empty($where)) {
+            $query->where($where);
+        }
+    
+        if (!empty($select)) {
+            return $query->get($select);
+        }
+    
+        return $query->get();
+    }
 
     public function getById($id)
     {
@@ -70,5 +85,6 @@ class GenericRepository
             throw $e;
         }
     }
+    
 }
 

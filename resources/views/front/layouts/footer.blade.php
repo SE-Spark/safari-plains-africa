@@ -11,14 +11,14 @@
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <h4 class="text-white mb-3">Contact</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>FOURWAYS JUNCTION, NAIROBI, KENYA</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+254 794475947</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i> bonanzaadventures@outlook.com</p>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>RIDGEWAYS MALL, KIAMBU RD</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+254 794475947 / +254105048266</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i> info@bonanzaadventuretours.com</p>
                     <div class="d-flex pt-2">
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="https://twitter.com/Bonanzadventure" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="https://www.facebook.com/BonanzaAdventure" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="https://www.youtube.com/@BonanzaAdventures" target="_blank"><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">

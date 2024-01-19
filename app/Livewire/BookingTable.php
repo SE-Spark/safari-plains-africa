@@ -5,6 +5,8 @@ namespace App\Livewire;
 use App\Models\{Bookings, Booking_Items, Packages};
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use PowerComponents\LivewirePowerGrid\Button;
 use PowerComponents\LivewirePowerGrid\Column;
 use PowerComponents\LivewirePowerGrid\Exportable;
@@ -22,7 +24,7 @@ final class BookingTable extends PowerGridComponent
 
     public function setUp(): array
     {
-        $this->showCheckBox();
+        // $this->showCheckBox();
 
         return [
             Exportable::make('export')
@@ -37,8 +39,15 @@ final class BookingTable extends PowerGridComponent
 
     public function datasource(): Builder
     {
-        return Bookings::query();
+        $query = Bookings::query();
+        if (!\App\Helpers\HP::isAdmin()) {            
+            $userId = Auth::id();
+            $query = $query->where('customer_id', $userId);
+        }
+
+        return $query;
     }
+    public function isAdmin (){return \App\Helpers\HP::isAdmin();}
 
     public function relationSearch(): array
     {
@@ -66,27 +75,25 @@ final class BookingTable extends PowerGridComponent
 
     public function columns(): array
     {
+        $isAdmin = \App\Helpers\HP::isAdmin();
+
+        $actionColumn = $isAdmin
+            ? Column::action('Action')
+            : Column::action('Action')->hidden();
         return [
             Column::make('Booking date from', 'booking_date_from_formatted', 'booking_date_from')
                 ->sortable(),
-
             Column::make('Booking date to', 'booking_date_to_formatted', 'booking_date_to')
                 ->sortable(),
-
             Column::make('Package', 'package.name')
-                ->sortable()
                 ->searchable(),
-
-
             Column::make('Booking', 'bookItem.title')
-                ->sortable()
                 ->searchable(),
             Column::make('Number of people', 'number_of_people'),
             Column::make('Status', 'status'),
             Column::make('Created at', 'created_at_formatted', 'created_at')
                 ->sortable(),
-
-            Column::action('Action')
+            $actionColumn
         ];
     }
 
@@ -109,6 +116,8 @@ final class BookingTable extends PowerGridComponent
 
     public function actions(\App\Models\Bookings $row): array
     {
+        if(!$this->isAdmin())return [];
+        
         return [
             Button::add('edit')
                 ->slot('<i class="bi bi-pencil-fill text-success"></i>')
@@ -123,15 +132,13 @@ final class BookingTable extends PowerGridComponent
         ];
     }
 
-    /*
-    public function actionRules($row): array
-    {
-       return [
-            // Hide button edit for ID 1
-            Rule::button('edit')
-                ->when(fn($row) => $row->id === 1)
-                ->hide(),
-        ];
-    }
-    */
+    // public function actionRules($row): array
+    // {
+    //    return [
+    //         // Hide button edit for ID 1
+    //         Rule::button('edit')
+    //             ->when(fn($row) => $row->id === 1)
+    //             ->hide(),
+    //     ];
+    // }
 }

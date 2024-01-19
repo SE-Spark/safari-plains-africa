@@ -1,11 +1,16 @@
 <aside id="sidebar" class="sidebar">
 
   <ul class="sidebar-nav" id="sidebar-nav">
-
+    @if(\App\Helpers\HP::isAdmin())
     <li class="nav-item">
       <a class="nav-link @if(request()->route()->getName() == 'admin.dashboard') active @else collapsed @endif" href="{{route('admin.dashboard')}}" wire:navigate>
         <i class="bi bi-grid"></i>
         <span>Dashboard</span>
+      </a>
+    </li> 
+    <li class="nav-item">
+      <a class="nav-link @if(request()->route()->getName() == 'admin.countries') active @else collapsed @endif" href="{{route('admin.countries')}}" wire:navigate>
+        <i class="bi bi-map"></i><span>Countries</span>
       </a>
     </li>
     <li class="nav-item">
@@ -15,8 +20,8 @@
     </li>{{--
     <li class="nav-item">
       <a class="nav-link @if(request()->route()->getName() == 'admin.hotels') active @else collapsed @endif" href="{{route('admin.hotels')}}" wire:navigate>
-        <i class="bi bi-menu-button-wide"></i><span>Hotels</span>
-      </a>
+    <i class="bi bi-menu-button-wide"></i><span>Hotels</span>
+    </a>
     </li>--}}
     <li class="nav-item">
       <a class="nav-link @if(request()->route()->getName() == 'admin.packages') active @else collapsed @endif" href="{{route('admin.packages')}}" wire:navigate>
@@ -54,7 +59,7 @@
       <a class="nav-link @if(!in_array(request()->route()->getName(),['admin.category','admin.posts'])) collapsed @endif" data-bs-target="#blog-nav" data-bs-toggle="collapse" href="#">
         <i class="bi bi-file-post"></i><span>Blog</span><i class="bi bi-chevron-down ms-auto"></i>
       </a>
-      <ul id="blog-nav" class="nav-content @if(in_array(request()->route()->getName(),['admin.category','admin.posts'])) show @else collapse @endif " data-bs-parent="#sidebar-nav">        
+      <ul id="blog-nav" class="nav-content @if(in_array(request()->route()->getName(),['admin.category','admin.posts'])) show @else collapse @endif " data-bs-parent="#sidebar-nav">
         <li>
           <a class="@if(request()->route()->getName() == 'admin.category') active @endif" href="{{route('admin.category')}}" wire:navigate>
             <i class="bi bi-circle"></i><span>Category</span>
@@ -116,13 +121,26 @@
         <span>Notifications</span>
       </a>
     </li>--}}
+    @else
+    <li class="nav-item">
+      <a class="nav-link collapsed @if(request()->route()->getName() == 'admin.booking') active @endif" href="{{route('admin.booking')}}" wire:navigate>
+        <i class="bi bi-book"></i>
+        <span>Booking</span>
+      </a>
+    </li>
+    @endif
     <li class="nav-item">
       <a class="nav-link collapsed" href="/profile" wire:navigate>
         <i class="bi bi-person"></i>
         <span>Profile</span>
       </a>
     </li>
-
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="{{route('user.logout')}}">
+        <i class="bi bi-box-arrow-right"></i>
+        <span>Sign Out</span>
+      </a>
+    </li>
   </ul>
 
 </aside>
