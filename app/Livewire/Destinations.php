@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Helpers\HP;
+use App\Repository\CountriesRepository;
 use App\Repository\DestinationsRepository;
 use Livewire\Component;
 use Livewire\Attributes\On;
@@ -13,7 +14,8 @@ use Livewire\WithFileUploads;
 class Destinations extends Component
 {
     use WithFileUploads;
-    public $name, $address, $description, $image_url, $image_photo, $status;
+    public $name, $address, $description, $image_url, $image_photo,$country_id, $status;
+    public $countries;
     public $deleteId;
     public $selectedDestination_id;
 
@@ -23,13 +25,16 @@ class Destinations extends Component
         'description' => 'required',
         'image_photo' => 'required_without:selectedDestination_id',
         'status' => 'required',
+        'country_id' => 'required',
     ];
     protected $messages = [
         'image_photo.required_without' => 'The image field is required.',
+        'country_id.required' => 'The Country field is required.',
     ];
 
-    public function mount()
+    public function mount(CountriesRepository $countryService)
     {
+        $this->countries = $countryService->getItems(['name','id'],['status'=>1]);
     }
     #[On('editDestination')]
     public function editDestination(DestinationsRepository $destinationService, $destinationId)
@@ -40,8 +45,9 @@ class Destinations extends Component
         $this->address = $selectedDestination->address;
         $this->description = $selectedDestination->description;
         $this->image_url = $selectedDestination->image_url;
-        $this->status = $selectedDestination->status;
-        $this->dispatch('editDestinations');
+        $this->status = $selectedDestination->status;        
+        $this->js("$('#destUpdateModal').modal('show')");
+        // $this->dispatch('editDestinations');
     }
 
     public function update(DestinationsRepository $destinationService)
@@ -105,7 +111,7 @@ class Destinations extends Component
     }
     public function cancel()
     {
-        $this->reset();
+        $this->resetExcept('countries');
         $this->resetValidation();
     }
     public function render()

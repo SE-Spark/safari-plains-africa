@@ -14,9 +14,12 @@ class AuthController extends Component
     public $loginMode = true;
     public $rules = [
         'email' => 'required|email',
-        'password' => 'required',
+        'password' => 'required|min:6',
     ];
-    
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
     public function mount($account)
     {
         if($account !== null && $account === 'signup'){
@@ -58,15 +61,15 @@ class AuthController extends Component
             'password_confirmation' => 'required|same:password',
         ]);        
         $data['password'] = Hash::make($this->password);
-        \App\Models\User::create([
-            'first_name' => 'SE', 
-            'last_name' => 'Admin', 
-            'email' => $this->email,
-            'password' => $this->password
-        ]);
+        // \App\Models\User::create([
+        //     'first_name' => 'SE', 
+        //     'last_name' => 'Admin', 
+        //     'email' => $this->email,
+        //     'password' => $this->password
+        // ]);
         
         try {
-            // \App\Models\User::create($data);
+            \App\Models\User::create($data);
             if (Auth::attempt(array('email' => $this->email, 'password' => $this->password))) {
                 session()->flash('message', "You are Login successful.");
                 $this->redirect(route('admin.dashboard'), navigate: true);

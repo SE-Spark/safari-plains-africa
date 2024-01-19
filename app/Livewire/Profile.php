@@ -15,6 +15,7 @@ class Profile extends Component
     use WithFileUploads;
     public $first_name, $last_name, $phone, $email, $full_name, $role, $photoTemp, $photo, $current_password, $password, $password_confirmation;
     public $selectedTab = 'overview';
+    
     public function mount()
     {
         $this->first_name = auth()->user()->first_name;

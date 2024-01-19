@@ -13,7 +13,9 @@
                     <div class="card-body">
                         <h5 class="card-title d-flex justify-content-between">
                         Booking
+                        @if(\App\Helpers\HP::isAdmin())
                             <span class="text-end"><a href="javascript:;" class="btn btn-primary  mr-4" data-bs-toggle="modal" data-bs-target="#createUpdateModal">Add New</a></span>
+                        @endif
                         </h5>
                         
                         <livewire:booking-table />
@@ -58,5 +60,6 @@
                 $('#deleteModal').modal('show');
             });
         });
+        
     </script>
 </div>

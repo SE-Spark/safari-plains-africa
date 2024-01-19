@@ -1,3 +1,13 @@
+@push('styles')
+<style>
+    .bg-bx-active{
+        background-color: #aa6c39;
+    }
+    .bg-bx-normal{
+        background-color: #14141F;
+    }
+</style>
+@endpush
 <div x-data="{ scrollToDestination: true }" x-init="scrollToDestination && $nextTick(() => delayScroll('#destinations',2000))">
     <div class="container-xxl py-5 destination" id="destinations">
         @if(!$showMore)
@@ -6,8 +16,29 @@
                 <h6 class="section-title bg-white text-center text-primary px-3">Destination</h6>
                 <h1 class="mb-5">Popular Destination</h1>
             </div>
+            <div class="mb-2">
+                <div class="d-flex flex-row">
+                    @if($countries->count() > 0)
+                    <p style="margin-bottom: 0;">Filter by Country:</p>
+                    @foreach($countries as $country)
+                    <label class="pl-2 {{(int) $countryId === (int) $country->id? 'bg-bx-active':'bg-bx-normal'}}" 
+                    style="display: inline-block;border-radius: 30px;color: #fff;padding-right: 10px;padding-left: 10px;margin-left:5px;">
+                        <input type="radio" wire:model.live="countryId" value="{{ $country->id }}" hidden>
+                        <!-- <a href="javascript:;" style="color: #fff;" wire:click='FilterDest($country->id)'>
+                        {{ $country->name }}
+                        </a>    -->
+                        {{ $country->name }}                     
+                    </label>
+                    @endforeach
+                    <label class="pl-4 bg-bx-active" 
+                    style="display: inline-block;border-radius: 30px;padding-right: 10px;padding-left: 10px;margin-left:5px;">
+                        <a href="javascript:;" style="color: #fff;" wire:click='ResetFilter'>Reset <i class="fa fa-times"></i></a>
+                    </label>
+                    @endif
+                </div>
+            </div>
             <div class="row g-4 justify-content-center">
-                @foreach($destinations as $k => $v)
+                @forelse($destinations as $k => $v)
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="package-item">
                         <div class="overflow-hidden">
@@ -25,7 +56,9 @@
                         </div>
                     </div>
                 </div>
-                @endforeach
+                @empty
+                <p>No Destinations found</p>
+                @endforelse
             </div>
         </div>
         @else
@@ -99,11 +132,12 @@
 </div>
 @push('scripts')
 <script>
-     function delayScroll(elementId, delay) {
+    function delayScroll(elementId, delay) {
         setTimeout(() => {
             scrollTo(elementId);
         }, delay);
     }
+
     function scrollTo(elementId) {
         const element = document.querySelector(elementId);
 

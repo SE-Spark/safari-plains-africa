@@ -7,11 +7,25 @@
             <div class="modal-body">
                 <form>
                     <div class="row">
+                    </div>              
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">{{__(" Country")}}</label>
+                                <select class="form-control @error('country_id') is-invalid @enderror" name="country_id" id="country_id" wire:model="country_id">
+                                    <option value="" class="muted">{{__("Select Country")}}</option>
+                                    @foreach($countries as $k => $v)
+                                    <option value="{{$v->id}}">{{$v->name}}</option>
+                                    @endforeach
+                                </select>
+                                @error('country_id') <span class="text-danger error">{{ $message }}</span>@enderror
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 pr-1">
                             <div class="form-group">
-                                <label>{{__(" Name")}}</label>
+                                <label>{{__(" Destination Name")}}</label>
                                 <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" wire:model="name">
                                 @error('name') <span class="text-danger error">{{ $message }}</span>@enderror
                             </div>

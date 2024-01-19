@@ -67,6 +67,10 @@
                                     <input wire:model="password_confirmation" type="password" class="form-control  @error('password_confirmation') is-invalid @enderror" id="renewPassword">
                                     @error('password_confirmation') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>
+                                @else                                
+                                <div class="col-12">
+                                    <p class="small mb-0"><a href="{{route('account.auth.forget')}}">Forget Password</a></p>                                    
+                                </div>
                                 @endif
                                 <div class="col-5 mr-1" x-data="{ goBack: function() { window.history.back(); } }">
                                     <button type ="button"class="btn btn-secondary w-100" x-on:click="goBack">Back</button>

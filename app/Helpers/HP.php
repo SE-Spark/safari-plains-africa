@@ -63,4 +63,7 @@ class HP
     public static function getImgUrl($image){
         return asset('assets/images/'.$image);
     }
+    public static function isAdmin(){
+        return auth()->user()->is_staff;
+    }
 }

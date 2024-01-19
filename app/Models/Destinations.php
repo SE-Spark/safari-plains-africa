@@ -15,6 +15,7 @@ class Destinations extends Model
         'address',
         'description',
         'image_url',
+        'country_id',
         'status',
     ];
     
