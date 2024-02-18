@@ -49,7 +49,7 @@
                             <small class="flex-fill text-center py-2"><i class="fa fa-money-bill text-primary me-2"></i>{{$v->packages->count()??0}} packages</small>
                         </div>
                         <div class="text-center p-4">
-                            <p>{{implode(' ', array_slice(explode(' ', $v->description), 0, 30))}}</p>
+                            <p>{{substr(implode(' ', array_slice(explode(' ', $v->description), 0, 30)),0,100)}}</p>
                             <div class="d-flex justify-content-center mb-2">
                                 <a href="{{route('destination',['id'=>$v->id])}}" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 30px 30px 30px;">Read More</a>
                             </div>
@@ -106,7 +106,7 @@
                                     <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>{{$package->number_of_people}} Person</small>
                                 </div>
                                 <div class="text-center p-4">
-                                    <h3 class="mb-0">{{number_format($package->price).' KES'}}</h3>
+                                    <h3 class="mb-0">{{number_format($package->price).' USD'}}</h3>
                                     <div class="mb-3">
                                         <small class="fa fa-star text-primary"></small>
                                         <small class="fa fa-star text-primary"></small>

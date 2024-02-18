@@ -15,6 +15,7 @@ class Blogpost extends Model
         'image_url',
         'content',
         'is_published',
+        'views',
         'created_by',
         'updated_by',
         'blogcategory_id',
@@ -23,5 +24,13 @@ class Blogpost extends Model
     public function category()
     {
         return $this->belongsTo(Blogcategory::class, 'blogcategory_id');
+    }
+    public function comments()
+    {
+        return $this->hasMany(Blogcomment::class,'post_id','id');
+    }
+    public function likes()
+    {
+        return $this->hasMany(Bloglikes::class,'post_id','id');
     }
 }

@@ -51,7 +51,7 @@ final class DestinationTable extends PowerGridComponent
         return PowerGrid::columns()
             ->addColumn('name')
             ->addColumn('address')
-            ->addColumn('description')
+            ->addColumn('description', fn(Destinations $model)=>substr(implode(' ', array_slice(explode(' ', $model->description), 0, 10)), 0, 50))
             ->addColumn('image_url', fn(Destinations $model) => HP::renderImg($model->image_url))
             ->addColumn('status', fn(Destinations $model) => $model->status==1?'Active':'Inactive')
             ->addColumn('created_at_formatted', fn (Destinations $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));

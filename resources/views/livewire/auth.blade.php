@@ -1,6 +1,11 @@
 <div class="container">
     <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
         <div class="container">
+            <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-end" style="position: fixed; z-index: 1000; top: 20px; right: 20px;">
+                <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="5000">                    
+                    <div class="toast-body text-white" id="toast-body"></div>
+                </div>
+            </div>
             @include('partials.sectionSuccessError')
             <div class="row justify-content-center">
                 <div class="@if($loginMode) col-md-4 @else col-md-6 @endif d-flex flex-column align-items-center justify-content-center">
@@ -67,13 +72,13 @@
                                     <input wire:model="password_confirmation" type="password" class="form-control  @error('password_confirmation') is-invalid @enderror" id="renewPassword">
                                     @error('password_confirmation') <span class="text-danger error">{{ $message }}</span>@enderror
                                 </div>
-                                @else                                
+                                @else
                                 <div class="col-12">
-                                    <p class="small mb-0"><a href="{{route('account.auth.forget')}}">Forget Password</a></p>                                    
+                                    <p class="small mb-0"><a href="{{route('account.auth.forget')}}">Forget Password</a></p>
                                 </div>
                                 @endif
                                 <div class="col-5 mr-1" x-data="{ goBack: function() { window.history.back(); } }">
-                                    <button type ="button"class="btn btn-secondary w-100" x-on:click="goBack">Back</button>
+                                    <button type="button" class="btn btn-secondary w-100" x-on:click="goBack">Back</button>
                                 </div>
 
                                 <div class="col-6">
@@ -107,6 +112,17 @@
     Livewire.on('updateUrl', params => {
         const account = params[0].account;
         history.replaceState({}, '', `{{ route('login') }}/${account}`);
+    });
+
+    Livewire.on('showToast', params => {
+        const message = params[0].message;
+        const type = params[0].type;
+        $('.toast').toast('hide'); 
+        $('#toast-body').html(message); 
+        // Set the toast type (e.g., success, error, warning)
+        $('.toast').removeClass('bg-success bg-danger bg-warning').addClass('bg-' + type);
+
+        $('.toast').toast('show');
     });
 </script>
 @endpush

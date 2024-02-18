@@ -6,14 +6,13 @@
         @include('partials.sectionSuccessError')
         <div class="row">
             <div class="col-lg-12">
-            @include('admin.packages.createEdit')
             </div>
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title d-flex justify-content-between">
                         Packages
-                            <span class="text-end"><a href="javascript:;" class="btn btn-primary  mr-4" data-bs-toggle="modal" data-bs-target="#createUpdateModal">Add New</a></span>
+                            <span class="text-end"><a href="{{route('admin.package.create')}}" class="btn btn-primary  mr-4">Add New</a></span>
                         </h5>
                         <livewire:package-table />
 

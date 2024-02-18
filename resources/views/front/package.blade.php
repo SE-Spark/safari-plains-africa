@@ -27,7 +27,7 @@
                              <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>{{$v->number_of_people}} Person</small>
                          </div>
                          <div class="text-center p-4">
-                             <h3 class="mb-0">{{number_format($v->price).' KES'}}</h3>
+                             <h3 class="mb-0">{{number_format($v->price).' USD'}}</h3>
                              <div class="mb-3">
                                  <small class="fa fa-star text-primary"></small>
                                  <small class="fa fa-star text-primary"></small>
@@ -35,7 +35,7 @@
                                  <small class="fa fa-star text-primary"></small>
                                  <small class="fa fa-star text-primary"></small>
                              </div>
-                             <p>{{implode(' ', array_slice(explode(' ', $v->description), 0, 30))}}</p>
+                             <p>{!! substr(implode(' ', array_slice(explode(' ', strip_tags($v->description, '<br>')), 0, 30)), 0, 100) !!}...</p>
                              <div class="d-flex justify-content-center mb-2">
                                  <a href="{{route('package',['id'=>$v->id])}}" class="btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
                                  <a href="{{route('package',['id'=>$v->id,'book'=>'book-now'])}}" class="btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Book Now</a>
@@ -53,7 +53,7 @@
                  <div class="col-lg-6 col-md-6 wow zoomIn" data-wow-delay="0.5s">
                      <a class="position-relative d-block overflow-hidden" href="">
                          <img class="img-fluid" src="{{\App\Helpers\HP::getImgUrl($package->destinations[0]->image_url)}}" alt="">
-                         <div class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2"> {{$package->name .' - '. number_format($package->price).' KES'}}</div>
+                         <div class="bg-white text-danger fw-bold position-absolute top-0 start-0 m-3 py-1 px-2"> {{$package->name .' - '. number_format($package->price).' USD'}}</div>
                          <div class="bg-white text-primary fw-bold position-absolute bottom-0 end-0 m-3 py-1 px-2"><i class="fa fa-map-marker-alt text-primary me-2"></i> {{$package->destinations[0]->name}}</div>
                      </a>
                  </div>
@@ -65,7 +65,7 @@
                              <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>{{$package->number_of_people}} Person</small>
                          </div>
                          <div class="text-center p-4">
-                             <h3 class="mb-0">{{number_format($package->price).' KES'}}</h3>
+                             <h3 class="mb-0">{{number_format($package->price).' USD'}}</h3>
                              <div class="mb-3">
                                  <small class="fa fa-star text-primary"></small>
                                  <small class="fa fa-star text-primary"></small>
@@ -84,7 +84,7 @@
                      <div class="package-item">
                          <div class="text-start p-4">
                              <h6 class="text-primary">Description</h6>
-                             <p>{{$package->description}}</p>
+                             <p>{!! $package->description !!}</p>
                          </div>
                      </div>
                  </div>
