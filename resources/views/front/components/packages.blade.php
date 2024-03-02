@@ -7,6 +7,10 @@
         <div class="row g-4 justify-content-center">
             @foreach($packages as $k => $v)
             @php 
+            if(empty($v->destinations->first()))
+            {
+                continue;
+            }
             $dest = $v->destinations[0];
             if($dest->status===0){
                 continue;

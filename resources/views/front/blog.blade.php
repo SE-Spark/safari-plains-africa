@@ -39,7 +39,7 @@
                 <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                     <div class="package-item">
                         <div class="position-relative d-block overflow-hidden">
-                            <img class="img-fluid" src="{{\App\Helpers\HP::getImgUrl($v->image_url)}}" alt="">
+                            <img class="img-fluid w-100" src="{{\App\Helpers\HP::getImgUrl($v->image_url)}}" alt="">
                         </div>
                         <div class="text-start p-2">
                             <p>{{implode(' ', array_slice(explode(' ', $v->title), 0, 30))}}</p>

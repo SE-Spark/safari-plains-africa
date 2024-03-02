@@ -43,7 +43,7 @@ class CreatePackage extends Component
             $this->name = $selectedPackage->name;
             $this->description = $selectedPackage->description;
             $this->price = $selectedPackage->price;
-            $this->destinationId = $selectedPackage->destinations[0]->id;
+            $this->destinationId = $selectedPackage->destinations->first()->id??0;
             $this->number_of_people = $selectedPackage->number_of_people;
             $this->number_of_days = $selectedPackage->number_of_days;
             $this->start_date =  \Carbon\Carbon::parse($selectedPackage->startdate)->format('Y-m-d');
@@ -62,11 +62,11 @@ class CreatePackage extends Component
     {
         $data = $this->validate();
         if (!empty($this->selectedId)) {
-            $packageService->update($this->selectedId, $data);
+            $packageService->updateWithDestinations($this->selectedId, $data,(array) [$this->destinationId]);
             HP::setUnitUpdatedSuccessFlash();
             $this->cancel();
         } else {
-            $packageService->create($data);
+            $packageService->createWithDestinations($data,(array) [$this->destinationId]);
             Hp::setUnitAddedSuccessFlash();
         }
         $this->resetExcept('destinations');
