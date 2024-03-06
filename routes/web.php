@@ -29,6 +29,8 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         Route::get('/users/booking', \App\Livewire\Bookings::class)->name('admin.booking');
         Route::get('/hotels', \App\Livewire\Hotels::class)->name('admin.hotels');
         Route::get('/packages', \App\Livewire\Packages::class)->name('admin.packages');
+        Route::get('/package/create', \App\Livewire\CreatePackage::class)->name('admin.package.create');
+        Route::get('/package/{selection}/edit', \App\Livewire\CreatePackage::class)->name('admin.package.edit');
         Route::get('/payments', \App\Livewire\Payments::class)->name('admin.payments');
         Route::get('/reviews', \App\Livewire\Reviews::class)->name('admin.reviews');
         Route::get('/users', \App\Livewire\Users::class)->name('admin.users');

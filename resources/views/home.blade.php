@@ -199,7 +199,7 @@
                     <td>{{$v->user->first_name.' '.$v->user->last_name}}</td>
                     <td><a href="#" class="text-primary">{{$v->package->name}}</a></td>
                     <td>{{$v->package->destinations[0]->name}}</td>
-                    <td>{{number_format($v->package->price).' KES'}}</td>
+                    <td>{{number_format($v->package->price).' USD'}}</td>
                     <td><span class="badge bg-success">{{$status}}</span></td>
                   </tr>
                   @endforeach

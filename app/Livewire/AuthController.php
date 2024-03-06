@@ -29,7 +29,7 @@ class AuthController extends Component
 
     public function render()
     {
-        return view('livewire.home-controller')->layout('layouts.app');
+        return view('livewire.auth')->layout('layouts.app');
     }
 
     public function login()
@@ -40,9 +40,9 @@ class AuthController extends Component
 
         $this->validate();
 
-        if (Auth::attempt(array('email' => $this->email, 'password' => $this->password))) {
-            session()->flash('message', "You are Login successful.");
-            $this->redirect(route('admin.dashboard'), navigate: true);
+        if (Auth::attempt(array('email' => $this->email, 'password' => $this->password))) {    
+            $this->dispatch('showToast', ['message' => "You are Login successful.",'type'=>'success']);
+            $this->redirect(route('admin.dashboard'), navigate: false);
         } else {
             session()->flash('error', 'email and password are wrong.');
         }

@@ -63,7 +63,7 @@ class GenericRepository
 
         try {
             $model = $this->getById($id);
-            $model->update($data);
+            $model->update($data);            
             DB::commit();
             return $model;
         } catch (\Exception $e) {

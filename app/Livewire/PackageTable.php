@@ -53,10 +53,10 @@ final class PackageTable extends PowerGridComponent
             /** Example of custom column using a closure **/
             ->addColumn('name_lower', fn (Packages $model) => strtolower(e($model->name)))
 
-            ->addColumn('description')
+            ->addColumn('description', fn (Packages $model) => implode(' ', array_slice(explode(' ', $model->description), 0, 10)))
             ->addColumn('destination', fn (Packages $model) => $model->destinations()->first()->name ?? '')
             ->addColumn('number_of_people')
-            ->addColumn('price', fn (Packages $model) => number_format($model->price).' KES')
+            ->addColumn('price', fn (Packages $model) => number_format($model->price).' USD')
             ->addColumn('start_date_formatted', fn (Packages $model) => Carbon::parse($model->start_date)->format('d/m/Y'))
             ->addColumn('end_date_formatted', fn (Packages $model) => Carbon::parse($model->end_date)->format('d/m/Y'))
             ->addColumn('status', fn (Packages $model) => $model->status == 1 ? 'Active' : 'Inactive')
@@ -116,9 +116,9 @@ final class PackageTable extends PowerGridComponent
         return [
             Button::add('edit')
                 ->slot('<i class="bi bi-pencil-fill text-success"></i>')
-                ->id()
                 ->class('btn btn-transparent')
-                ->dispatch('editPackage', ['rowId' => $row->id]),
+                ->route('admin.package.edit', ['selection' => $row->id]),
+                // ->dispatch('editPackage', ['rowId' => $row->id]),
             Button::add('delete')
                 ->slot('<i class="bi bi-trash-fill text-danger"></i>')
                 ->id()

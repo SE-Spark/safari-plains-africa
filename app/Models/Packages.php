@@ -16,6 +16,7 @@ class Packages extends Model
         'description',
         'price',
         'number_of_people',
+        'number_of_days',
         'start_date',
         'end_date',
         'status',
@@ -34,7 +35,7 @@ class Packages extends Model
     {
         return $this->belongsToMany(Destinations::class, 'package_destination', 'package_id', 'destination_id');
     }
-    public function getNumberOfDaysAttribute()
+    public function getPackageLifeTimeInDaysAttribute()
     {
         return $this->start_date->diffInDays($this->end_date);
     }
