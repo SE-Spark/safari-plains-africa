@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('packages', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
+            $table->string('summary');
+            $table->text('description');
             $table->decimal('price', 8, 2);
             $table->date('start_date');
             $table->date('end_date');

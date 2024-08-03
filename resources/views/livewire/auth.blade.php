@@ -12,8 +12,8 @@
 
                     <div class="d-flex justify-content-center py-4">
                         <a href="/" class="logo d-flex align-items-center w-auto">
-                            <img src="{{asset('logo.png')}}" alt="">
-                            <span class="d-none d-lg-block">Bonanza</span>
+                            <img src="{{asset('logo.jpeg')}}" alt="">
+                            <span class="d-none d-lg-block">Safari</span>
                         </a>
                     </div>
 
@@ -77,15 +77,15 @@
                                     <p class="small mb-0"><a href="{{route('account.auth.forget')}}">Forget Password</a></p>
                                 </div>
                                 @endif
-                                <div class="col-5 mr-1" x-data="{ goBack: function() { window.history.back(); } }">
+                                {{--<div class="col-5 mr-1" x-data="{ goBack: function() { window.history.back(); } }">
                                     <button type="button" class="btn btn-secondary w-100" x-on:click="goBack">Back</button>
-                                </div>
+                                </div>--}}
 
-                                <div class="col-6">
+                                <div class="col-12 d-flex flex-row-reverse">
                                     @if($loginMode)
-                                    <button class="btn btn-primary w-100" wire:click.prevent='login'>Login</button>
+                                    <button class="btn btn-primary w-50" wire:click.prevent='login'>Login</button>
                                     @else
-                                    <button class="btn btn-primary w-100" wire:click.prevent='register'>Register</button>
+                                    <button class="btn btn-primary w-50" wire:click.prevent='register'>Register</button>
                                     @endif
                                 </div>
                                 <div class="col-12">

@@ -16,6 +16,8 @@ use PowerComponents\LivewirePowerGrid\PowerGridColumns;
 use PowerComponents\LivewirePowerGrid\PowerGridComponent;
 use PowerComponents\LivewirePowerGrid\Traits\WithExport;
 
+use function PHPSTORM_META\map;
+
 final class PackageTable extends PowerGridComponent
 {
     use WithExport;
@@ -52,8 +54,8 @@ final class PackageTable extends PowerGridComponent
 
             /** Example of custom column using a closure **/
             ->addColumn('name_lower', fn (Packages $model) => strtolower(e($model->name)))
-
-            ->addColumn('description', fn (Packages $model) => implode(' ', array_slice(explode(' ', $model->description), 0, 10)))
+            ->addColumn('summary', fn (Packages $model) => implode(' ', array_slice(explode(' ', $model->summary), 0, 10)))
+            // ->addColumn('description', fn (Packages $model) => implode(' ', array_slice(explode(' ', $model->description), 0, 10)))
             ->addColumn('destination', fn (Packages $model) => $model->destinations()->first()->name ?? '')
             ->addColumn('number_of_people')
             ->addColumn('price', fn (Packages $model) => number_format($model->price).' USD')
@@ -70,9 +72,12 @@ final class PackageTable extends PowerGridComponent
                 ->sortable()
                 ->searchable(),
 
-            Column::make('Description', 'description')
-                ->sortable()
-                ->searchable(),
+            Column::make('Summary', 'summary')
+            ->sortable(),
+            
+            // Column::make('Description', 'description')
+            //     ->sortable()
+            //     ->searchable(),
             Column::make('Destination', 'destination')
                 ->sortable(),
             Column::make('Person', 'number_of_people')

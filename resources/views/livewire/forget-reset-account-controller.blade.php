@@ -6,8 +6,8 @@
 
                     <div class="d-flex justify-content-center py-4">
                         <a href="/" class="logo d-flex align-items-center w-auto">
-                            <img src="{{asset('logo.png')}}" alt="">
-                            <span class="d-none d-lg-block">Bonanza</span>
+                            <img src="{{asset('logo.jpeg')}}" alt="">
+                            <span class="d-none d-lg-block">Safari</span>
                         </a>
                     </div>
 
