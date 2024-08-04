@@ -40,7 +40,26 @@
             </div>
         </div>
         <main class="d-none">
-            {{$slot}}
+            <div class="container-fluid">
+                <div class="row justify-content-end default">
+                    <div class="col-md-8 d-md-block d-none">
+                        <div class="d-flex align-items-center justify-content-center vh-100">
+                            <div class="row">
+                                <div class="col-12 d-flex justify-content-center">
+                                    <div class="d-flex align-items-center">
+                                        <!-- <img src="{{asset('logo.jpeg')}}" style="width:100px;"> -->
+                                        <span class="d-none d-lg-block" style="color: #801213;font-size:20px;">Safari Plains Africa</span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-12 p-0">
+                        {{$slot}}
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
 
