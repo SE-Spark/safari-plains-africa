@@ -44,7 +44,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('/profile', \App\Livewire\Profile::class)->name('user.profile');
     Route::get('/logout', function () {
         Auth::logout();
-        return redirect(route('home'));
+        return redirect()->route('login',['account'=>'signin']);
     })->name('user.logout');
 });
 Route::get('/account/user/auth/{account?}', \App\Livewire\AuthController::class)->name('login');
