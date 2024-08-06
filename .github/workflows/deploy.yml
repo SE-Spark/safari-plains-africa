@@ -40,7 +40,7 @@ jobs:
           php artisan event:cache
           php artisan config:cache
           php artisan route:cache
-          php artisan view:cache
+          # php artisan view:cache
 
       - name: Upload files via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
