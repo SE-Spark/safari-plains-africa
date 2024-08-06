@@ -44,7 +44,8 @@ jobs:
 
       - name: Zip the application
         run: |
-          zip -r safari_app.zip .
+          mkdir -p safari
+          zip -r safari/safari_app.zip .
           
       - name: Upload files via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
@@ -52,5 +53,5 @@ jobs:
           server: ${{ secrets.SAFARI_FTP_SERVER }}
           username: ${{ secrets.SAFARI_FTP_USERNAME }}
           password: ${{ secrets.SAFARI_FTP_PASSWORD }}
-          local-dir: ./safari_app.zip  # The directory to upload
+          local-dir: ./safari/  # The directory to upload
           server-dir: / # The target directory on your server
