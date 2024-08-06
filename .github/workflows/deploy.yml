@@ -32,9 +32,6 @@ jobs:
       - name: Build assets using Vite
         run: npm run build
 
-      - name: Generate application key
-        run: php artisan key:generate
-
       - name: Optimize the application
         run: |
           php artisan config:cache
