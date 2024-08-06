@@ -55,3 +55,18 @@ jobs:
           password: ${{ secrets.SAFARI_FTP_PASSWORD }}
           local-dir: ./safari/  # The directory to upload
           server-dir: / # The target directory on your server
+
+      - name: Unzip the zip file on cPanel server
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SAFARI_SSH_SECRET }}
+          SSH_HOST: ${{ secrets.SAFARI_SSH_HOST }}
+          SSH_USERNAME: ${{ secrets.SAFARI_SSH_USERNAME }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+          ssh -o StrictHostKeyChecking=no $SAFARI_SSH_USERNAME@$SAFARI_SSH_HOST << 'EOF'
+            cd /home/phinosof/safari.phinosoft.co.ke
+            unzip -o /home/phinosof/safari.phinosoft.co.ke/safari/safari_app.zip -d /home/phinosof/safari.phinosoft.co.ke            
+          EOF
