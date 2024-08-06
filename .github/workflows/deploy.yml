@@ -63,7 +63,7 @@ jobs:
           SSH_USERNAME: ${{ secrets.SAFARI_SSH_USERNAME }}
         run: |
           mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          echo "$SAFARI_SSH_SECRET" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
 
           ssh -o StrictHostKeyChecking=no $SAFARI_SSH_USERNAME@$SAFARI_SSH_HOST << 'EOF'
