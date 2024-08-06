@@ -34,7 +34,7 @@ jobs:
 
       - name: Optimize the application
         run: |
-          php artisan events:cache
+          php artisan event:cache
           php artisan route:cache
           php artisan view:cache
 
