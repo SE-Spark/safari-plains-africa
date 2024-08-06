@@ -66,6 +66,14 @@ jobs:
           echo "$SAFARI_SSH_SECRET" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
 
+          # Debugging: Check the SSH key file
+          ls -l ~/.ssh
+          cat ~/.ssh/id_rsa
+
+          # Debugging: Attempt to SSH into the server
+          ssh -o StrictHostKeyChecking=no $SAFARI_SSH_USERNAME@$SAFARI_SSH_HOST 'echo "SSH Connection Successful"'
+
+          # If the above command is successful, proceed with the rest
           ssh -o StrictHostKeyChecking=no $SAFARI_SSH_USERNAME@$SAFARI_SSH_HOST << 'EOF'
             cd /home/phinosof/safari.phinosoft.co.ke
             unzip -o /home/phinosof/safari.phinosoft.co.ke/safari/safari_app.zip -d /home/phinosof/safari.phinosoft.co.ke            
