@@ -20,6 +20,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         Route::get('/dashboard', \App\Livewire\Dashboard::class)->name('admin.dashboard');
         Route::get('/destinations', \App\Livewire\Destinations::class)->name('admin.destinations');
         Route::get('/countries', \App\Livewire\Countries::class)->name('admin.countries');
+        Route::get('/groups', \App\Livewire\Groups::class)->name('admin.groups');
         Route::get('/item-types', \App\Livewire\BookingItemsType::class)->name('admin.item-types');
         Route::get('/category', \App\Livewire\Blogcategory::class)->name('admin.category');
         Route::get('/comments', \App\Livewire\Blogcomments::class)->name('admin.comments');
