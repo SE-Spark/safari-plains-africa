@@ -32,9 +32,13 @@ jobs:
       - name: Build assets using Vite
         run: npm run build
 
+      - name: Publish vendor assets (if needed)
+        run: php artisan vendor:publish --tag=livewire-powergrid
+        
       - name: Optimize the application
         run: |
           php artisan event:cache
+          php artisan config:cache
           php artisan route:cache
           php artisan view:cache
 
