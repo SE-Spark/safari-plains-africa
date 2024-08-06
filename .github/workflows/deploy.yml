@@ -42,11 +42,15 @@ jobs:
           php artisan route:cache
           # php artisan view:cache
 
+      - name: Zip the application
+        run: |
+          zip -r safari_app.zip .
+          
       - name: Upload files via FTP
         uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
           server: ${{ secrets.SAFARI_FTP_SERVER }}
           username: ${{ secrets.SAFARI_FTP_USERNAME }}
           password: ${{ secrets.SAFARI_FTP_PASSWORD }}
-          local-dir: ./  # The directory to upload
+          local-dir: ./safari_app.zip  # The directory to upload
           server-dir: / # The target directory on your server
