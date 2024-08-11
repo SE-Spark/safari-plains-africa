@@ -6,9 +6,10 @@
             <div class="carousel-item active">
                 <img class="w-100" src="{{asset('front/img/carousel-1.jpg')}}" alt="Image">
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                    <div class="p-3" style="max-width: 900px;">
-                        <h4 class="text-white text-uppercase mb-md-3">Tours & Travel</h4>
-                        <h1 class="display-3 text-white mb-md-4">Let's Discover The World Together</h1>
+                    <div class="p-4" style="max-width: 900px;">
+                        <h4 class="text-white text-uppercase mb-md-3">Tours & Travel</h3>
+                        <h3 class="display-6 text-white mb-md-4">We are Tour Company dealing mostly with Inbound Tourists from majorly USA, FRANCE .
+                            Would like to attract clients from all over the world</h6>
                         <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
                     </div>
                 </div>
@@ -18,8 +19,11 @@
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                     <div class="p-3" style="max-width: 900px;">
                         <h4 class="text-white text-uppercase mb-md-3">Tours & Travel</h4>
-                        <h1 class="display-3 text-white mb-md-4">Discover Amazing Places With Us</h1>
-                        <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
+                        <h3 class="display-6 text-white mb-md-4">We are a Tour Company dealing mostly with Inbound Tourists from majorly USA, FRANCE .
+                            Would like to attract clients from all over the world.
+                            </h3>
+                            
+                        <a href="" class=" border-radius btn btn-primary py-md-3 px-md-5 mt-2 ">Book Now <span wire:loading class="spinner-border spinner-border-sm"></span></a>
                     </div>
                 </div>
             </div>

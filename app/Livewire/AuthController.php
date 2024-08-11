@@ -78,7 +78,7 @@ class AuthController extends Component
             }
         } catch (\Exception $e) {
             Log::error($e->getMessage());
-            session()->flash('error', 'An error occured why processing your request. Kindly try again later.');
+            session()->flash('error', 'An error occured while processing your request. Kindly try again later.');
         }
     }
     public function toggleMode(){

@@ -1,7 +1,7 @@
 
 <!-- Booking Start -->
-<div class="container-fluid booking mt-5 pb-1">
-    <div class="container pb-1">
+<div class="container  booking mt-5 pb-1">
+    <div class="container-fluid  pb-1">
         <div class="bg-light shadow" style="padding: 30px;">
             <div class="row align-items-center" style="min-height: 60px;">
                 <div class="col-md-10">
@@ -30,8 +30,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
-                            <div class="mb-3 mb-md-0">
+                        <div class=" col-md-3">
+                            <div class=" mb-3 mb-md-0">
                                 <select class="custom-select px-4" style="height: 47px;">
                                     <option selected>Duration</option>
                                     <option value="1">Duration 1</option>
@@ -44,6 +44,7 @@
                 </div>
                 <div class="col-md-2">
                     <button class="btn btn-primary btn-block" type="submit" style="height: 47px; margin-top: -2px;">Submit</button>
+                    
                 </div>
             </div>
         </div>

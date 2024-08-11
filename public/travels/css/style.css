@@ -2365,20 +2365,19 @@ fieldset:disabled a.btn {
 
 .btn-primary {
   color: #fff;
-  background-color: #801213;
-  border-color: #801213;
-  border-radius: 5px;
+  background-color: #7AB730;
+  border-color: #7AB730;
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #801213;
-  border-color: #801213;
+  background-color: #669928;
+  border-color: #5f8f25;
 }
 
 .btn-primary:focus, .btn-primary.focus {
   color: #fff;
-  background-color: #801213;
+  background-color: #669928;
   border-color: #5f8f25;
   box-shadow: 0 0 0 0.2rem rgba(142, 194, 79, 0.5);
 }
@@ -2392,7 +2391,7 @@ fieldset:disabled a.btn {
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
   color: #fff;
-  background-color:#801213;
+  background-color: #5f8f25;
   border-color: #588423;
 }
 
@@ -2661,14 +2660,14 @@ fieldset:disabled a.btn {
 }
 
 .btn-outline-primary {
-  color: #801213;
-  border-color: #801213;
+  color: #7AB730;
+  border-color: #7AB730;
 }
 
 .btn-outline-primary:hover {
   color: #fff;
-  background-color: #801213;
-  border-color: #801213;
+  background-color: #7AB730;
+  border-color: #7AB730;
 }
 
 .btn-outline-primary:focus, .btn-outline-primary.focus {
@@ -3184,7 +3183,6 @@ input[type="button"].btn-block {
 .dropdown-menu[x-placement^="top"], .dropdown-menu[x-placement^="right"], .dropdown-menu[x-placement^="bottom"], .dropdown-menu[x-placement^="left"] {
   right: auto;
   bottom: auto;
-  
 }
 
 .dropdown-divider {
@@ -3204,7 +3202,7 @@ input[type="button"].btn-block {
   text-align: inherit;
   white-space: nowrap;
   background-color: transparent;
-  border-radius: 5px;
+  border: 0;
 }
 
 .dropdown-item:hover, .dropdown-item:focus {
@@ -3216,7 +3214,7 @@ input[type="button"].btn-block {
 .dropdown-item.active, .dropdown-item:active {
   color: #fff;
   text-decoration: none;
-  background-color: #bd2130;
+  background-color: #7AB730;
 }
 
 .dropdown-item.disabled, .dropdown-item:disabled {
@@ -3978,7 +3976,7 @@ input[type="button"].btn-block {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #bd2130;
+  background-color: #7AB730;
 }
 
 .nav-fill > .nav-link,
@@ -6096,13 +6094,13 @@ a.close.disabled {
 }
 
 .bg-primary {
-  background-color: #801213 !important;
+  background-color: #7AB730 !important;
 }
 
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus {
-  background-color: #801213 !important;
+  background-color: #5f8f25 !important;
 }
 
 .bg-secondary {
@@ -6176,7 +6174,7 @@ button.bg-dark:focus {
 }
 
 .bg-white {
-  background-color: #fffdff !important;
+  background-color: #fff !important;
 }
 
 .bg-transparent {
@@ -9266,13 +9264,11 @@ button.bg-dark:focus {
 }
 
 .text-primary {
-  color: #801213 !important;
-  
+  color: #7AB730 !important;
 }
 
 a.text-primary:hover, a.text-primary:focus {
-  color: #801213 !important;
-  transition-behavior: right;
+  color: #527a20 !important;
 }
 
 .text-secondary {
@@ -9524,7 +9520,7 @@ h6,
 
 .navbar-light .navbar-nav .nav-link:hover,
 .navbar-light .navbar-nav .nav-link.active {
-  color: #801213;
+  color: #7AB730;
 }
 
 @media (max-width: 991.98px) {
@@ -9563,7 +9559,6 @@ h6,
     position: relative;
     margin-top: -60px !important;
     z-index: 1;
-    
   }
 }
 
@@ -9608,16 +9603,14 @@ h6,
   bottom: 0px;
   left: 0px;
   border-width: 30px;
-  
 }
 
 .service-item {
   transition: .5s;
-  box-shadow:#801213;
 }
 
 .service-item:hover {
-  box-shadow: 0 0 30px #856404;
+  box-shadow: 0 0 30px #CCCCCC;
 }
 
 .service-item i {
@@ -9626,14 +9619,14 @@ h6,
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid #801213;
+  border: 2px solid #7AB730;
   background: #FFFFFF;
-  color: #801213;
+  color: #7AB730;
   transition: .5s;
 }
 
 .service-item:hover i {
-  background: #801213;
+  background: #7AB730;
   color: #FFFFFF;
 }
 
@@ -9730,7 +9723,7 @@ h6,
 
 .testimonial-carousel .owl-dot.active {
   width: 40px;
-  background: #801213;
+  background: #7AB730;
 }
 
 .testimonial-carousel .owl-item.center .testimonial-text {
@@ -9755,8 +9748,7 @@ h6,
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background: #801213 !important;
-  ;
+  background: #7AB730;
 }
 
 .blog-date::after {
