@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['web', 'auth']], function () {
     Route::group(['middleware' => ['isadmin']], function () {
         Route::get('/dashboard', \App\Livewire\Dashboard::class)->name('admin.dashboard');
-        Route::get('/destinations', \App\Livewire\Destinations::class)->name('admin.destinations');
+        Route::get('/admin/destinations', \App\Livewire\Destinations::class)->name('admin.destinations');
         Route::get('/countries', \App\Livewire\Countries::class)->name('admin.countries');
         Route::get('/groups', \App\Livewire\Groups::class)->name('admin.groups');
         Route::get('/item-types', \App\Livewire\BookingItemsType::class)->name('admin.item-types');
@@ -30,9 +30,9 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         Route::get('/booking-items', \App\Livewire\BookingItems::class)->name('admin.booking-items');
         Route::get('/users/booking', \App\Livewire\Bookings::class)->name('admin.booking');
         Route::get('/hotels', \App\Livewire\Hotels::class)->name('admin.hotels');
-        Route::get('/packages', \App\Livewire\Packages::class)->name('admin.packages');
-        Route::get('/package/create', \App\Livewire\CreatePackage::class)->name('admin.package.create');
-        Route::get('/package/{selection}/edit', \App\Livewire\CreatePackage::class)->name('admin.package.edit');
+        Route::get('/admin/packages', \App\Livewire\Packages::class)->name('admin.packages');
+        Route::get('/admin/package/create', \App\Livewire\CreatePackage::class)->name('admin.package.create');
+        Route::get('/admin/package/{selection}/edit', \App\Livewire\CreatePackage::class)->name('admin.package.edit');
         Route::get('/payments', \App\Livewire\Payments::class)->name('admin.payments');
         Route::get('/reviews', \App\Livewire\Reviews::class)->name('admin.reviews');
         Route::get('/users', \App\Livewire\Users::class)->name('admin.users');
