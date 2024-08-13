@@ -7,16 +7,14 @@
         <i class="bi bi-grid"></i>
         <span>Dashboard</span>
       </a>
-    </li> 
+    </li>
     <li class="nav-item">
       <a class="nav-link @if(request()->route()->getName() == 'admin.countries') active @else collapsed @endif" href="{{route('admin.countries')}}" wire:navigate>
         <i class="bi bi-map"></i><span>Countries</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link @if(request()->route()->getName() == 'admin.destinations') active @else collapsed @endif" href="{{route('admin.destinations')}}" wire:navigate>
-        <i class="bi bi-airplane"></i><span>Destinations</span>
-      </a>
+      {{--  --}}
     </li>{{--
     <li class="nav-item">
       <a class="nav-link @if(request()->route()->getName() == 'admin.hotels') active @else collapsed @endif" href="{{route('admin.hotels')}}" wire:navigate>

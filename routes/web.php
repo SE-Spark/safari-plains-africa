@@ -39,9 +39,9 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         Route::get('/notifications', \App\Livewire\Notifications::class)->name('admin.notifications');
         Route::get('/run-migrations', [\App\Http\Controllers\MigrationController::class, 'runMigrations']);
     });
-    
+
     Route::get('/users/booking', \App\Livewire\Bookings::class)->name('admin.booking');
-        
+
     Route::get('/profile', \App\Livewire\Profile::class)->name('user.profile');
     Route::get('/logout', function () {
         Auth::logout();
@@ -59,5 +59,4 @@ Route::get('/contact',\App\Livewire\Front\Contactcontroller::class)->name('conta
 Route::get('/destinations',\App\Livewire\Front\Destinationcontroller::class)->name('destinations');
 Route::get('/auth/account/forget', \App\Livewire\ForgetResetAccountController::class)->name('account.auth.forget');
 
-Route::get('password/reset/{token}', \App\Livewire\ForgetResetAccountController::class)->name('password.reset');
-
+Route::get('password/reset/{token}', \App\Livewire\ForgetResetAccountController::class)->name('password.reset'); 

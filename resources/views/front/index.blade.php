@@ -22,7 +22,7 @@
                         <h3 class="display-6 text-white mb-md-4">We are a Tour Company dealing mostly with Inbound Tourists from majorly USA, FRANCE .
                             Would like to attract clients from all over the world.
                             </h3>
-                            
+
                         <a href="" class=" border-radius btn btn-primary py-md-3 px-md-5 mt-2 ">Book Now <span wire:loading class="spinner-border spinner-border-sm"></span></a>
                     </div>
                 </div>
