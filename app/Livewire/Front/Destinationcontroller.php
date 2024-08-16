@@ -7,7 +7,8 @@ use App\Repository\{DestinationsRepository, CountriesRepository};
 
 class Destinationcontroller extends Component
 {
-    public $destinations, $destination, $countries, $countryId;
+    public $destinations, $destination, $countries, $countryId;       
+    public $dest_options,$country_options;
     public $showMore = false;
 
     public function updatedCountryId()
@@ -21,7 +22,9 @@ class Destinationcontroller extends Component
     public function mount(DestinationsRepository $destinationService, CountriesRepository $countriesRepository)
     {
         $this->countries = $countriesRepository->getItems(['name', 'id'], ['status' => 1]);
-        $this->destinations = $destinationService->getAll()->where('status', 1);
+        $this->destinations = $destinationService->getAll()->where('status', 1);        
+        $this->dest_options = $destinationService->get()->where('status',1)->get(['id','name']);
+        $this->country_options = $countriesRepository->get()->where('status',1)->get(['id','name']);
         if (request()->route('id')) {
             $this->showMoreDetails(request()->route('id'));
         }

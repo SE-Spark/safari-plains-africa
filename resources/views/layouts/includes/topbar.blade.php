@@ -1,7 +1,7 @@
 <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="" class="logo d-flex align-items-center">
+      <a href="{{route('home')}}" class="logo d-flex align-items-center">
         <img src="{{asset('logo.jpeg')}}" alt="">
         <span class="d-none d-lg-block" style="color: #801213;">{{config('app.name')}}</span>
       </a>

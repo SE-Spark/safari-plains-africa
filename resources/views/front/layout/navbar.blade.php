@@ -15,13 +15,19 @@
                      <a href="{{route('destinations')}}" class="nav-item nav-link @if(request()->route()->getName()==='destinations') active @endif" wire:navigate>Destination</a>
                      <a href="{{route('blog')}}" class="nav-item nav-link @if(request()->route()->getName()==='blog') active @endif" wire:navigate>Blog</a>
                      <a href="{{route('contact')}}" class="nav-item nav-link @if(request()->route()->getName()==='contact') active @endif" wire:navigate>Contact</a>
+
                      <div class="nav-item dropdown">
                          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Account</a>
-                         <div class="dropdown-menu border-0 rounded-0 m-0">
+                         <div class="dropdown-menu border-0 rounded-0 m-0">@guest
                              <a href="{{route('login',['account'=>'signin'])}}" class="dropdown-item">login</a>
                              <a href="{{route('login',['account'=>'signup'])}}" class="dropdown-item">Signup</a>
+                             @else
+                             <a href="{{route('admin.dashboard')}}" class="dropdown-item">Dashboard</a>
+                             <a href="{{route('user.logout')}}" class="dropdown-item">Logout</a>
+                             @endif
                          </div>
                      </div>
+
                  </div>
              </div>
          </nav>
