@@ -152,13 +152,13 @@ sup {
 }
 
 a {
-  color: #7AB730;
+  color: #801213;
   text-decoration: none;
   background-color: transparent;
 }
 
 a:hover {
-  color: #527a20;
+  color: #aa040a;
   text-decoration: underline;
 }
 
@@ -4672,7 +4672,7 @@ a.badge:hover, a.badge:focus {
 
 .badge-primary {
   color: #fff;
-  background-color: #7AB730;
+  background-color: #801213;
 }
 
 a.badge-primary:hover, a.badge-primary:focus {
@@ -9767,7 +9767,7 @@ h6,
   top: -15px;
   left: 0;
   border: 8px solid;
-  border-color: transparent #5f8f25 #5f8f25 transparent;
+  border-color: transparent #801213 #801213 transparent;
   z-index: -1;
 }
 

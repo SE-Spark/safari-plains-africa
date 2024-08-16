@@ -46,8 +46,7 @@
     <script src="{{asset('front/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js')}}"></script>
 
     <!-- Contact Javascript File -->
-    <script src="{{asset('front/mail/jqBootstrapValidation.min.js')}}"></script>
-    <script src="{{asset('front/mail/contact.js')}}"></script>
+    <script src="{{asset('front/mail/jqBootstrapValidation.min.js')}}"></script>    
 
     <!-- Template Javascript -->
     <script src="{{asset('front/js/main.js')}}"></script>
