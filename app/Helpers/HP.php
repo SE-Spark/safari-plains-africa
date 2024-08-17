@@ -58,10 +58,10 @@ class HP
         HTML;
     } 
     public static function renderImg($image){
-        return '<img src="assets/images/'.$image.'" width="100">';
+        return '<img src="/assets/images/'.$image.'" width="100">';
     }
     public static function getImgUrl($image){
-        return asset('assets/images/'.$image);
+        return asset('/assets/images/'.$image);
     }
     public static function isAdmin(){
         return auth()->user()->is_staff;

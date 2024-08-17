@@ -17,12 +17,12 @@
       <a class="nav-link @if(request()->route()->getName() == 'admin.destinations') active @else collapsed @endif" href="{{route('admin.destinations')}}" wire:navigate>
         <i class="bi bi-airplane"></i><span>Destinations</span>
       </a>
-    </li>{{--
+    </li>
     <li class="nav-item">
-      <a class="nav-link @if(request()->route()->getName() == 'admin.hotels') active @else collapsed @endif" href="{{route('admin.hotels')}}" wire:navigate>
-    <i class="bi bi-menu-button-wide"></i><span>Hotels</span>
+      <a class="nav-link @if(request()->route()->getName() == 'admin.groups') active @else collapsed @endif" href="{{route('admin.groups')}}" wire:navigate>
+    <i class="bi bi-menu-button-wide"></i><span>Groups</span>
     </a>
-    </li>--}}
+    </li>
     <li class="nav-item">
       <a class="nav-link @if(request()->route()->getName() == 'admin.packages') active @else collapsed @endif" href="{{route('admin.packages')}}" wire:navigate>
         <i class="bi bi-box"></i><span>Packages</span>

@@ -33,4 +33,14 @@ class Blogpost extends Model
     {
         return $this->hasMany(Bloglikes::class,'post_id','id');
     }
+    public function getDateDayAttribute()
+    {
+        return $this->created_at ? $this->created_at->day : null;
+    }
+
+    // Method to get the month of a custom timestamp column
+    public function getDateMonthAttribute()
+    {
+        return $this->created_at ? $this->created_at->format('M') : null;
+    }
 }

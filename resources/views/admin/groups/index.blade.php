@@ -23,7 +23,7 @@
                             Groups
                             <span class="text-end"><a href="javascript:;" class="btn btn-primary  mr-4" data-bs-toggle="modal" data-bs-target="#countryModal">Add New</a></span>
                         </h5>
-                        <livewire:country-table/>
+                        <livewire:group-table/>
                         <div class="modal fade" id="deleteModal">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -49,10 +49,10 @@
 
             </div>
             <div class="col-lg-12">
-                @include('admin.countries.create')
+                @include('admin.groups.create')
             </div>
             <div class="col-lg-12">
-                @include('admin.countries.edit')
+                @include('admin.groups.edit')
             </div>
         </div>
     </section>
