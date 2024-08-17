@@ -21,7 +21,16 @@
                                         @error('name') <span class="text-danger error">{{ $message }}</span>@enderror
                                     </div>
                                 </div>
-                            </div>                            
+                            </div>  
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>{{__(" Summary")}}</label>
+                                        <input type="text" class="form-control @error('summary') is-invalid @enderror" wire:model="summary">
+                                        @error('summary') <span class="text-danger error">{{ $message }}</span>@enderror
+                                    </div>
+                                </div>
+                            </div>                           
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -45,6 +54,20 @@
                                             @endforeach
                                         </select>
                                         @error('destinationId') <span class="text-danger error">{{ $message }}</span>@enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">{{__(" Group")}}</label>
+                                        <select class="form-control @error('group_id') is-invalid @enderror" id="group_id" wire:model="group_id">
+                                            <option value="">{{__("Select Group")}}</option>
+                                            @foreach($groups as $cat)
+                                            <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                            @endforeach
+                                        </select>
+                                        @error('group_id') <span class="text-danger error">{{ $message }}</span>@enderror
                                     </div>
                                 </div>
                             </div>

@@ -61,7 +61,7 @@ class HP
         return '<img src="/assets/images/'.$image.'" width="100">';
     }
     public static function getImgUrl($image){
-        return asset('assets/images/'.$image);
+        return asset('/assets/images/'.$image);
     }
     public static function isAdmin(){
         return auth()->user()->is_staff;

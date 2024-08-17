@@ -62,7 +62,7 @@
                 </p>
             </div>
             <div class="col-lg-6 text-center text-md-right">
-                <p class="m-0 text-white-50">Designed by <a href="https://htmlcodex.com">phinosoft</a>
+                <p class="m-0 text-white-50">Designed by <a href="phinosoft.co.ke">phinosoft</a>
                 </p>
             </div>
         </div>

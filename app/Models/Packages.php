@@ -18,6 +18,7 @@ class Packages extends Model
         'price',
         'number_of_people',
         'number_of_days',
+        'group_id',
         'start_date',
         'end_date',
         'status',
@@ -39,5 +40,9 @@ class Packages extends Model
     public function getPackageLifeTimeInDaysAttribute()
     {
         return $this->start_date->diffInDays($this->end_date);
+    }
+    public function groups()
+    {
+        return $this->belongsTo(Group::class,'group_id');
     }
 }

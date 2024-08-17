@@ -13,7 +13,7 @@ use Livewire\WithFileUploads;
 class Groups extends Component
 {
     use WithFileUploads;
-    public $name, $status;
+    public $name, $description, $status;
     public $deleteId;
     public $selectedId;
 

@@ -23,4 +23,9 @@ class Destinations extends Model
     {
         return $this->belongsToMany(Packages::class, 'package_destination', 'destination_id', 'package_id');
     }
+    
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'country_id');
+    }
 }

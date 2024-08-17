@@ -45,10 +45,10 @@
 @include('front.components.booking')
 @include('front.components.about')
 @include('front.components.feature')
-@include('front.components.destination')
 @include('front.components.services')
+@include('front.components.destination')
 
 @include('front.components.packages')
-@include('front.components.registration')
-@include('front.components.blog')
+{{--@include('front.components.registration')
+@include('front.components.blog')--}}
 </div>

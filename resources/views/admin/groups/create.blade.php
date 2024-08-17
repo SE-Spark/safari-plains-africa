@@ -18,6 +18,15 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
+                                <label>{{__(" Description")}}</label>
+                                <input type="text" class="form-control @error('description') is-invalid @enderror" wire:model="description">
+                                @error('description') <span class="text-danger error">{{ $message }}</span>@enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
                                 <label for="exampleInputEmail1">{{__(" Status")}}</label>
                                 <select class="form-control @error('status') is-invalid @enderror" name="status" id="status" wire:model="status">
                                     <option value="" class="muted">{{__("Select Status")}}</option>

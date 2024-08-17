@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-lg-8 text-center text-lg-left mb-2 mb-lg-0">
                     <div class="d-inline-flex align-items-center">
-                        <p><i class="fa fa-envelope mr-2"></i>basil@safariplainsafrica.co.ke</p>
+                        <p><i class="fa fa-envelope mr-2"></i>info@safariplainsafrica.co.ke</p>
                         <p class="text-body px-3">|</p>
                         <p><i class="fa fa-phone-alt mr-2"></i>+254 721 146 849 / +254 724 154 042 </p>
 

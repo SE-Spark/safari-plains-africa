@@ -53,7 +53,7 @@ Route::get('/account/user/auth/{account?}', \App\Livewire\AuthController::class)
 //     return redirect()->route('login',['account'=>'signin']);
 // } );
 Route::get('/',\App\Livewire\Front\Homecontroller::class)->name('home');
-Route::get('/packages',\App\Livewire\Front\Packagecontroller::class)->name('packages');
+Route::get('/packages/{id?}',\App\Livewire\Front\Packagecontroller::class)->name('packages');
 Route::get('/blog',\App\Livewire\Front\Blogcontroller::class)->name('blog');
 Route::get('/contact',\App\Livewire\Front\Contactcontroller::class)->name('contact');
 Route::get('/destinations',\App\Livewire\Front\Destinationcontroller::class)->name('destinations');
