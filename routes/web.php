@@ -54,9 +54,9 @@ Route::get('/account/user/auth/{account?}', \App\Livewire\AuthController::class)
 // } );
 Route::get('/',\App\Livewire\Front\Homecontroller::class)->name('home');
 Route::get('/packages/{id?}',\App\Livewire\Front\Packagecontroller::class)->name('packages');
-Route::get('/blog',\App\Livewire\Front\Blogcontroller::class)->name('blog');
+Route::get('/blog/{id?}',\App\Livewire\Front\Blogcontroller::class)->name('blog');
 Route::get('/contact',\App\Livewire\Front\Contactcontroller::class)->name('contact');
-Route::get('/destinations',\App\Livewire\Front\Destinationcontroller::class)->name('destinations');
+Route::get('/destinations/{id?}',\App\Livewire\Front\Destinationcontroller::class)->name('destinations');
 Route::get('/auth/account/forget', \App\Livewire\ForgetResetAccountController::class)->name('account.auth.forget');
 
 Route::get('password/reset/{token}', \App\Livewire\ForgetResetAccountController::class)->name('password.reset');

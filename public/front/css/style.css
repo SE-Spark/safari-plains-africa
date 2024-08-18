@@ -9774,7 +9774,15 @@ h6,
   border-color: transparent #801213 #801213 transparent;
   z-index: -1;
 }
-
+.blog-back-btn {
+  position: absolute;
+  top: 30px;
+  right: -0.1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
 .contact-form .help-block ul {
   margin: 0;
   padding: 0;

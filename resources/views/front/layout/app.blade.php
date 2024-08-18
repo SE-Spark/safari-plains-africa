@@ -21,7 +21,8 @@
     <link href="{{asset('front/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css')}}" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="{{asset('front/css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('front/css/style.css')}}" rel="stylesheet">    
+    @vite(['resources/css/app.css','resources/js/app.js'])
 </head>
 
 <body>

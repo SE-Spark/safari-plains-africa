@@ -25,12 +25,13 @@
                 <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Destination</h6>
                 <h1>Explore Top Destination</h1>
             </div>
+            @if(!$showMore)
             <div class="row">
-            @forelse($destinations as $dest)
+                @forelse($destinations as $dest)
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="destination-item position-relative overflow-hidden mb-2">
                         <img class="img-fluid" src="{{\App\Helpers\HP::getImgUrl($dest->image_url)}}" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
+                        <a class="destination-overlay text-white text-decoration-none" href="{{route('destinations',['id'=>$dest->id])}}" wire:navigate>
                             <h5 class="text-white">{{$dest->name.' in '.$dest->country->name}}</h5>
                             <span>{{$dest->packages->count()??0}} Package(s)</span>
                         </a>
@@ -41,62 +42,57 @@
                     <p>No destinations found</p>
                 </div>
                 @endforelse
-                {{--
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="front/img/destination-1.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
-                            <h5 class="text-white">United States</h5>
-                            <span>100 Cities</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="front/img/destination-2.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
-                            <h5 class="text-white">United Kingdom</h5>
-                            <span>100 Cities</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="front/img/destination-3.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
-                            <h5 class="text-white">Australia</h5>
-                            <span>100 Cities</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="front/img/destination-4.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
-                            <h5 class="text-white">India</h5>
-                            <span>100 Cities</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="front/img/destination-5.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
-                            <h5 class="text-white">South Africa</h5>
-                            <span>100 Cities</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="destination-item position-relative overflow-hidden mb-2">
-                        <img class="img-fluid" src="front/img/destination-6.jpg" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="">
-                            <h5 class="text-white">Indonesia</h5>
-                            <span>100 Cities</span>
-                        </a>
-                    </div>
-                </div>--}}
             </div>
+            @else
+            <div class="row">
+                <div class="col-lg-11">
+                    <div class="pb-3">
+                        <div class="bg-white mb-3" style="padding: 30px;">
+                            <h5 class="mb-3"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{$destination->name}}</h5>
+                            <img class="img-fluid w-50 float-right ml-4 mb-2" src="{{\App\Helpers\HP::getImgUrl($destination->image_url)}}">
+                            <div class="border-top mt-1 pt-1">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <h6 class="m-0"><i class="fa fa-globe text-primary mr-2"></i>{{$destination->country->name}}</h6>
+                                    <h5 class="m-0"><i class="fa fa-money-bill-alt text-primary mr-2"></i>{{$destination->packages->count()??0}} Packages</h5>
+                                </div>
+                            </div>
+                            <p>{{$destination->description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h6 class="text-primary">Availables Packages</h6>
+                </div>
+                @forelse($destination->packages as $pack)
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="package-item bg-white mb-2">
+                        <img class="img-fluid" src="{{\App\Helpers\HP::getImgUrl($pack->destinations()->first()->image_url)}}" alt="">
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between mb-3">
+                                <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{$pack->destinations()->first()->name}}</small>
+                                <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>{{$pack->number_of_days}} days</small>
+                                <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>{{$pack->number_of_people}} Person</small>
+                            </div>
+                            <a class="h5 text-decoration-none" href="{{route('packages',['id'=>$pack->id])}}">{{$pack->summary}}</a>
+                            <div class="border-top mt-4 pt-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
+                                    <h5 class="m-0">${{number_format($pack->price)}}</h5>
+                                    <a href="{{route('packages',['id'=>$pack->id])}}" class="btn btn-primary border-radius ">Book now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @empty
+                <div class="col">
+                    <p>No packages found</p>
+                </div>
+                @endforelse
+            </div>
+            @endif
         </div>
     </div>
     <!-- Destination Start -->
