@@ -24,6 +24,7 @@
         <div class="container py-1">
             <div class="row">
                 <div class="col-lg-8">
+                    @if(!$showMore)
                     <div class="row pb-3">
                         @forelse($posts as $blog)
                         <div class="col-md-6 mb-4 pb-2">
@@ -37,9 +38,9 @@
                                 </div>
                                 <div class="bg-white p-4">
                                     <div class="d-flex mb-2">
-                                        <a class="text-primary text-uppercase text-decoration-none" href="">{{$blog->category->name}}</a>
+                                        <a class="text-primary text-uppercase text-decoration-none" href="{{route('blog',['id'=>$blog->id])}}" wire:navigate>{{$blog->category->name}}</a>
                                     </div>
-                                    <a class="h5 m-0 text-decoration-none" href="">{{$blog->title}}</a>
+                                    <a class="h5 m-0 text-decoration-none" href="{{route('blog',['id'=>$blog->id])}}" wire:navigate>{{$blog->title}}</a>
                                 </div>
                             </div>
                         </div>
@@ -48,162 +49,65 @@
                             <p>no blog found</p>
                         </div>
                         @endforelse
-                        {{--
-                        <div class="col-md-6 mb-4 pb-2">
-                            <div class="blog-item">
-                                <div class="position-relative">
-                                    <img class="img-fluid w-100" src="front/img/blog-2.jpg" alt="">
-                                    <div class="blog-date">
-                                        <h6 class="font-weight-bold mb-n1">01</h6>
-                                        <small class="text-white text-uppercase">Jan</small>
-                                    </div>
-                                </div>
-                                <div class="bg-white p-4">
-                                    <div class="d-flex mb-2">
-                                        <a class="text-primary text-uppercase text-decoration-none" href="">Admin</a>
-                                        <span class="text-primary px-2">|</span>
-                                        <a class="text-primary text-uppercase text-decoration-none" href="">Tours & Travel</a>
-                                    </div>
-                                    <a class="h5 m-0 text-decoration-none" href="">Dolor justo sea kasd lorem clita justo diam amet</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-4 pb-2">
-                            <div class="blog-item">
-                                <div class="position-relative">
-                                    <img class="img-fluid w-100" src="front/img/blog-3.jpg" alt="">
-                                    <div class="blog-date">
-                                        <h6 class="font-weight-bold mb-n1">01</h6>
-                                        <small class="text-white text-uppercase">Jan</small>
-                                    </div>
-                                </div>
-                                <div class="bg-white p-4">
-                                    <div class="d-flex mb-2">
-                                        <a class="text-primary text-uppercase text-decoration-none" href="">Admin</a>
-                                        <span class="text-primary px-2">|</span>
-                                        <a class="text-primary text-uppercase text-decoration-none" href="">Tours & Travel</a>
-                                    </div>
-                                    <a class="h5 m-0 text-decoration-none" href="">Dolor justo sea kasd lorem clita justo diam amet</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-4 pb-2">
-                            <div class="blog-item">
-                                <div class="position-relative">
-                                    <img class="img-fluid w-100" src="front/img/blog-1.jpg" alt="">
-                                    <div class="blog-date">
-                                        <h6 class="font-weight-bold mb-n1">01</h6>
-                                        <small class="text-white text-uppercase">Jan</small>
-                                    </div>
-                                </div>
-                                <div class="bg-white p-4">
-                                    <div class="d-flex mb-2">
-                                        <a class="text-primary text-uppercase text-decoration-none" href="">Admin</a>
-                                        <span class="text-primary px-2">|</span>
-                                        <a class="text-primary text-uppercase text-decoration-none" href="">Tours & Travel</a>
-                                    </div>
-                                    <a class="h5 m-0 text-decoration-none" href="">Dolor justo sea kasd lorem clita justo diam amet</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-4 pb-2">
-                            <div class="blog-item">
-                                <div class="position-relative">
-                                    <img class="img-fluid w-100" src="front/img/blog-2.jpg" alt="">
-                                    <div class="blog-date">
-                                        <h6 class="font-weight-bold mb-n1">01</h6>
-                                        <small class="text-white text-uppercase">Jan</small>
-                                    </div>
-                                </div>
-                                <div class="bg-white p-4">
-                                    <div class="d-flex mb-2">
-                                        <a class="text-primary text-uppercase text-decoration-none" href="">Admin</a>
-                                        <span class="text-primary px-2">|</span>
-                                        <a class="text-primary text-uppercase text-decoration-none" href="">Tours & Travel</a>
-                                    </div>
-                                    <a class="h5 m-0 text-decoration-none" href="">Dolor justo sea kasd lorem clita justo diam amet</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-4 pb-2">
-                            <div class="blog-item">
-                                <div class="position-relative">
-                                    <img class="img-fluid w-100" src="front/img/blog-3.jpg" alt="">
-                                    <div class="blog-date">
-                                        <h6 class="font-weight-bold mb-n1">01</h6>
-                                        <small class="text-white text-uppercase">Jan</small>
-                                    </div>
-                                </div>
-                                <div class="bg-white p-4">
-                                    <div class="d-flex mb-2">
-                                        <a class="text-primary text-uppercase text-decoration-none" href="">Admin</a>
-                                        <span class="text-primary px-2">|</span>
-                                        <a class="text-primary text-uppercase text-decoration-none" href="">Tours & Travel</a>
-                                    </div>
-                                    <a class="h5 m-0 text-decoration-none" href="">Dolor justo sea kasd lorem clita justo diam amet</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-4 pb-2">
-                            <div class="blog-item">
-                                <div class="position-relative">
-                                    <img class="img-fluid w-100" src="front/img/blog-1.jpg" alt="">
-                                    <div class="blog-date">
-                                        <h6 class="font-weight-bold mb-n1">01</h6>
-                                        <small class="text-white text-uppercase">Jan</small>
-                                    </div>
-                                </div>
-                                <div class="bg-white p-4">
-                                    <div class="d-flex mb-2">
-                                        <a class="text-primary text-uppercase text-decoration-none" href="">Admin</a>
-                                        <span class="text-primary px-2">|</span>
-                                        <a class="text-primary text-uppercase text-decoration-none" href="">Tours & Travel</a>
-                                    </div>
-                                    <a class="h5 m-0 text-decoration-none" href="">Dolor justo sea kasd lorem clita justo diam amet</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-4 pb-2">
-                            <div class="blog-item">
-                                <div class="position-relative">
-                                    <img class="img-fluid w-100" src="front/img/blog-2.jpg" alt="">
-                                    <div class="blog-date">
-                                        <h6 class="font-weight-bold mb-n1">01</h6>
-                                        <small class="text-white text-uppercase">Jan</small>
-                                    </div>
-                                </div>
-                                <div class="bg-white p-4">
-                                    <div class="d-flex mb-2">
-                                        <a class="text-primary text-uppercase text-decoration-none" href="">Admin</a>
-                                        <span class="text-primary px-2">|</span>
-                                        <a class="text-primary text-uppercase text-decoration-none" href="">Tours & Travel</a>
-                                    </div>
-                                    <a class="h5 m-0 text-decoration-none" href="">Dolor justo sea kasd lorem clita justo diam amet</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <nav aria-label="Page navigation">
-                                <ul class="pagination pagination-lg justify-content-center bg-white mb-0" style="padding: 30px;">
-                                    <li class="page-item disabled">
-                                        <a class="page-link" href="#" aria-label="Previous">
-                                            <span aria-hidden="true">&laquo;</span>
-                                            <span class="sr-only">Previous</span>
-                                        </a>
-                                    </li>
-                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#" aria-label="Next">
-                                            <span aria-hidden="true">&raquo;</span>
-                                            <span class="sr-only">Next</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>--}}
                     </div>
+                    @else
+                    <div class="pb-3">
+                        <div class="blog-item">
+                            <div class="position-relative">
+                                <img class="img-fluid w-100" src="{{\App\Helpers\HP::getImgUrl($post->image_url)}}" alt="">
+                                <div class="blog-date">
+                                    <h6 class="font-weight-bold mb-n1">{{$post->date_day}}</h6>
+                                    <small class="text-white text-uppercase">{{$post->date_month}}</small>
+                                </div>
+
+                                <div class="blog-back-btn">
+                                    <small class="flex-fill text-center py-2" x-data="{ goBack: function() { window.history.back(); } }"><a href="javascript:;" x-on:click="goBack" class="btn btn-sm btn-primary px-3" style="border-radius: 10px 10px 10px 10px;">Back</a></small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white mb-3" style="padding: 30px;">
+                            <div class="d-flex mb-3">
+                                <a class="text-primary text-uppercase text-decoration-none" href="">{{$post->category->name}}</a>
+                            </div>
+                            <h2 class="mb-3">{{$post->title}}</h2>
+                            <p>{!! $post->content !!}</p>
+                        </div>
+                    </div>
+                    @if ($post->comments->count() > 0)
+                    <div class="bg-white" style="padding: 30px; margin-bottom: 30px;">
+                        <h4 class="text-uppercase mb-4" style="letter-spacing: 5px;">{{$post->comments->count()??0}} Comments</h4>
+                        @foreach ($post->comments as $comment)
+                        <div class="media mb-4">
+                            <img src="{{asset('logo.jpeg')}}" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                            <div class="media-body">
+                                <h6><a href="#">{{ rand(8000000,2).$comment->user->id.rand(800000,2) }}</a> <small><i>{{$comment->ceated_at->format('d M Y')}}</i></small></h6>
+                                <p>{{$comment->comment}}</p>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                    @endif
+                    <div class="bg-white mb-3" style="padding: 30px;">
+                        <h4 class="text-uppercase mb-4" style="letter-spacing: 5px;">Leave a comment</h4>
+                        <form>
+                            @csrf
+                            <input type="hidden" wire:model='new_comment_postid' value="{{ $post->id }}">
+
+
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea class="form-control" wire:model='new_comment_content' rows="3" placeholder="Add your comment"></textarea>
+                            </div>
+                            <div class="form-group mb-0">
+                                @guest
+                                <a href="{{route('login',['account'=>'signin'])}}" style="margin-right:20px !important;">Login to comment</a>
+                                @else
+                                <button wire:click.prevent='addComments' type="submit" class="btn btn-primary font-weight-semi-bold py-2 px-3">Submit</button>
+                                @endguest
+                            </div>
+                        </form>
+                    </div>
+                    @endif
                 </div>
 
                 <div class="col-lg-4 mt-5 mt-lg-0">
@@ -255,33 +159,6 @@
                             </ul>
                         </div>
                     </div>
-                    {{--
-                    <!-- Recent Post -->
-                    <div class="mb-5">
-                        <h4 class="text-uppercase mb-4" style="letter-spacing: 5px;">Recent Post</h4>
-                        <a class="d-flex align-items-center text-decoration-none bg-white mb-3" href="">
-                            <img class="img-fluid" src="front/img/blog-100x100.jpg" alt="">
-                            <div class="pl-3">
-                                <h6 class="m-1">Diam lorem dolore justo eirmod lorem dolore</h6>
-                                <small>Jan 01, 2050</small>
-                            </div>
-                        </a>
-                        <a class="d-flex align-items-center text-decoration-none bg-white mb-3" href="">
-                            <img class="img-fluid" src="front/img/blog-100x100.jpg" alt="">
-                            <div class="pl-3">
-                                <h6 class="m-1">Diam lorem dolore justo eirmod lorem dolore</h6>
-                                <small>Jan 01, 2050</small>
-                            </div>
-                        </a>
-                        <a class="d-flex align-items-center text-decoration-none bg-white mb-3" href="">
-                            <img class="img-fluid" src="front/img/blog-100x100.jpg" alt="">
-                            <div class="pl-3">
-                                <h6 class="m-1">Diam lorem dolore justo eirmod lorem dolore</h6>
-                                <small>Jan 01, 2050</small>
-                            </div>
-                        </a>
-                    </div>
-                    --}}
                 </div>
             </div>
         </div>

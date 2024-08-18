@@ -17,12 +17,12 @@
                                 <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>{{$pack->number_of_days}} days</small>
                                 <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>{{$pack->number_of_people}} Person</small>
                             </div>
-                            <a class="h5 text-decoration-none" href="{{route('packages',['id'=>$pack->id])}}">{{$pack->summary}}</a>
+                            <a class="h5 text-decoration-none" href="{{route('packages',['id'=>$pack->id])}}" wire:navigate>{{$pack->summary}}</a>
                             <div class="border-top mt-4 pt-4">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
                                     <h5 class="m-0">${{number_format($pack->price)}}</h5>
-                                    <a href="{{route('packages',['id'=>$pack->id])}}" class="btn btn-primary border-radius ">Book now</a>
+                                    <a href="{{route('packages',['id'=>$pack->id])}}" class="btn btn-primary border-radius " wire:navigate>Book now</a>
                                 </div>
                             </div>
                         </div>
