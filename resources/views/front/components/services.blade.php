@@ -41,31 +41,16 @@ $services = [
             <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Services</h6>
             <h1>Tours & Travel Services</h1>
         </div>
-        <div class="row">
+        <div class="row toprow">
             @foreach($services as $service)
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="service-item bg-white text-center mb-2 py-5 px-4">
+            <div class="col-lg-4 col-md-6 mb-4 equal-height">
+                <div class="service-item bg-white text-center py-5 px-4"style="height:100%;">
                     <i class="fa fa-2x fa-route mx-auto mb-4"></i>
                     <h5 class="mb-2">{{$service['title']}}</h5>
                     <p class="m-0">{{$service['content']}}</p>
                 </div>
             </div>
             @endforeach
-            {{--
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="service-item bg-white text-center mb-2 py-5 px-4">
-                    <i class="fa fa-2x fa-ticket-alt mx-auto mb-4"></i>
-                    <h5 class="mb-2">Ticket Booking</h5>
-                    <p class="m-0">Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem est amet labore</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="service-item bg-white text-center mb-2 py-5 px-4">
-                    <i class="fa fa-2x fa-hotel mx-auto mb-4"></i>
-                    <h5 class="mb-2">Hotel Booking</h5>
-                    <p class="m-0">Justo sit justo eos amet tempor amet clita amet ipsum eos elitr. Amet lorem est amet labore</p>
-                </div>
-            </div>--}}
         </div>
     </div>
 </div>

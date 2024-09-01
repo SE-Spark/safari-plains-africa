@@ -26,10 +26,10 @@
                 <h1>Pefect Tour Packages</h1>
             </div>
             @if(!$showMore)
-            <div class="row">
+            <div class="row toprow">
                 @forelse($packages as $pack)
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="package-item bg-white mb-2">
+                <div class="col-lg-4 col-md-6 mb-4 equal-height">
+                    <div class="package-item bg-white mb-2"style="height:100%;">
                         <img class="img-fluid" src="{{\App\Helpers\HP::getImgUrl($pack->destinations()->first()->image_url)}}" alt="">
                         <div class="p-4">
                             <div class="d-flex justify-content-between mb-3">
