@@ -1,9 +1,10 @@
  <!-- Navbar Start -->
  <div class="container-fluid position-relative nav-bar p-0">
-     <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+     <div class="container-fluid position-relative p-0 px-lg-3" style="z-index: 9;">
          <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
+             <img src="{{asset('logo.jpeg')}}" alt="" style="width: 100px; height: 50px;">
              <a href="" class="navbar-brand">
-                 <h2 class="m-0 text-primary">SAFARI PLAINS AFRICA</h2>
+                 <h4 class="m-0 text-primary">SAFARI PLAINS AFRICA</h4>
              </a>
              <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                  <span class="navbar-toggler-icon"></span>

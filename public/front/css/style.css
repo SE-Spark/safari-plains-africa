@@ -9578,7 +9578,7 @@ h6,
 }
 
 .page-header {
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/carousel-2.jpg), no-repeat center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/main-1.jpg), no-repeat center center;
   background-size: cover;
 }
 
@@ -9787,4 +9787,13 @@ h6,
   margin: 0;
   padding: 0;
   list-style-type: none;
+}
+
+.equal-height {
+  display: flex;
+  flex-direction: column;
+}
+.toprow {
+  display: flex;
+  flex-wrap: wrap;
 }
