@@ -1,8 +1,8 @@
 <!-- Booking Start -->
 <div class="container  booking mt-5 pb-1">
     <div class="container-fluid  pb-1">
-        <form action="{{route('packages')}}" method="GET" enctype="application/x-www-form-urlencoded" class="bg-light shadow" style="padding: 30px;">
-            <div class="row align-items-center" style="min-height: 60px;">
+        <form action="{{route('packages')}}" method="GET" enctype="application/x-www-form-urlencoded" class="bg-light shadow" style="padding: 15px;border-radius:20px">
+            <div class="row align-items-center" style="min-height: 40px;">
                 <div class="col-md-10">
                     <div class="row">
                         <div class="col-md-3">

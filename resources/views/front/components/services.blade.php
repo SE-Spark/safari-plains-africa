@@ -39,7 +39,7 @@ $services = [
     <div class="container pt-5">
         <div class="text-center mb-3 pb-3">
             <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Services</h6>
-            <h1>Tours & Travel Services</h1>
+            <h4>Tours & Travel Services</h4>
         </div>
         <div class="row toprow">
             @foreach($services as $service)

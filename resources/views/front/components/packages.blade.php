@@ -4,7 +4,7 @@
         <div class="container pt-5 pb-3">
             <div class="text-center mb-3 pb-3">
                 <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Packages</h6>
-                <h1>Pefect Tour Packages</h1>
+                <h3>Perfect Tour Packages</h3>
             </div>
             <div class="row toprow">
                 @forelse($packages as $pack)

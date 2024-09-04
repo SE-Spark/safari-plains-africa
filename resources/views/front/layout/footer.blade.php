@@ -1,9 +1,9 @@
 
 
     <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
-        <div class="row pt-5">
-            <div class="col-lg-3 col-md-6 mb-5">
+    <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 20px;">
+        <div class="row pt-1">
+            <div class="col-lg-3 col-md-6 mb-0">
                 <a href="" class="navbar-brand">
                     <h4 class="text-primary">SAFARI PLAINS AFRICA</h4>
                 </a>
@@ -18,26 +18,23 @@
                     <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 mb-5">
+            <div class="col-lg-3 col-md-6 mb-0">
                 <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Our Services</h5>
                 <div class="d-flex flex-column justify-content-start">
                     <a class="text-white-50 mb-2" href="{{url("/destinations")}}"><i class="fa fa-angle-right mr-2"></i>Destination</a>
-                    <a class="text-white-50 mb-2" href="{{url("/services")}}"><i class="fa fa-angle-right mr-2"></i>Services</a>
                     <a class="text-white-50 mb-2" href="{{url("/packages")}}"><i class="fa fa-angle-right mr-2"></i>Tour Packages</a>
-                    <a class="text-white-50" href="{{url("/blog")}}"><i class="fa fa-angle-right mr-2"></i>Blog</a>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 mb-5">
+            <div class="col-lg-3 col-md-6 mb-0">
                 <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Usefull Links</h5>
                 <div class="d-flex flex-column justify-content-start">
                     <a class="text-white-50 mb-2" href="{{url("/")}}"><i class="fa fa-angle-right mr-2"></i>Home</a>
                     <a class="text-white-50 mb-2" href="{{url("/destinations")}}"><i class="fa fa-angle-right mr-2"></i>Destination</a>
                     <a class="text-white-50 mb-2" href="{{url("/contact")}}"><i class="fa fa-angle-right mr-2"></i>Contact us</a>
                     <a class="text-white-50 mb-2" href="{{url("/packages")}}"><i class="fa fa-angle-right mr-2"></i>Packages</a>
-                    <a class="text-white-50" href="{{url("/blog")}}"><i class="fa fa-angle-right mr-2"></i>Blog</a>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 mb-5">
+            <div class="col-lg-3 col-md-6 mb-0">
                 <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Contact Us</h5>
                 <p><i class="fa fa-map-marker-alt mr-2"></i>College House 3rd Floor.</br> Suite 35
                     University Way.</br>
