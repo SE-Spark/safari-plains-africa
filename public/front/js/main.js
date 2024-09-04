@@ -17,7 +17,17 @@
         toggleNavbarMethod();
         $(window).resize(toggleNavbarMethod);
     });
-    
+
+     // Sticky Navbar
+     $(window).scroll(function () {
+        if ($(this).scrollTop() > 45) {
+            $('.navbar').addClass('sticky-top');
+            $('.nav-bar-nano').removeClass('px-lg-3');
+        } else {
+            $('.navbar').removeClass('sticky-top');
+            $('.nav-bar-nano').addClass('px-lg-3');
+        }
+    });
     
     // Back to top button
     $(window).scroll(function () {
