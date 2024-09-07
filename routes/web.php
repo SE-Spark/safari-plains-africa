@@ -61,3 +61,9 @@ Route::get('/auth/account/forget', \App\Livewire\ForgetResetAccountController::c
 
 Route::get('password/reset/{token}', \App\Livewire\ForgetResetAccountController::class)->name('password.reset');
 
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    return "Cache is cleared";
+});
+
+

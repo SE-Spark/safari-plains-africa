@@ -57,7 +57,7 @@
                                 @error('image_photo') <span class="text-danger error">{{ $message }}</span>@enderror
                                 @if ($image_photo || $image_url)
                                 Photo Preview:
-                                <img src="{{ !empty($image_photo)?$image_photo->temporaryUrl():'assets/images/'.$image_url }}" width="220">
+                                <img src="{{ !empty($image_photo)?$image_photo->temporaryUrl():'/assets/images/'.$image_url }}" width="220">
                                 @endif
                             </div>
                         </div>
