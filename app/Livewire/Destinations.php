@@ -45,7 +45,8 @@ class Destinations extends Component
         $this->address = $selectedDestination->address;
         $this->description = $selectedDestination->description;
         $this->image_url = $selectedDestination->image_url;
-        $this->status = $selectedDestination->status;        
+        $this->country_id = $selectedDestination->country_id;       
+        $this->status = $selectedDestination->status;    
         $this->js("$('#destUpdateModal').modal('show')");
         // $this->dispatch('editDestinations');
     }

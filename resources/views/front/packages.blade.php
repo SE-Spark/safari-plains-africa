@@ -19,7 +19,7 @@
 
 
     <!-- Packages Start -->
-    <div class="container-fluid py-1">
+    <div class="container-fluid py-2">
         <div class="container pt-1 pb-3">
             <div class="text-center mb-3 pb-3">
                 <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Packages</h6>
@@ -41,7 +41,7 @@
                             <div class="border-top mt-4 pt-4">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
-                                    <h5 class="m-0">${{number_format($pack->price)}}</h5>
+                                    {{--<h5 class="m-0">${{number_format($pack->price)}}</h5>--}}
                                     <a href="{{route('packages',['id'=>$pack->id])}}" class="btn btn-primary border-radius ">Book now</a>
                                 </div>
                             </div>

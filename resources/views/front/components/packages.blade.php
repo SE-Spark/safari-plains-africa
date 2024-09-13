@@ -1,7 +1,7 @@
 
     <!-- Packages Start -->
     <div class="container-fluid py-5">
-        <div class="container pt-5 pb-3">
+        <div class="container pt-1 pb-3">
             <div class="text-center mb-3 pb-3">
                 <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Packages</h6>
                 <h3>Perfect Tour Packages</h3>
@@ -21,7 +21,7 @@
                             <div class="border-top mt-4 pt-4">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
-                                    <h5 class="m-0">${{number_format($pack->price)}}</h5>
+                                    {{--<h5 class="m-0">${{number_format($pack->price)}}</h5>--}}
                                     <a href="{{route('packages',['id'=>$pack->id])}}" class="btn btn-primary border-radius " wire:navigate>Book now</a>
                                 </div>
                             </div>

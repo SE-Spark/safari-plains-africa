@@ -56,8 +56,15 @@ Route::get('/',\App\Livewire\Front\Homecontroller::class)->name('home');
 Route::get('/packages/{id?}',\App\Livewire\Front\Packagecontroller::class)->name('packages');
 Route::get('/blog/{id?}',\App\Livewire\Front\Blogcontroller::class)->name('blog');
 Route::get('/contact',\App\Livewire\Front\Contactcontroller::class)->name('contact');
+Route::get('/about',\App\Livewire\Front\Aboutcontroller::class)->name('about');
 Route::get('/destinations/{id?}',\App\Livewire\Front\Destinationcontroller::class)->name('destinations');
 Route::get('/auth/account/forget', \App\Livewire\ForgetResetAccountController::class)->name('account.auth.forget');
 
 Route::get('password/reset/{token}', \App\Livewire\ForgetResetAccountController::class)->name('password.reset');
+
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    return "Cache is cleared";
+});
+
 
