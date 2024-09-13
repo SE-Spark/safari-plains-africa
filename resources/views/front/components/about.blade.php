@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-lg-6" style="min-height: 500px;">
                 <div class="position-relative h-100">
-                    <img class="position-absolute w-100 h-100" src="{{asset('front/img/about.jpg')}}" style="object-fit: cover;">
+                    <img class="position-absolute w-100 h-100" src="{{asset('front/img/about-4.jpg')}}" style="object-fit: cover;">
                 </div>
             </div>
             <div class="col-lg-6 pt-5 pb-lg-5">
@@ -18,11 +18,14 @@
                     <p>At Safari Plains Africa, we don’t just offer safaris—we offer dreams fulfilled, stories lived, and memories that linger long after the journey ends. Our mission is simple: to craft bespoke, high-quality safari experiences that showcase the raw, unfiltered beauty of Kenya’s landscapes and wildlife, leaving you enchanted, inspired, and yearning for more. </p>
                     --}}
                     <h4 class="mb-3">Welcome to Safari Plains Africa Ltd – Where Your African Adventure Begins!</h4>
-                    <p>At Safari Plains Africa, we don’t just plan safaris; we create unforgettable journeys into the wild heart of Kenya. Picture yourself immersed in the untamed beauty of Africa—where golden savannas stretch endlessly, majestic wildlife roams free, and adventure calls from every horizon.
+                    {{--<p>At Safari Plains Africa, we don’t just plan safaris; we create unforgettable journeys into the wild heart of Kenya. Picture yourself immersed in the untamed beauty of Africa—where golden savannas stretch endlessly, majestic wildlife roams free, and adventure calls from every horizon.
                         We pride ourselves on curating world-class, tailor-made experiences that blend luxury with the raw, natural beauty of Kenya. Whether it's the awe-inspiring Masai Mara, the iconic slopes of Mount Kenya, or the pristine white sands of the Indian Ocean, every detail of your safari is carefully designed to leave you breathless.
                         Imagine the thrill of hearing lions roar at dawn, watching a herd of elephants amble by, or enjoying a glass of champagne as the African sun sets in a blaze of color. At Safari Plains Africa, we turn these moments into lifelong memories—stories you’ll tell for years to come.
                         Our mission is simple: to deliver extraordinary, bespoke safaris that connect you with the soul of Africa. We invite travelers from all over the world to step off the beaten path and experience Kenya’s wild landscapes in comfort, style, and with a touch of adventure. Whether you're a seasoned explorer or a first-time visitor, we promise you an experience that will inspire, captivate, and leave you yearning for more.
-                        Join us, and discover why Safari Plains Africa is the gateway to your African dream.</p>
+                        Join us, and discover why Safari Plains Africa is the gateway to your African dream.</p>--}}
+                        <p class="text-center">Specializing in tailor-made safari holidays across Kenya, Tanzania, Uganda, Rwanda, and Zanzibar, we are an Africa-based, family-run tour company with trusted global partners since 2002. With decades of experience, we guide you through the adventures we've already explored.
+                        <br><b>SAFARI PLAINS AFRICA</b> is not just business – <b>it’s a passion!</b></p>
+                        <center><a class="btn btn-primary"href="/about" wire:navigate><i>More about us</i></a></center>
                 </div>
             </div>
         </div>

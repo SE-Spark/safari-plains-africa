@@ -49,6 +49,7 @@
             <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                 <div class="navbar-nav ml-auto py-0">
                     <a href="{{route('home')}}" class="nav-item nav-link @if(request()->route()->getName()==='home') active @endif" wire:navigate>Home</a>
+                    <a href="{{route('about')}}" class="nav-item nav-link @if(request()->route()->getName()==='about') active @endif" wire:navigate>About</a>
                     <a href="{{route('packages')}}" class="nav-item nav-link @if(request()->route()->getName()==='packages') active @endif" wire:navigate>Tour Packages</a>
                     <a href="{{route('destinations')}}" class="nav-item nav-link @if(request()->route()->getName()==='destinations') active @endif" wire:navigate>Destination</a>
                     {{--<a href="{{route('blog')}}" class="nav-item nav-link @if(request()->route()->getName()==='blog') active @endif" wire:navigate>Blog</a>--}}

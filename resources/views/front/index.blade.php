@@ -7,23 +7,29 @@
                 <img class="w-100" src="{{asset('front/img/main-9.jpg')}}" alt="Image">
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                     <div class="p-4" style="max-width: 900px;">
-                        <h4 class="text-white text-uppercase mb-md-3">Tours & Travel</h5>
-                        <h5 class="display-6 text-white mb-md-4">We are Tour Company dealing mostly with Inbound Tourists from majorly USA, FRANCE .
-                            Would like to attract clients from all over the world</h6>
-                        <a href="" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
+                        <h1 class="text-white text-uppercase mb-md-3">Safari Plains Africa</h1>
+                        <h4 class="display-5 text-white mb-md-4">Specialized in tailor-made Safari Holidays in Kenya, Tanzania, Uganda, Rwanda, and Zanzibar</h4>                       
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="w-100" src="{{asset('front/img/main-10.jpg')}}" alt="Image">
+                <img class="w-100" src="{{asset('front/img/main-12.jpg')}}" alt="Image">
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                     <div class="p-3" style="max-width: 900px;">
-                        <h4 class="text-white text-uppercase mb-md-3">Tours & Travel</h4>
-                        <h5 class="display-6 text-white mb-md-4">We are a Tour Company dealing mostly with Inbound Tourists from majorly USA, FRANCE .
-                            Would like to attract clients from all over the world.
-                            </h5>
-                            
-                        <a href="" class=" border-radius btn btn-primary py-md-3 px-md-5 mt-2 ">Book Now <span wire:loading class="spinner-border spinner-border-sm"></span></a>
+                        <h1 class="text-white text-uppercase mb-md-3">Safari Plains Africa</h1>
+                        <h4 class="display-5 text-white mb-md-4">An Africa-based, family-run tour company with trusted partners abroad since 2002
+                            </h4>                        
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="w-100" src="{{asset('front/img/main-11.jpg')}}" alt="Image">
+                <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                    <div class="p-3" style="max-width: 900px;">
+                        <h1 class="text-white text-uppercase mb-md-3">Safari Plains Africa</h1>
+                        <h4 class="display-5 text-white mb-md-4">With decades of experience, your adventure starts where we've been.
+                            </h4>
+                         
                     </div>
                 </div>
             </div>
