@@ -35,7 +35,7 @@
                             <div class="d-flex justify-content-between mb-3">
                                 <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{$pack->destinations()->first()->name}}</small>
                                 <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>{{$pack->number_of_days}} days</small>
-                                <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>{{$pack->number_of_people}} Person</small>
+                                {{--<small class="m-0"><i class="fa fa-user text-primary mr-2"></i>{{$pack->number_of_people}} Person</small>--}}
                             </div>
                             <a class="h5 text-decoration-none" href="{{route('packages',['id'=>$pack->id])}}">{{$pack->summary}}</a>
                             <div class="border-top mt-4 pt-4">
@@ -182,28 +182,31 @@
             <div class="row">
                 <div class="col-md-10 col-sm-12 mb-4">
                     <div class="pb-3">
-                        <div class="bg-white mb-3" style="padding: 30px;">
-                            <img class="img-fluid w-50 float-left mr-4 mb-2" src="{{\App\Helpers\HP::getImgUrl($package->destinations()->first()->image_url)}}">
+                        <div class="bg-white mb-3" style="padding: 30px; border-radius:8px;">
+                            <img class="img-fluid w-50 float-left mr-4 mb-4" src="{{\App\Helpers\HP::getImgUrl($package->destinations()->first()->image_url)}}">
 
                             <h3 class="mb-3">{{$package->summary}}</h3>
                             <div class="d-flex justify-content-between mb-3">
                                 <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{$package->destinations()->first()->name}}</small>
                                 <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>{{$package->number_of_days}} days</small>
-                                <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>{{$package->number_of_people}} Person</small>
+                               {{--<small class="m-0"><i class="fa fa-user text-primary mr-2"></i>{{$package->number_of_people}} Person</small>--}}
                             </div>
                             <div class="border-top mt-1 pt-1">
                                 <div class="d-flex justify-content-between mb-3">
                                     <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
-                                    <h5 class="m-0">${{number_format($package->price)}}</h5>
+                                    {{--<h5 class="m-0">${{number_format($package->price)}}</h5>--}}
                                 </div>
                                 <div class="d-flex justify-content-between mb-3" x-data="{ goBack: function() { window.history.back(); } }">
                                     <a href="{{route('packages',['id'=>$package->id])}}" class="btn btn-primary border-radius ">Book now</a>
                                     <a href="javascript:;" x-on:click="goBack" class="btn btn-primary  border-radius">Back</a>
                                 </div>
                             </div>
+                        </div>
+                        
+                    </div>
+                        <div class="bg-white mb-3" style="padding: 30px; border-radius:8px;">
                             <p>{!!$package->description!!} </p>
                         </div>
-                    </div>
                 </div>
             </div>
             @endif

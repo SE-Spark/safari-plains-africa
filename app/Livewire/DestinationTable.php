@@ -99,9 +99,9 @@ final class DestinationTable extends PowerGridComponent
         return [
             Button::add('edit')
                 ->slot('<i class="bi bi-pencil-fill text-success"></i>')
-                ->id()
                 ->class('btn btn-transparent')
-                ->dispatch('editDestination', ['destinationId' => $row->id]),
+                ->route('admin.destination.edit', ['selection' => $row->id]),
+                // ->dispatch('editDestination', ['destinationId' => $row->id]),
             Button::add('delete')
                 ->slot('<i class="bi bi-trash-fill text-danger"></i>')
                 ->id()
