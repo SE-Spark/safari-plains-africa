@@ -15,7 +15,7 @@
                             <div class="d-flex justify-content-between mb-3">
                                 <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{$pack->destinations()->first()->name}}</small>
                                 <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>{{$pack->number_of_days}} days</small>
-                                <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>{{$pack->number_of_people}} Person</small>
+                                {{--<small class="m-0"><i class="fa fa-user text-primary mr-2"></i>{{$pack->number_of_people}} Person</small>--}}
                             </div>
                             <a class="h5 text-decoration-none" href="{{route('packages',['id'=>$pack->id])}}" wire:navigate>{{$pack->summary}}</a>
                             <div class="border-top mt-4 pt-4">

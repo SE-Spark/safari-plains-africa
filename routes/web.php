@@ -19,6 +19,8 @@ Route::group(['middleware' => ['web', 'auth']], function () {
     Route::group(['middleware' => ['isadmin']], function () {
         Route::get('/dashboard', \App\Livewire\Dashboard::class)->name('admin.dashboard');
         Route::get('/admin/destinations', \App\Livewire\Destinations::class)->name('admin.destinations');
+        Route::get('/admin/destinations/create', \App\Livewire\CreateDestination::class)->name('admin.destination.create');
+        Route::get('/admin/destinations/{selection}/edit', \App\Livewire\CreateDestination::class)->name('admin.destination.edit');
         Route::get('/countries', \App\Livewire\Countries::class)->name('admin.countries');
         Route::get('/groups', \App\Livewire\Groups::class)->name('admin.groups');
         Route::get('/item-types', \App\Livewire\BookingItemsType::class)->name('admin.item-types');

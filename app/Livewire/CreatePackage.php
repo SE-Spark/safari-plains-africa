@@ -10,7 +10,7 @@ use Livewire\Component;
 class CreatePackage extends Component
 {
     public $modalTitle = "Create Package";
-    public $name, $summary, $description, $price, $number_of_people, $number_of_days, $start_date, $end_date, $status, $destinationId,$group_id, $destinations, $groups;
+    public $name, $summary, $description, $price, $number_of_people, $number_of_days, $start_date, $end_date, $status, $destinationId =[],$group_id, $destinations, $groups;
     public $deleteId, $selectedId;
 
     protected $rules = [
@@ -33,8 +33,8 @@ class CreatePackage extends Component
 
     public function mount(PackagesRepository $packageService, DestinationsRepository $destinationService, GroupRepository $groupRepository, $selection = null)
     {
-        $this->destinations = $destinationService->getAll();
-        $this->groups = $groupRepository->getAll();
+        $this->destinations = $destinationService->get()->where('status',1)->get(['id','name']);
+        $this->groups = $groupRepository->get()->where('status',1)->get(['id','name']);
         if ($selection) {
             $this->modalTitle = "Edit Package";
             $this->selectedId = $selection;
@@ -44,7 +44,7 @@ class CreatePackage extends Component
             $this->summary = $selectedPackage->summary;
             $this->description = $selectedPackage->description;
             $this->price = $selectedPackage->price;
-            $this->destinationId = $selectedPackage->destinations->first()->id??0;
+            $this->destinationId = $selectedPackage->destinations->pluck('id')??[];
             $this->group_id = $selectedPackage->group_id;
             $this->number_of_people = $selectedPackage->number_of_people;
             $this->number_of_days = $selectedPackage->number_of_days;
@@ -62,20 +62,24 @@ class CreatePackage extends Component
 
     public function createUpdate(PackagesRepository $packageService)
     {
+        \Log::info('ERROR :');
+        \Log::info( $this->destinationId);
+
         $data = $this->validate();
+        \Log::info($data);
         if (!empty($this->selectedId)) {
-            $packageService->updateWithDestinations($this->selectedId, $data,(array) [$this->destinationId]);
+            $packageService->updateWithDestinations($this->selectedId, $data,(array) $this->destinationId);
             HP::setUnitUpdatedSuccessFlash();
             $this->cancel();
         } else {
-            $packageService->createWithDestinations($data,(array) [$this->destinationId]);
+            $packageService->createWithDestinations($data,(array) $this->destinationId);
             Hp::setUnitAddedSuccessFlash();
         }
-        $this->resetExcept(['destinations','groups']);
+        $this->cancel();
     }
     public function cancel()
     {
         $this->resetExcept(['destinations','groups']);
-        $this->redirect('/packages');
+        $this->redirect(route('admin.packages'));
     }
 }
