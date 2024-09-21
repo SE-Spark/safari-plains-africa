@@ -23,12 +23,60 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>{{ __("Package Images") }}</label>
+                                        <input type="file"
+                                            class="form-control @error('image_photos.*') is-invalid @enderror"
+                                            wire:model="image_photos" multiple>
+
+                                        @error('image_photos.*')
+                                            <span class="text-danger error">{{ $message }}</span>
+                                        @enderror
+
+                                        @if ($image_photos)
+                                            <div class="mt-2">
+                                                <strong>Photo Preview:</strong>
+                                                <div class="d-flex flex-wrap">
+                                                    @foreach ($image_photos as $photo)
+                                                        <div class="p-2">
+                                                            <img src="{{ $photo->temporaryUrl() }}" width="220"
+                                                                class="img-thumbnail">
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        @elseif ($image_urls)
+                                            <div class="mt-2">
+                                                <strong>Photo Preview:</strong>
+                                                <div class="d-flex flex-wrap">
+                                                    @foreach ($image_urls as $image_url)
+                                                        <div class="p-2">
+                                                            <img src="{{ '/assets/images/' . $image_url }}" width="220"
+                                                                class="img-thumbnail">
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>{{__(" Summary")}}</label>
+                                        {{--
                                         <input type="text" class="form-control @error('summary') is-invalid @enderror"
                                             wire:model="summary">
+                                        --}}
+                                        <div wire:ignore>
+                                            <textarea wire:model="summary" class="tinymce-editors min-h-fit h-48 d-none"
+                                                name="summary" id="summary"></textarea>
+                                        </div>
                                         @error('summary') <span class="text-danger error">{{ $message }}</span>@enderror
                                     </div>
                                 </div>
@@ -52,15 +100,15 @@
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">{{__(" Destination")}}</label>
                                         <div wire:ignore>
-                                        <select class="form-control @error('destinationId') is-invalid @enderror"
-                                            id="destinationId" wire:model="destinationId" multiple>
-                                            <option value="">{{__("Select Destination")}}</option>
-                                            @foreach($destinations as $cat)
-                                                <option value="{{$cat->id}}">{{$cat->name}}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('destinationId') <span
-                                        class="text-danger error">{{ $message }}</span>@enderror
+                                            <select class="form-control @error('destinationId') is-invalid @enderror"
+                                                id="destinationId" wire:model="destinationId" multiple>
+                                                <option value="">{{__("Select Destination")}}</option>
+                                                @foreach($destinations as $cat)
+                                                    <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('destinationId') <span
+                                            class="text-danger error">{{ $message }}</span>@enderror
                                         </div>
                                     </div>
                                 </div>
@@ -81,6 +129,7 @@
                                     </div>
                                 </div>
                             </div>
+                            {{--
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -88,11 +137,11 @@
                                         <input type="number"
                                             class="form-control @error('number_of_people') is-invalid @enderror"
                                             wire:model="number_of_people">
-                                        @error('number_of_people') <span
-                                        class="text-danger error">{{ $message }}</span>@enderror
+                                        @error('number_of_people') <span class="text-danger error">{{ $message
+                                            }}</span>@enderror
                                     </div>
                                 </div>
-                            </div>
+                            </div>--}}
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -105,6 +154,7 @@
                                     </div>
                                 </div>
                             </div>
+                            {{--
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -122,8 +172,8 @@
                                         <input type="date"
                                             class="form-control @error('start_date') is-invalid @enderror"
                                             wire:model="start_date" name="start_date">
-                                        @error('start_date') <span
-                                        class="text-danger error">{{ $message }}</span>@enderror
+                                        @error('start_date') <span class="text-danger error">{{ $message
+                                            }}</span>@enderror
                                     </div>
                                 </div>
                             </div>
@@ -133,11 +183,12 @@
                                         <label>{{__(" Date To")}}</label>
                                         <input type="date" class="form-control @error('end_date') is-invalid @enderror"
                                             wire:model="end_date">
-                                        @error('end_date') <span
-                                        class="text-danger error">{{ $message }}</span>@enderror
+                                        @error('end_date') <span class="text-danger error">{{ $message
+                                            }}</span>@enderror
                                     </div>
                                 </div>
                             </div>
+                            --}}
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -177,14 +228,13 @@
         document.addEventListener('livewire:initialized', () => {
 
             $('#destinationId').select2();
-            $('#destinationId').on('change',function(){
-                @this.set('destinationId',$(this).val());
+            $('#destinationId').on('change', function () {
+                @this.set('destinationId', $(this).val());
             })
         });
 
         tinymce.init({
             selector: 'textarea.tinymce-editors',
-            forced_root_block: false,
             plugins: 'preview importcss autolink autosave save directionality visualblocks visualchars fullscreen link table charmap anchor insertdatetime advlist lists wordcount help charmap quickbars emoticons',
             menubar: 'insert format',
             toolbar: 'undo redo | bold italic underline strikethrough | fontfamily fontsize blocks | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview | link anchor | ltr rtl',
@@ -207,7 +257,12 @@
                     editor.save();
                 });
                 editor.on('change', function (e) {
-                    @this.set('description', editor.getContent());
+                    // @this.set('description', editor.getContent());
+                    if (this.id === 'description') {
+                        @this.set('description', editor.getContent());
+                    } else if (this.id === 'summary') {
+                        @this.set('summary', editor.getContent());
+                    }
                 });
             }
         });

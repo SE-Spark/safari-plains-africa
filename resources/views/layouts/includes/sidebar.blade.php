@@ -29,6 +29,12 @@
       </a>
     </li>
     <li class="nav-item">
+      <a class="nav-link @if(request()->route()->getName() == 'admin.testimonials') active @else collapsed @endif" href="{{route('admin.testimonials')}}" wire:navigate>
+        <i class="bi bi-yelp"></i><span>Testimonials</span>
+      </a>
+    </li>
+  {{--
+    <li class="nav-item">
       <a class="nav-link @if(request()->route()->getName() == 'admin.reviews') active @else collapsed @endif" href="{{route('admin.reviews')}}" wire:navigate>
         <i class="bi bi-yelp"></i><span>Reviews</span>
       </a>
@@ -70,7 +76,6 @@
             <i class="bi bi-circle"></i><span>Posts</span>
           </a>
         </li>
-        {{--
         <li>
           <a href="/">
             <i class="bi bi-circle"></i><span>Home</span>
@@ -86,9 +91,9 @@
             <i class="bi bi-circle"></i><span>Contact us</span>
           </a>
         </li>
-        --}}
       </ul>
     </li>
+    --}}
     <li class="nav-item">
       <a class="nav-link  @if(!in_array(request()->route()->getName(),['admin.users'])) collapsed @endif" data-bs-target="#admin-nav" data-bs-toggle="collapse" href="#">
         <i class="bi bi-5-circle"></i><span>Administration</span><i class="bi bi-chevron-down ms-auto"></i>

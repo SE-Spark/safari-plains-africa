@@ -39,4 +39,6 @@ We do this through well-thought safaris that can be tailor-made to fit your budg
     </div>
 </div>
 <!-- Contact End -->
+ 
+@livewire('testimonial-card')
 </div>

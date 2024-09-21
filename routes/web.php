@@ -36,7 +36,7 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         Route::get('/admin/package/create', \App\Livewire\CreatePackage::class)->name('admin.package.create');
         Route::get('/admin/package/{selection}/edit', \App\Livewire\CreatePackage::class)->name('admin.package.edit');
         Route::get('/payments', \App\Livewire\Payments::class)->name('admin.payments');
-        Route::get('/reviews', \App\Livewire\Reviews::class)->name('admin.reviews');
+        Route::get('/testimonials', \App\Livewire\Testimonial::class)->name('admin.testimonials');
         Route::get('/users', \App\Livewire\Users::class)->name('admin.users');
         Route::get('/notifications', \App\Livewire\Notifications::class)->name('admin.notifications');
         Route::get('/run-migrations', [\App\Http\Controllers\MigrationController::class, 'runMigrations']);

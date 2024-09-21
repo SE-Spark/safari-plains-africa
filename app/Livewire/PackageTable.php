@@ -56,11 +56,11 @@ final class PackageTable extends PowerGridComponent
             ->addColumn('name_lower', fn (Packages $model) => strtolower(e($model->name)))
             ->addColumn('summary', fn (Packages $model) => implode(' ', array_slice(explode(' ', $model->summary), 0, 10)))
             // ->addColumn('description', fn (Packages $model) => implode(' ', array_slice(explode(' ', $model->description), 0, 10)))
-            ->addColumn('destination', fn (Packages $model) => $model->destinations()->first()->name ?? '')
-            ->addColumn('number_of_people')
-            ->addColumn('price', fn (Packages $model) => number_format($model->price).' USD')
-            ->addColumn('start_date_formatted', fn (Packages $model) => Carbon::parse($model->start_date)->format('d/m/Y'))
-            ->addColumn('end_date_formatted', fn (Packages $model) => Carbon::parse($model->end_date)->format('d/m/Y'))
+            ->addColumn('destination', fn (Packages $model) => $model->destinations()->pluck('name')->implode(', ') ?? '')
+            // ->addColumn('number_of_people')
+            // ->addColumn('price', fn (Packages $model) => number_format($model->price).' USD')
+            // ->addColumn('start_date_formatted', fn (Packages $model) => Carbon::parse($model->start_date)->format('d/m/Y'))
+            // ->addColumn('end_date_formatted', fn (Packages $model) => Carbon::parse($model->end_date)->format('d/m/Y'))
             ->addColumn('status', fn (Packages $model) => $model->status == 1 ? 'Active' : 'Inactive')
             ->addColumn('created_at_formatted', fn (Packages $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
     }
@@ -80,16 +80,16 @@ final class PackageTable extends PowerGridComponent
             //     ->searchable(),
             Column::make('Destination', 'destination')
                 ->sortable(),
-            Column::make('Person', 'number_of_people')
-                ->sortable(),
-                Column::make('Prize', 'price')
-                    ->sortable(),
+            // Column::make('Person', 'number_of_people')
+                // ->sortable(),
+            //     Column::make('Prize', 'price')
+            //         ->sortable(),
 
-            Column::make('Start date', 'start_date_formatted', 'start_date')
-                ->sortable(),
+            // Column::make('Start date', 'start_date_formatted', 'start_date')
+            //     ->sortable(),
 
-            Column::make('End date', 'end_date_formatted', 'end_date')
-                ->sortable(),
+            // Column::make('End date', 'end_date_formatted', 'end_date')
+                // ->sortable(),
 
             Column::make('Status', 'status'),
 

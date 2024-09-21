@@ -8,26 +8,7 @@
             </div>
             <div class="row toprow">
                 @forelse($packages as $pack)
-                <div class="col-lg-4 col-md-6 mb-4 equal-height">
-                    <div class="package-item bg-white mb-2"style="height:100%;">
-                        <img class="img-fluid" src="{{\App\Helpers\HP::getImgUrl($pack->destinations()->first()->image_url)}}" alt="">
-                        <div class="p-4">
-                            <div class="d-flex justify-content-between mb-3">
-                                <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>{{$pack->destinations()->first()->name}}</small>
-                                <small class="m-0"><i class="fa fa-calendar-alt text-primary mr-2"></i>{{$pack->number_of_days}} days</small>
-                                {{--<small class="m-0"><i class="fa fa-user text-primary mr-2"></i>{{$pack->number_of_people}} Person</small>--}}
-                            </div>
-                            <a class="h5 text-decoration-none" href="{{route('packages',['id'=>$pack->id])}}" wire:navigate>{{$pack->summary}}</a>
-                            <div class="border-top mt-4 pt-4">
-                                <div class="d-flex justify-content-between">
-                                    <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5 <small>(250)</small></h6>
-                                    {{--<h5 class="m-0">${{number_format($pack->price)}}</h5>--}}
-                                    <a href="{{route('packages',['id'=>$pack->id])}}" class="btn btn-primary border-radius " wire:navigate>Book now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @livewire('package-card', ['pack' => $pack])
                 @empty
                 <div class="col">
                     <p>No packages found</p>
