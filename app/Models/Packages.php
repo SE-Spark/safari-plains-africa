@@ -13,6 +13,7 @@ class Packages extends Model
     protected $fillable = [
         'id',
         'name',
+        'image_urls',
         'summary',
         'description',
         'price',

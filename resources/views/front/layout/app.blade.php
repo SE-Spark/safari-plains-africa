@@ -23,6 +23,59 @@
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{asset('front/css/style.css')}}" rel="stylesheet">    
     @vite(['resources/css/app.css','resources/js/app.js'])
+    <style>
+   
+   @media (min-width: 768px) {
+       .img-fluid {
+           height: 230px !important;
+           width: 100% !important;
+       }
+   }
+
+   @media (min-width: 1200px) {
+       .img-fluid {
+           height: 240px !important;
+           width: 100% !important;
+       }
+       .img-fluid.mono{
+           width: 50% !important;
+       }
+   }
+
+   @media (min-width: 1400px) {
+       .img-fluid {
+           height: 290px !important;
+           width: 100% !important;
+       }
+       .img-fluid.mono{
+           width: 50% !important;
+       }
+   }
+
+   .modal-dialog-bottom {
+    /* display: flex;
+    justify-content: center;
+    align-items: flex-end; */
+    /* min-height: 90vh; */
+    margin: 0 !important;
+    padding: 0 !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    top: 0 !important;
+    left: auto !important;
+    right: 0 !important;
+    height: 100% !important;
+}
+
+/* .modal.fade .modal-dialog {
+    transition: transform 0.3s ease-out;
+}
+
+.modal.fade.show .modal-dialog {
+    transform: translateY(0);
+} */
+
+</style>
 </head>
 
 <body>

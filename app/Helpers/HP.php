@@ -22,9 +22,11 @@ class HP
         }
     }
 
-    public static function setUnitAddedSuccessFlash(){
-        session()->flash('success', 'Unit Created Successfully!!');
+   
+    public static function setUnitAddedSuccessFlash($message='Unit Created Successfully!!'){
+        session()->flash('success', $message);
     }
+
     public static function setUnitUpdatedSuccessFlash(){
         session()->flash('success', 'Unit Updated Successfully!!');
     }
