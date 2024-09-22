@@ -4,16 +4,14 @@ namespace App\Livewire\Front;
 
 use Livewire\Component;
 use App\Helpers\HP;
-use App\Repository\DestinationsRepository;
 use Illuminate\Support\Facades\Log;
-use App\Repository\{PackagesRepository, CountriesRepository, EnquiryRepository};
+use App\Repository\{PackagesRepository, EnquiryRepository};
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Mail\Message;
 
 class Packagecontroller extends Component
 {
-    public $packages,$package;       
-    public $dest_options,$country_options;    
+    public $packages,$package;         
     public $name, $email, $subject, $message;
     public $showMore = false;
     public $isBooking = false;
@@ -23,11 +21,11 @@ class Packagecontroller extends Component
         'subject' => 'required',
         'message' => 'required',
     ];
-    public function mount(PackagesRepository $packagesRepository,DestinationsRepository $destinationService, CountriesRepository $countriesRepository)
+    public function mount(PackagesRepository $packagesRepository)
     {
-        $this->packages = $packagesRepository->getAll()->where('status',1);
-        $this->dest_options = $destinationService->get()->where('status',1)->get(['id','name']);
-        $this->country_options = $countriesRepository->get()->where('status',1)->get(['id','name']);
+        $countryName = request()->query('country');
+        $destinationName = request()->query('destination');
+        $this->packages = $packagesRepository->getFilteredPackages($countryName,$destinationName);
         if(request()->route('id')){
             $this->showMoreDetails(request()->route('id'));
         }
@@ -40,7 +38,8 @@ class Packagecontroller extends Component
     
     public function showMoreDetails($id)
     {
-        $this->package = $this->packages->where('id',$id)->first();
+        $package_id = HP::extractIdFromSlug($id);
+        $this->package = $this->packages->where('id',$package_id)->first();
         $this->showMore = true;
     }
     public function saveEnquery(EnquiryRepository $enquiryRepository)

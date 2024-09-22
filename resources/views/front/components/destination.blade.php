@@ -11,7 +11,7 @@
                 <div class="col-lg-4 col-md-6 mb-2">
                     <div class="destination-item position-relative overflow-hidden mb-2">
                         <img class="img-fluid" src="{{\App\Helpers\HP::getImgUrl($dest->image_url)}}" alt="">
-                        <a class="destination-overlay text-white text-decoration-none" href="{{route('destinations',['id'=>$dest->id])}}" wire:navigate>
+                        <a class="destination-overlay text-white text-decoration-none" href="{{ route('destinations', ['id' => \App\Helpers\HP::generateSlug($dest->id,$dest->name)]) }}" wire:navigate>
                             <h5 class="text-white">{{$dest->name.' in '.$dest->country->name}}</h5>
                             <span>{{$dest->packages->count()??0}} Package(s)</span>
                         </a>

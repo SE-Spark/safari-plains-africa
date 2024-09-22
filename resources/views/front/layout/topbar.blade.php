@@ -27,6 +27,9 @@
                         <a class="text-primary pl-3" href="#">
                             <i class="fab fa-youtube"></i>
                         </a>
+                        <a class="text-primary pl-3" href="https://api.whatsapp.com/send?phone=254733373221&text=Hi%21%20I%20would%20like%20more%20information%20about%20Safari%20Plains%20Africa%20.">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -3,14 +3,13 @@
 namespace App\Livewire\Front;
 
 use App\Helpers\HP;
-use App\Repository\{EnquiryRepository,DestinationsRepository, CountriesRepository};
+use App\Repository\{EnquiryRepository};
 use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 
 class Contactcontroller extends Component
 {
     private $enquiryRepository;
-    public $dest_options,$country_options;
     public $name, $email, $subject, $message;
 
     protected $rules = [
@@ -20,11 +19,9 @@ class Contactcontroller extends Component
         'message' => 'required',
     ];
 
-    public function mount(EnquiryRepository $enquiryRepository,DestinationsRepository $destinationService, CountriesRepository $countriesRepository)
+    public function mount(EnquiryRepository $enquiryRepository)
     {
         $this->enquiryRepository = $enquiryRepository;
-        $this->dest_options = $destinationService->get()->where('status',1)->get(['id','name']);
-        $this->country_options = $countriesRepository->get()->where('status',1)->get(['id','name']);
     }
     public function render()
     {

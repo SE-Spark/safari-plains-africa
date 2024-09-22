@@ -63,7 +63,7 @@ final class TestimonialTable extends PowerGridComponent
             Column::make('Message', 'message')
                 ->sortable(),
 
-            Column::make('Profession', 'profession')
+            Column::make('Author', 'profession')
                 ->sortable(),
             Column::make('Status', 'status'),
             Column::action('Action')
