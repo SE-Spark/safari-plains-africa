@@ -15,7 +15,7 @@
      </div>
      <!-- Header End -->
 
-     @include('front.components.booking')
+     @livewire('home-filter-card')
 
 
      <!-- Contact Start -->

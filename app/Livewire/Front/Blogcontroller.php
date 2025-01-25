@@ -3,23 +3,21 @@
 namespace App\Livewire\Front;
 
 use Livewire\Component;
-use App\Repository\{BlogcategoryRepository,BlogpostRepository,BlogcommentRepository, DestinationsRepository, CountriesRepository};
+use App\Repository\{BlogcategoryRepository,BlogpostRepository,BlogcommentRepository};
 use Livewire\Attributes\On;
 
 class Blogcontroller extends Component
 {
     public $posts, $post, $header,$subheader, $currentIndex=0, $new_comment_content, $new_comment_postid;
-    public $dest_options,$country_options,$categories;
+    public $categories;
     public $select_postid,$showMore = false;
-    public function mount(BlogcategoryRepository $blogcategoryRepository,BlogpostRepository $blogpostService,DestinationsRepository $destinationService, CountriesRepository $countriesRepository)
+    public function mount(BlogcategoryRepository $blogcategoryRepository,BlogpostRepository $blogpostService)
     {
         if (request()->route('id')) {
             $blogpostService->addView(request()->route('id'));
             $this->new_comment_postid = request()->route('id');
             $this->showMoreDetails(request()->route('id'));            
         }        
-        $this->dest_options = $destinationService->get()->where('status',1)->get(['id','name']);
-        $this->country_options = $countriesRepository->get()->where('status',1)->get(['id','name']);
         $this->posts = $blogpostService->getAll()->where('is_published', 1);
         $this->categories  = $blogcategoryRepository->getAll();
     }

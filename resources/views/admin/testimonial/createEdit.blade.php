@@ -27,12 +27,12 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>{{__(" Profession")}}</label>
+                                <label>{{__(" Author")}}</label>
                                 <input type="text" class="form-control @error('profession') is-invalid @enderror" wire:model="profession">
                                 @error('profession') <span class="text-danger error">{{ $message }}</span>@enderror
                             </div>
                         </div>
-                    </div>                   
+                    </div>              
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">

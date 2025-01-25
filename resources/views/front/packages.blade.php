@@ -15,7 +15,7 @@
     <!-- Header End -->
 
 
-    @include('front.components.booking')
+    @livewire('home-filter-card')
 
 
     <!-- Packages Start -->
@@ -33,7 +33,7 @@
                         <div class="col">
                             <p>No packages found</p>
                         </div>
-                    @endforelse                    
+                    @endforelse
                 </div>
             @else
                 <div class="row">
@@ -41,12 +41,15 @@
                         <div class="pb-3">
                             <div class="bg-white mb-3" style="padding: 30px; border-radius:8px;">
                                 <img class="img-fluid mono w-50 float-left mr-4 mb-4"
-                                    src="{{\App\Helpers\HP::getImgUrl($package->destinations()->first()->image_url)}}">
+                                    src="{{\App\Helpers\HP::getImgUrl(!empty($package->image_urls) ? explode(',', $package->image_urls)[0] : $package->destinations()->first()->image_url) }}">
 
                                 <h3 class="mb-3">{!!$package->summary!!}</h3>
                                 <div class="d-flex justify-content-between mb-3">
-                                    <small class="m-0"><i
-                                            class="fa fa-map-marker-alt text-primary mr-2"></i>{{$package->destinations()->first()->name}}</small>
+                                    <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>
+                                        @foreach($package->destinations as $key => $dest)
+                                            {{ $dest->name }}{{ $key < $package->destinations->count() - 1 ? ', ' : '' }}
+                                        @endforeach
+                                    </small>
                                     <small class="m-0"><i
                                             class="fa fa-calendar-alt text-primary mr-2"></i>{{$package->number_of_days}}
                                         days</small>
@@ -96,8 +99,8 @@
                             </div>
                             <div class="modal-body">
                                 <!-- <img class="img-fluid"
-                            src="{{ \App\Helpers\HP::getImgUrl(!empty($package->image_urls) ? explode(',', $package->image_urls)[0] : $package->destinations()->first()->image_url) }}"
-                            alt=""> -->
+                                src="{{ \App\Helpers\HP::getImgUrl(!empty($package->image_urls) ? explode(',', $package->image_urls)[0] : $package->destinations()->first()->image_url) }}"
+                                alt=""> -->
                                 <div class="p-4">
                                     <a class="h5 text-decoration-none" href="javascript:;">
                                         {!! $package->summary !!}

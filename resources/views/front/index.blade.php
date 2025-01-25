@@ -17,8 +17,7 @@
                 <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                     <div class="p-3" style="max-width: 900px;">
                         <h1 class="text-white text-uppercase mb-md-3">Safari Plains Africa</h1>
-                        <h4 class="display-5 text-white mb-md-4">An Africa-based, family-run tour company with trusted partners abroad since 2002
-                            </h4>                        
+                        <h4 class="display-5 text-white mb-md-4">Eco-friendly journeys, unforgettable memories, with responsible exploration.</h4>                        
                     </div>
                 </div>
             </div>
@@ -48,7 +47,7 @@
 </div>
 <!-- Carousel End -->
 
-@include('front.components.booking')
+@livewire('home-filter-card')
 @include('front.components.about')
 @include('front.components.feature')
 @include('front.components.services')
