@@ -61,7 +61,7 @@ Route::get('/contact',\App\Livewire\Front\Contactcontroller::class)->name('conta
 Route::get('/about',\App\Livewire\Front\Aboutcontroller::class)->name('about');
 Route::get('/destinations/{id?}',\App\Livewire\Front\Destinationcontroller::class)->name('destinations');
 Route::get('/auth/account/forget', \App\Livewire\ForgetResetAccountController::class)->name('account.auth.forget');
-
+Route::get('/enquiry',\App\Livewire\Front\EnquiryController::class)->name('enquiry');
 Route::get('password/reset/{token}', \App\Livewire\ForgetResetAccountController::class)->name('password.reset');
 
 Route::get('/clear-cache', function() {
