@@ -134,7 +134,13 @@
     <h1>{{$package->name}}</h1>
     <p>{{$package->tag}}</p>
 
-    <p>Destinations</p>
+    <div class="row">
+        <div class="col-12 mb-2">
+            <img src="{{ \App\Helpers\HP::getImgUrl(!empty($package->image_urls) ? explode(',', $package->image_urls)[0] : $package->destinations()->first()->image_url) }}"
+                style="width: 100%; height: auto;" alt="default Image">
+        </div>
+    </div>
+    <h5>Destinations</h5>
     <div class="row">
         @foreach (json_decode($package->dest_days, true) ?? [] as $item)
             <div class="col-md-4">
@@ -145,7 +151,8 @@
                     </div>
                     <div style="width: 170px; height: 100%; overflow: hidden;">
                         @if (!empty($item['image']) && $item['image'] != '')
-                            <img src="{{ asset('assets/images/'.$item['image']) }}" style="width: 100%; height: auto;" alt="Destination Image">
+                            <img src="{{ asset('assets/images/' . $item['image']) }}" style="width: 100%; height: auto;"
+                                alt="Destination Image">
                         @endif
                     </div>
                 </div>
@@ -163,7 +170,7 @@
             <a href="{{route('enquiry')}}" class="btn btn-primary mt-3">Start Planning</a>
         </div>
         <div class="col-md-6 col-12 p-4" style="background-color: #BAAD85 !important;">
-        {!! $package->haves_and_not_haves !!}
+            {!! $package->haves_and_not_haves !!}
         </div>
     </div>
 
@@ -171,13 +178,13 @@
     <div class="trip-highlights mt-5">
         <h2 class="section-title">Trip Highlights</h2>
         <div class="row">
-        @foreach (json_decode($package->trip_highlights, true) ?? [] as $step)
-            <div class="col-md-6">
-                <ul class="highlight-list">
-                    <li>{{$step['name']}}</li>
-                    
-                </ul>
-            </div>
+            @foreach (json_decode($package->trip_highlights, true) ?? [] as $step)
+                <div class="col-md-6">
+                    <ul class="highlight-list">
+                        <li>{{$step['name']}}</li>
+
+                    </ul>
+                </div>
             @endforeach
         </div>
     </div>
@@ -208,7 +215,7 @@
                             <div class="row d-flex content-justify-center">
                                 <div class="col-md-6">
                                     @if ($step['image'])
-                                        <img src="{{ asset('assets/images/'.$step['image']) }}" class="img-fluid mt-3"
+                                        <img src="{{ asset('assets/images/' . $step['image']) }}" class="img-fluid mt-3"
                                             alt="{{ $step['location'] }}">
                                     @endif
 
@@ -220,7 +227,7 @@
                                 <h3 class="stay-title">Where to stay</h3>
                                 <div class="stay-container">
                                     <div class="stay-image">
-                                        <img src="{{ asset('assets/images/'.$step['stay_loc_image']) }}" class="img-fluid"
+                                        <img src="{{ asset('assets/images/' . $step['stay_loc_image']) }}" class="img-fluid"
                                             alt="{{ $step['stay_name'] }}">
                                     </div>
                                     <div class="stay-details">
