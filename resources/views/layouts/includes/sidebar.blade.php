@@ -29,6 +29,11 @@
       </a>
     </li>
     <li class="nav-item">
+      <a class="nav-link @if(request()->route()->getName() == 'admin.iternaries') active @else collapsed @endif" href="{{route('admin.iternaries')}}" wire:navigate>
+        <i class="bi bi-box"></i><span>Iternaries</span>
+      </a>
+    </li>
+    <li class="nav-item">
       <a class="nav-link @if(request()->route()->getName() == 'admin.testimonials') active @else collapsed @endif" href="{{route('admin.testimonials')}}" wire:navigate>
         <i class="bi bi-yelp"></i><span>Testimonials</span>
       </a>

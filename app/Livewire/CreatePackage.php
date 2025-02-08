@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\File;
 use Livewire\WithFileUploads;
 
 class CreatePackage extends Component
-{
+{// CreateIternary
     use WithFileUploads;
     public $modalTitle = "Create Package";
     public $name, $summary, $description, $number_of_days, $status, $destinationId = [], $group_id, $destinations, $groups, $price = 140, $number_of_people = 4, $start_date, $end_date;

@@ -17,13 +17,13 @@
                 </small>
             </div>
 
-            <a class="h5 text-decoration-none" href="{{ route('packages', ['id' => \App\Helpers\HP::generateSlug($pack->id,$pack->name)]) }}" wire:navigate>
+            <a class="h5 text-decoration-none" href="{{ route('packages.iternary', ['id' => \App\Helpers\HP::generateSlug($pack->id,$pack->name)]) }}" wire:navigate>
                 {!! $pack->summary !!}
             </a>
 
             <div class="border-top mt-4 pt-4">
                 <div class="d-flex justify-content-between">
-                    <a href="{{ route('packages', ['id' => \App\Helpers\HP::generateSlug($pack->id,$pack->name)]) }}" class="btn btn-primary border-radius" wire:navigate>
+                    <a href="{{ route('packages.iternary', ['id' => \App\Helpers\HP::generateSlug($pack->id,$pack->name)]) }}" class="btn btn-primary border-radius" wire:navigate>
                         <i>Enquire now</i>
                     </a>
                 </div>
