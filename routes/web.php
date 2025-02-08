@@ -35,6 +35,9 @@ Route::group(['middleware' => ['web', 'auth']], function () {
         Route::get('/admin/packages', \App\Livewire\Packages::class)->name('admin.packages');
         Route::get('/admin/package/create', \App\Livewire\CreatePackage::class)->name('admin.package.create');
         Route::get('/admin/package/{selection}/edit', \App\Livewire\CreatePackage::class)->name('admin.package.edit');
+        Route::get('/admin/iternary/create', \App\Livewire\CreateIternary::class)->name('admin.iternary.create');
+        Route::get('/admin/iternary/{selection}/edit', \App\Livewire\CreateIternary::class)->name('admin.iternary.edit');
+        Route::get('/admin/iternaries', \App\Livewire\Iternaries::class)->name('admin.iternaries');
         Route::get('/payments', \App\Livewire\Payments::class)->name('admin.payments');
         Route::get('/testimonials', \App\Livewire\Testimonial::class)->name('admin.testimonials');
         Route::get('/users', \App\Livewire\Users::class)->name('admin.users');
@@ -62,6 +65,7 @@ Route::get('/about',\App\Livewire\Front\Aboutcontroller::class)->name('about');
 Route::get('/destinations/{id?}',\App\Livewire\Front\Destinationcontroller::class)->name('destinations');
 Route::get('/auth/account/forget', \App\Livewire\ForgetResetAccountController::class)->name('account.auth.forget');
 Route::get('/enquiry',\App\Livewire\Front\EnquiryController::class)->name('enquiry');
+Route::get('/packages/{id}/iternary',\App\Livewire\Front\IternaryController::class)->name('packages.iternary');
 Route::get('password/reset/{token}', \App\Livewire\ForgetResetAccountController::class)->name('password.reset');
 
 Route::get('/clear-cache', function() {

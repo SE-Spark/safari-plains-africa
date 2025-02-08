@@ -23,6 +23,11 @@ class Packages extends Model
         'start_date',
         'end_date',
         'status',
+        'tag',
+        'iternary_details', // Add this line
+        'haves_and_not_haves', // Add this line
+        'trip_highlights', // Add this line
+        'dest_days', // Add this line
     ];
     protected $casts = [
         'start_date' => 'date',
