@@ -134,6 +134,12 @@
     <h1>The Ultimate Kenyan Safari</h1>
     <p>Explore the breathtaking landscapes and wildlife of Kenya.</p>
 
+    <div class="row">
+        <div class="col-12 mb-2">
+            <img src="{{$itinerary[0]['image']}}"
+                style="width: 100%; height: auto;" alt="default Image">
+        </div>
+    </div>
     <p>Destinations</p>
     <div class="row">
         @foreach ($itinerary as $item)
@@ -168,7 +174,7 @@
                 <li>Amboseli National Park</li>
                 <li>Ol Pejeta Conservancy</li>
             </ul>
-            <a href="#" class="btn btn-primary mt-3">Start Planning</a>
+            <a href="{{route('enquiry')}}" class="btn btn-primary mt-3">Start Planning</a>
         </div>
         <div class="col-md-6 col-12 p-4" style="background-color: #BAAD85 !important;">
             <h4>Included</h4>
@@ -271,7 +277,7 @@
                 </div>
             </div>
         @endforeach
-        <a href="#" class="btn btn-primary mt-3">Book now</a>
+        <a href="{{route('enquiry')}}" class="btn btn-primary mt-3">Book now</a>
     </div>
 
 </div>

@@ -67,6 +67,7 @@ Route::get('/auth/account/forget', \App\Livewire\ForgetResetAccountController::c
 Route::get('/enquiry',\App\Livewire\Front\EnquiryController::class)->name('enquiry');
 Route::get('/packages/{id}/iternary',\App\Livewire\Front\IternaryController::class)->name('packages.iternary');
 Route::get('password/reset/{token}', \App\Livewire\ForgetResetAccountController::class)->name('password.reset');
+Route::get('/iternary',\App\Livewire\Front\IternaryTestController::class)->name('test.iternary');
 
 Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');
