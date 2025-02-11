@@ -117,39 +117,48 @@
 
         .background-image {
             width: 100%;
-  background-image: url('/front/img/enquiry.png');
-  background-size: cover;
-  background-position: center;
-  height: 100vh; 
-}
-.custom-center {
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically if needed */
-    text-align: center; /* Center text */
-    min-height: 100vh; /* Full viewport height */
-}
+            background-image: url('/front/img/enquiry.png');
+            background-size: cover;
+            background-position: center;
+            opacity: .7;
+            height: 100vh;
+        }
 
-.btn-radio input[type="radio"] {
-        display: none; /* Hide default radio button */
-    }
+        .custom-center {
+            display: flex;
+            justify-content: center;
+            /* Center horizontally */
+            align-items: center;
+            /* Center vertically if needed */
+            text-align: center;
+            /* Center text */
+            min-height: 100vh;
+            /* Full viewport height */
+        }
 
-    .btn-radio input[type="radio"]:checked + label {
-        background-color: #0d6efd; 
-        color: white;
-        border-color: #0d6efd;
-    }
-    .checked{
-        background-color: #7AB730 !important;
-        color: white;
-        border-color: #7AB730;
-    }
+        .btn-radio input[type="radio"] {
+            display: none;
+            /* Hide default radio button */
+        }
 
-    .btn-radio {
-        margin: 5px;
-    }
+        .btn-radio input[type="radio"]:checked+label {
+            background-color: #0d6efd;
+            color: white;
+            border-color: #0d6efd;
+        }
+
+        .checked {
+            background-color: #7AB730 !important;
+            color: white;
+            border-color: #7AB730;
+        }
+
+        .btn-radio {
+            width: 100% !important;
+            margin: 5px;
+        }
     </style>
-    
+
 </head>
 
 <body>
