@@ -10,6 +10,7 @@
         font-size: 24px;
         font-weight: bold;
         margin-bottom: 20px;
+        text-align: center;
     }
 
     /* Highlight List Styling */
@@ -52,10 +53,10 @@
         position: absolute;
         left: 5px;
         /* Align with marker */
-        top: 0;
+        top: 75px;
         /* Start at the very top */
         width: 2px;
-        height: 100%;
+        height: calc(100% - 75px);
         /* background-color: #ccc; */
         border-left: 2px dashed #ccc;
     }
@@ -69,7 +70,7 @@
         position: absolute;
         left: -31px;
         /* Adjust so that the circle centers on the line */
-        top: 0;
+        top: 75px;
         /* Push marker to the top of the step */
         width: 12px;
         height: 12px;
@@ -130,9 +131,18 @@
         color: #6d6d6d;
     }
 </style>
-<div class="container-fluid">
+<div class="container">
     <h1>{{$package->name}}</h1>
-    <p>{{$package->tag}}</p>
+    {{--<p>{{$package->tag}}</p>--}}
+    
+    <div class="row">
+        <div class="col-md-2 col mb-2">
+            <p><b>Duration</b> <br> {{$package->number_of_days}} days</p>
+        </div>
+        <div class="col-md-2 col mb-2">
+            <p><b>Price</b> <br> From {{ number_format($package->price) }} USD</p>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-12 mb-2">
@@ -164,8 +174,10 @@
 
     <!-- Itinerary in detail -->
     <div class="row mt-5">
-        <div class="col-md-6 col-12">
+        <div class="col-12 d-flex justify-content-center">
             <h2>Itinerary in Detail</h2>
+        </div>
+        <div class="col-md-6 col-12">
             {!! $package->iternary_details !!}
             <a href="{{route('enquiry')}}" class="btn btn-primary mt-3">Start Planning</a>
         </div>
@@ -191,7 +203,7 @@
 
 
     <!-- Journey Details Section -->
-    <div class="journeys mb-2">
+    <div class="journeys d-flex justify-content-center mb-2">
         <h2>Journey Details</h2>
     </div>
 
@@ -203,19 +215,21 @@
                     <div class="row mt-5">
                         <div class="col-md-12">
                             <div class="row">
-                                <div class="col-md-6 col-6">
-                                    <h3>{{ $step['days'] }}</h3>
-                                    <h4>{{ $step['location'] }}</h4>
+                                <div class="col-md-4 col-6">
+                                    <p style="font-size: 20px;">{{ $step['days'] }}</p>
+                                    <br/>
+                                    <br/>
+                                    <h3>{{ $step['location'] }}</h3>
                                 </div>
-                                <div class="col-md-6 col-6">
+                                <div class="col-md-8 col-6">
                                     <p>{{ $step['description'] }}</p>
 
                                 </div>
                             </div>
-                            <div class="row d-flex content-justify-center">
-                                <div class="col-md-6">
+                            <div class="row d-flex justify-content-end pt-3">
+                                <div class="col-md-8 col-12">
                                     @if ($step['image'])
-                                        <img src="{{ asset('assets/images/' . $step['image']) }}" class="img-fluid mt-3"
+                                        <img src="{{ asset('assets/images/' . $step['image']) }}" style="width: 100%; height: auto;"
                                             alt="{{ $step['location'] }}">
                                     @endif
 
