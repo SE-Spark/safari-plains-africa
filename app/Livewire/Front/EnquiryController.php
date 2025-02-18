@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Mail;
 
 class EnquiryController extends Component
 {
-    public $currentStep = 1;
+    public $currentStep = 8;//5;
     public $q1;
     public $destination;
     public $travelTime;
@@ -22,8 +22,9 @@ class EnquiryController extends Component
     public $tripDetails;
     public $email;
     public $firstName;
-    public $surname;
-    public $contactMethod;
+    public $country;
+    public $phone;
+    public $contactMethod, $phone_country;
 
     // Define validation rules
     protected function rules()
@@ -53,7 +54,32 @@ class EnquiryController extends Component
 
     public function setStep($step)
     {
-        $this->currentStep = $step;
+        if($step==6 && in_array($this->travelCompanions,['solo','couple']))
+        {
+            $this->currentStep = 8;
+        }
+        else if($step== 7){
+            $this->currentStep = 8;
+        }
+        else{
+            $this->currentStep = $step;
+        }
+    }
+    public function setBack($step){
+        if($step==6 && in_array($this->travelCompanions,['solo','couple']))
+        {
+            $this->currentStep = 5;
+        }
+        else if($step==7 && in_array($this->travelCompanions,['solo','couple']))
+        {
+            $this->currentStep = 5;
+        }
+        else if($step== 7){
+            $this->currentStep = 6;
+        }
+        else{
+            $this->currentStep = $step;
+        }
     }
     public function setQ1($q1)
     {
@@ -111,6 +137,75 @@ class EnquiryController extends Component
     }
 
     public function submit()
+    {
+        // $this->validate();
+        // Handle form submission logic here
+        // Access the input values directly without validation
+        $travelCompanions=$this->travelCompanions;
+        $adults = $this->adults;
+        $teenagers = $this->teenagers;
+        $children = $this->children;
+        $email = $this->email;
+        $firstName = $this->firstName;
+        $country = $this->country;
+        $phone = $this->phone;
+        $contactMethod = $this->contactMethod;
+
+        // Handle the input values as needed
+        // For example, you could save them to the database or send an email
+        $data = [
+            'travelCompanions' => $travelCompanions,
+            'adults' => $adults,
+            'teenagers' => $teenagers,
+            'children' => $children,
+            'country' => $country,
+            'email' => $email,
+            'firstName' => $firstName,
+            'phone' => $phone,
+            'contactMethod' => $contactMethod,
+        ];
+        // Example: Log the values
+        \Log::info('Submitted data:', [
+            'travelCompanions' => $travelCompanions,
+            'adults' => $adults,
+            'teenagers' => $teenagers,
+            'children' => $children,
+            'email' => $email,
+            'firstName' => $firstName,
+            'contactMethod' => $contactMethod,
+        ]);
+
+        // Map the short answers to full-text answers
+        $questionsAndAnswers = [
+            [
+                'question' => "Who are you travelling with?",
+                'answer' => match ($data['travelCompanions']) {
+                    'couple' => 'COUPLE',
+                    'solo' => 'SOLO',
+                    'family' => 'FAMILY',
+                    'friends' => 'FRIENDS',
+                    default => 'N/A'
+                }
+            ],
+            [
+                'question' => "How many travelers?",
+                'answer' => "Adults: {$data['adults']}, Teenagers: {$data['teenagers']}, Children: {$data['children']}"
+            ],
+            [
+                'question' => "Your details",
+                'answer' => "Email: {$data['email']}, First Name: {$data['firstName']}, Country: {$data['country']}, Phone: {$data['phone']}, Preferred Contact Method: {$data['contactMethod']}"
+            ]
+        ];
+        $emailContent = "Travel Enquiry Details:<br/>";
+        foreach ($questionsAndAnswers as $question => $item) {
+            $emailContent .= $item['question'] . ": " . $item['answer'] . "<br/>";
+        }
+        Mail::raw($emailContent, function ($message) {
+            $message->to(env('MAIL_PRIMARY'))
+                ->subject('Travel Enquiry');
+        });
+    }
+    public function submit_old()
     {
         // $this->validate();
         // Handle form submission logic here
@@ -220,7 +315,6 @@ class EnquiryController extends Component
                 ->subject('Travel Enquiry');
         });
     }
-
     public function render()
     {
         return view('front.enquiry')->layout('front.layout.app');

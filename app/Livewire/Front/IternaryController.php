@@ -5,82 +5,23 @@ namespace App\Livewire\Front;
 use Livewire\Component;
 use App\Helpers\HP;
 use App\Repository\{PackagesRepository, EnquiryRepository};
+use Illuminate\Support\Facades\Mail;
 
 class IternaryController extends Component
 {
     public $package;
-
-    public $itinerary = [
-        [
-            'days' => 'Days 1–2',
-            'location' => 'Overnight in Nairobi',
-            'description' => 'Upon arrival at Jomo Kenyatta International Airport, enjoy a seamless transfer to Palacina Residential Hotel...',
-            'image' => 'assets/images/66bf16d30c5c41723799251.jpg',
-            'stay_location' => 'Nairobi',
-            'stay_loc_image' => 'assets/images/66c0730a8343c1723888394.jpg',
-            'stay_name' => 'Palacina The Residence & The Suites',
-            'stay_description' => 'Centrally located in the leafy State House area of Nairobi...',
-        ],
-        [
-            'days' => 'Days 3–4',
-            'location' => 'Maasai Mara National Reserve',
-            'description' => 'Experience the breathtaking landscapes and wildlife of the Maasai Mara...',
-            'image' => 'assets/images/66bf16d30c5c41723799251.jpg',
-            'stay_location' => 'Maasai Mara',
-            'stay_loc_image' => 'assets/images/66c0730a8343c1723888394.jpg',
-            'stay_name' => 'Mara Serena Safari Lodge',
-            'stay_description' => 'Set on a hilltop with stunning views of the Mara River...',
-        ],
-        [
-            'days' => 'Days 5–6',
-            'location' => 'Lake Nakuru National Park',
-            'description' => 'Famous for its flamingos and diverse wildlife, enjoy game drives and bird watching.',
-            'image' => 'assets/images/66bf16d30c5c41723799251.jpg',
-            'stay_location' => 'Lake Nakuru',
-            'stay_loc_image' => 'assets/images/66c0730a8343c1723888394.jpg',
-            'stay_name' => 'Lake Nakuru Lodge',
-            'stay_description' => 'Located within the park, this lodge offers comfortable accommodation...',
-        ],
-        [
-            'days' => 'Days 7–8',
-            'location' => 'Amboseli National Park',
-            'description' => 'Home to large herds of elephants and stunning views of Mount Kilimanjaro.',
-            'image' => 'assets/images/66bf16d30c5c41723799251.jpg',
-            'stay_location' => 'Amboseli',
-            'stay_loc_image' => 'assets/images/66c0730a8343c1723888394.jpg',
-            'stay_name' => 'Amboseli Serena Safari Lodge',
-            'stay_description' => 'Set against the backdrop of Mount Kilimanjaro...',
-        ],
-        [
-            'days' => 'Days 9–10',
-            'location' => 'Ol Pejeta Conservancy',
-            'description' => 'Visit the sanctuary for endangered species and enjoy a night game drive.',
-            'image' => 'assets/images/66bf16d30c5c41723799251.jpg',
-            'stay_location' => 'Ol Pejeta',
-            'stay_loc_image' => 'assets/images/66c0730a8343c1723888394.jpg',
-            'stay_name' => 'Ol Pejeta Bush Camp',
-            'stay_description' => 'A luxury tented camp that offers an authentic safari experience...',
-        ],
-        [
-            'days' => 'Days 11–12',
-            'location' => 'Samburu National Reserve',
-            'description' => 'Known for its unique wildlife and stunning landscapes, enjoy game drives...',
-            'image' => 'assets/images/66bf16d30c5c41723799251.jpg',
-            'stay_location' => 'Samburu',
-            'stay_loc_image' => 'assets/images/66c0730a8343c1723888394.jpg',
-            'stay_name' => 'Samburu Intrepids Tented Camp',
-            'stay_description' => 'Located along the Ewaso Nyiro River...',
-        ],
-        [
-            'days' => 'Day 13',
-            'location' => 'Departure',
-            'description' => 'Transfer back to Nairobi for your departure flight, concluding your unforgettable safari adventure.',
-            'image' => '',
-            'stay_location' => '',
-            'stay_name' => '',
-            'stay_description' => '',
-        ],
-    ];
+    // BOOK FORM FIELDS
+    public $currentStep = 2;
+    public $travelCompanions;
+    public $adults = 0;
+    public $teenagers = 0;
+    public $children = 0;
+    public $email;
+    public $firstName;
+    public $country;
+    public $phone;
+    public $contactMethod;
+    // END OF BOOK FORM FIELDS
 
     public function mount(PackagesRepository $packagesRepository)
     {
@@ -100,5 +41,121 @@ class IternaryController extends Component
     public function render()
     {
         return view('front.iternary')->layout('front.layout.app');
+    }
+    
+    
+    public function setStep($step)
+    {
+        $this->currentStep = $step;
+    }
+   
+    // public function setTravelCompanions($type)
+    // {
+    //     $this->travelCompanions = $type;
+    // }
+
+    // public function incrementAdults()
+    // {
+    //     $this->adults++;
+    // }
+
+    // public function decrementAdults()
+    // {
+    //     if ($this->adults > 0) {
+    //         $this->adults--;
+    //     }
+    // }
+
+    // public function incrementTeenagers()
+    // {
+    //     $this->teenagers++;
+    // }
+
+    // public function decrementTeenagers()
+    // {
+    //     if ($this->teenagers > 0) {
+    //         $this->teenagers--;
+    //     }
+    // }
+
+    // public function incrementChildren()
+    // {
+    //     $this->children++;
+    // }
+
+    // public function decrementChildren()
+    // {
+    //     if ($this->children > 0) {
+    //         $this->children--;
+    //     }
+    // }
+    public function submit()
+    {
+        // $this->validate();
+        // Handle form submission logic here
+        // Access the input values directly without validation
+        $travelCompanions = $this->travelCompanions;
+        $adults = $this->adults;
+        $teenagers = $this->teenagers;
+        $children = $this->children;
+        $email = $this->email;
+        $firstName = $this->firstName;
+        $country = $this->country;
+        $phone = $this->phone;
+        $contactMethod = $this->contactMethod;
+
+        // Handle the input values as needed
+        // For example, you could save them to the database or send an email
+        $data = [
+            'travelCompanions' => $travelCompanions,
+            'adults' => $adults,
+            'teenagers' => $teenagers,
+            'children' => $children,
+            'country' => $country,
+            'email' => $email,
+            'firstName' => $firstName,
+            'phone' => $phone,
+            'contactMethod' => $contactMethod,
+        ];
+        // Example: Log the values
+        \Log::info('Submitted data:', [
+            'travelCompanions' => $travelCompanions,
+            'adults' => $adults,
+            'teenagers' => $teenagers,
+            'children' => $children,
+            'email' => $email,
+            'firstName' => $firstName,
+            'contactMethod' => $contactMethod,
+        ]);
+
+        // Map the short answers to full-text answers
+        $questionsAndAnswers = [
+            [
+                'question' => "Who are you travelling with?",
+                'answer' => match ($data['travelCompanions']) {
+                    'couple' => 'COUPLE',
+                    'solo' => 'SOLO',
+                    'family' => 'FAMILY',
+                    'friends' => 'FRIENDS',
+                    default => 'N/A'
+                }
+            ],
+            [
+                'question' => "How many travelers?",
+                'answer' => "Adults: {$data['adults']}, Teenagers: {$data['teenagers']}, Children: {$data['children']}"
+            ],
+            [
+                'question' => "Your details",
+                'answer' => "Email: {$data['email']}, First Name: {$data['firstName']}, Country: {$data['country']}, Phone: {$data['phone']}, Preferred Contact Method: {$data['contactMethod']}"
+            ]
+        ];
+        $emailContent = "Travel Enquiry Details:<br/>";
+        foreach ($questionsAndAnswers as $question => $item) {
+            $emailContent .= $item['question'] . ": " . $item['answer'] . "<br/>";
+        }
+        Mail::raw($emailContent, function ($message) {
+            $message->to(env('MAIL_PRIMARY'))
+                ->subject('Travel Enquiry');
+        });
     }
 }

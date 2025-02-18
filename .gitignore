@@ -18,6 +18,7 @@ yarn-error.log
 /.idea
 /.vscode
 config.zip
+app.zip
 
 /infra
 docker-compose.yml

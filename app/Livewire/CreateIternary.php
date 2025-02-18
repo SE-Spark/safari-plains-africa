@@ -13,7 +13,7 @@ class CreateIternary extends Component
 {
     use WithFileUploads;
     public $modalTitle = "Create Package";
-    public $name, $tag, $summary, $description, $number_of_days, $status, $destinationId = [], $group_id, $destinations, $groups, $price = 140, $number_of_people = 4, $start_date, $end_date;
+    public $name, $tag, $summary, $description, $number_of_days, $status, $destinationId = [], $group_id, $destinations, $groups, $price, $number_of_people = 4, $start_date, $end_date;
 
     public $deleteId, $selectedId, $image_photos = [], $image_urls = [], $isSubmitting = false;
     public $dest_days = [
@@ -34,7 +34,7 @@ class CreateIternary extends Component
 
     protected $rules = [
         'name' => 'required',
-        'tag' => 'required',
+        'tag' => 'nullable',
         'image_photos.*' => 'required_without:selectedId',
         'summary' => 'nullable',
         'description' => 'nullable',
@@ -83,10 +83,10 @@ class CreateIternary extends Component
                 : [];
             $this->summary = $selectedPackage->summary;
             $this->description = $selectedPackage->description;
-            // $this->price = $selectedPackage->price;
+            $this->price = $selectedPackage->price;
             $this->destinationId = $selectedPackage->destinations->pluck('id') ?? [];
             $this->group_id = $selectedPackage->group_id;
-            // $this->number_of_people = $selectedPackage->number_of_people;
+            $this->number_of_people = $selectedPackage->number_of_people;
             $this->number_of_days = $selectedPackage->number_of_days;
             // $this->start_date =  \Carbon\Carbon::parse($selectedPackage->startdate)->format('Y-m-d');
             // $this->end_date = \Carbon\Carbon::parse($selectedPackage->end_date)->format('Y-m-d');

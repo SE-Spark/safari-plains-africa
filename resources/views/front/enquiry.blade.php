@@ -3,7 +3,7 @@
     <div class="container-fluid py-1 background-image">
         <div class="container py-1">
             <div class="d-flex justify-content-center align-items-center vh-100">
-                <div class="row p-4" style="background-color: #D3D3D3;border-radius:20px;">
+                <div class="row p-4" style="background-color: white;border-radius:20px; opacity:0.6;">
                     <div class="col-12">
                         @include('partials.sectionSuccessError')
                     </div>
@@ -27,14 +27,14 @@
                                     </label>
                                 </div>
                             </div>
-                            <center>
-                                <h6>This will take 1 minute to complete</h6>
-                            </center>
 
                         </div>
-                        <div class="d-flex justify-content-end text-end">
+                        <div class="d-flex justify-content-end text-end mb-4">
                             <button class="btn btn-outline-success mt-2" wire:click="setStep(2)">NEXT ></button>
                         </div>
+                        <center>
+                            <h6>This will take 1 minute to complete</h6>
+                        </center>
                     </div>
 
                     <!-- Step 2 -->
@@ -138,7 +138,7 @@
 
                     <!-- Step 4 -->
                     <div id="step-4" class="step {{$currentStep == 4 ? 'd-block' : 'd-none'}}">
-                        <button class="btn btn-transparent mt-2" wire:click="setStep(3)">
+                        <button class="btn btn-transparent mt-2" wire:click="setBack(3)">
                             < Back</button>
                                 <h2>When would you like to travel?</h2>
 
@@ -159,7 +159,7 @@
 
                     <!-- Step 5 -->
                     <div id="step-5" class="step {{$currentStep == 5 ? 'd-block' : 'd-none'}}">
-                        <button class="btn btn-transparent mt-2" wire:click="setStep(4)">
+                        <button class="btn btn-transparent mt-2 d-none" wire:click="setBack(4)">
                             < Back</button>
                                 <h2>Who are you travelling with?</h2>
 
@@ -202,7 +202,7 @@
 
                     <!-- Step 6 -->
                     <div id="step-6" class="step {{$currentStep == 6 ? 'd-block' : 'd-none'}}">
-                        <button class="btn btn-transparent mt-2" wire:click="setStep(5)">
+                        <button class="btn btn-transparent mt-2" wire:click="setBack(5)">
                             < Back</button>
                                 <h2>How many travelers?</h2>
                                 <div class="row mb-2">
@@ -248,7 +248,7 @@
 
                     <!-- Step 7 -->
                     <div id="step-7" class="step {{$currentStep == 7 ? 'd-block' : 'd-none'}}">
-                        <button class="btn btn-transparent mt-2" wire:click="setStep(6)">
+                        <button class="btn btn-transparent mt-2" wire:click="setBack(6)">
                             < Back</button>
                                 <h2>Tell us more about your trip</h2>
                                 <textarea class="form-control" wire:model="tripDetails" row="3"
@@ -262,15 +262,16 @@
 
                     <!-- Step 8 -->
                     <div id="step-8" class="step {{$currentStep == 8 ? 'd-block' : 'd-none'}}">
-                        <button class="btn btn-transparent mt-2" wire:click="setStep(7)">
+                        <button class="btn btn-transparent mt-2" wire:click="setBack(7)">
                             < Back</button>
                                 <h2>Your Details</h2>
                                 <input class="form-control mt-1" type="email" wire:model="email"
                                     placeholder="Email Address">
                                 <input class="form-control mt-1" type="text" wire:model="firstName"
                                     placeholder="First Name">
-                                <input class="form-control mt-1" type="text" wire:model="surname" placeholder="Surname">
-                                <div>
+                                <input class="form-control mt-1" type="text" wire:model="country" placeholder="Country">
+                                
+                                <div class="mt-1">
                                     <label>Preferred method of contact:</label>
                                     <input type="radio" wire:model="contactMethod" value="email"> Email
                                     <input type="radio" wire:model="contactMethod" value="phone"> Phone
@@ -284,3 +285,46 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    // document.addEventListener('DOMContentLoaded', () => {
+    //     function getIp(callback) {
+    //         fetch('ipinfo.io/140.82.183.34?token=66e2f39b20a2bd', { headers: { 'Accept': 'application/json' } })
+    //             .then((resp) => resp.json())
+    //             .catch(() => {
+    //                 return {
+    //                     country: 'us',
+    //                 };
+    //             })
+    //             .then((resp) => callback(resp.country));
+    //     }
+    //     const phoneInputField = document.querySelector("#phone");
+    //     const phoneInput = window.intlTelInput(phoneInputField, {
+    //         utilsScript:
+    //             "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    //     });
+    //     $('#phone').on('input', function () {
+    //         @this.set('phone', phoneInput.getNumber());
+    //     })
+    // });
+    document.addEventListener('livewire:initialized', () => {
+        function getIp(callback) {
+            fetch('ipinfo.io/140.82.183.34?token=66e2f39b20a2bd', { headers: { 'Accept': 'application/json' } })
+                .then((resp) => resp.json())
+                .catch(() => {
+                    return {
+                        country: 'us',
+                    };
+                })
+                .then((resp) => callback(resp.country));
+        }
+        const phoneInputField = document.querySelector("#phone");
+        const phoneInput = window.intlTelInput(phoneInputField, {
+            utilsScript:
+                "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        });
+        $('#phone').on('input', function () {
+            @this.set('phone', phoneInput.getNumber());
+        })
+    });
+</script>
